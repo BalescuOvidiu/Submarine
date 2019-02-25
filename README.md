@@ -4,13 +4,14 @@
   <tr>
     <td valign="top" width="50%">
       <h3>Proiect la cursul de Robotică</h3>
-      <p>Universitatea București - Facultatea de Matematică și Informatică</p>
+      <h4>Universitatea București</h4>
+      <h4>Facultatea de Matematică și Informatică</h4>
       <p><b>Student</b>: Bălescu Ovidiu-Gheorghe</p>
       <p><b>Laborant</b>: Ivona Octavia</p>
       <p><b>Profesor coordonator</b>: Bardezi Andrei</p>
-      <p>   Proiect la cursul de Robotică, reprezentat de un submarin controlabil printr-o telecomandă, încă în dezvoltare. Acesta are ca scop de a încuraja reciclarea și explorarea oceanelor.</p>
-      <p>   Oceanele ocupă aproximativ 70% din suprafața planetei și cea mai mare parte a lor e neexplorată.</p>
-      <p>   Carcasa submarinul este construită din 4 sticle de PET susținută de un schelet metalic. Aripile, cârma și pupele sunt construite din tabla de la conserve, acoperite cu PET. Toate acestea sunt înfășurate în bandă adezivă.</p>
+      <p align=justify>   Proiect la cursul de Robotică, reprezentat de un submarin controlabil printr-o telecomandă, încă în dezvoltare. Acesta are ca scop de a încuraja reciclarea și explorarea oceanelor.</p>
+      <p align=justify>   Oceanele ocupă aproximativ 70% din suprafața planetei și cea mai mare parte a lor e neexplorată.</p>
+      <p align=justify>   Carcasa submarinul este construită din 4 sticle de PET susținută de un schelet metalic. Aripile, cârma și pupele sunt construite din tabla de la conserve, acoperite cu PET. Toate acestea sunt înfășurate în bandă adezivă.</p>
     </td>
     <td valign="top" width="50%">
       <img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/IMG_20190222_184755.jpg"/>
@@ -180,8 +181,8 @@
   <tr>
     <td valign="top" width="40%">
       <h3>Dezvoltare</h3>
-      <p>   Momentan s-au adunat 90 de ore de lucru la construirea acestui prototip: curățarea sticlelor și conservelor, modelarea carcasei și aripiilor,  construirea scheletului, asamblarea și conectarea componentelor electronice.<p>
-      <p>   Acesta este încă în dezvoltare, urmând să aibe implementări și îmbunătățiri ulterioare.<p>
+      <p align=justify>   Momentan s-au adunat 90 de ore de lucru la construirea acestui prototip: curățarea sticlelor și conservelor, modelarea carcasei și aripiilor,  construirea scheletului, asamblarea și conectarea componentelor electronice.<p>
+      <p align=justify>   Acesta este încă în dezvoltare, urmând să aibe implementări și îmbunătățiri ulterioare.<p>
       <h3>Viitoare implementări</h3>
       <ol>
         <li>Îmbunătățirea scheletului</li>
