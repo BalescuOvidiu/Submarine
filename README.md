@@ -161,6 +161,7 @@
       <img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/parts.png"/>
      </td>
      <td valign="top" width="30%">
+      <h3>Compartimente</h3>
       <ol>
         <li>Camera propulsiei</li>
         <li>camera de control al motoarelor</li>
