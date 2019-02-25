@@ -1,6 +1,9 @@
 # Submarin
-<p>Student: Bălescu Ovidiu-Gheorghe</p>
-<p>Profesor coordonator: Bardezi Andrei</p>
+<p>Universitatea București - Facultatea de Matematică și Informatică</p>
+<p>Proiect la cursul de Robotică</p>
+<p><b>Student</b>: Bălescu Ovidiu-Gheorghe</p>
+<p><b>Laborant</b>: Ivona Octavia</p>
+<p><b>Profesor coordonator</b>: Bardezi Andrei</p>
 
 <table>
   <tr>
