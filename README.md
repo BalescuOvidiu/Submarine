@@ -6,9 +6,14 @@
 <p>   Oceanele ocupă aproximativ 70% din suprafața planetei și cea mai mare parte a lor e neexplorată.</p>
 <p>   Carcasa submarinul este construită din 4 sticle de PET susținută de un schelet metalic. Aripile, cârma și pupele sunt construite din tabla de la conserve, acoperite cu PET. Toate acestea sunt înfășurate în bandă adezivă.</p>
 
+
+<img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/IMG_20190222_184755.jpg"/>
+
+
 <h3>Detalii tehnice</h3>
 
-<table>
+<table><tr>
+<td><table>
   <tr>
       <td>Nume model</td>
       <td>UB-FMI-212</td>
@@ -53,13 +58,8 @@
       <td>Cost</td>
       <td>294 RON</td>
   </tr>
-</table>
-
-<img style="width:50%;" src="https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/IMG_20190222_184755.jpg"/>
-
-<h3>Componente</h3>
-
-<table>
+</table></td>
+<td><table>
   <tr>
       <td>Nume</td>
       <td>Cantitate</td>
@@ -144,7 +144,8 @@
       <td>50 RON</td>
       <td>50 RON</td>
   </tr>
-</table>
+</table></td>
+</tr></table>
 
 <img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/parts.png"/>
 
@@ -157,11 +158,11 @@
   <li>Pernă de aer</li>
 </ol>
 
+<img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/schematic.png"/>
+
 <h3>Dezvoltare</h3>
 <p>   Momentan s-au adunat 90 de ore de lucru la construirea acestui prototip: curățarea sticlelor și conservelor, modelarea carcasei și aripiilor,  construirea scheletului, asamblarea și conectarea componentelor electronice.<p>
 <p>   Acesta este încă în dezvoltare, urmând să aibe implementări și îmbunătățiri ulterioare.<p>
-
-<img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/schematic.png"/>
 
 <h3>Viitoare implementări</h3>
 <ol>
