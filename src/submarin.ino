@@ -29,6 +29,12 @@ Servo rudder;
 int sternLeftAngle = 0;
 int sternRightAngle = 0;
 int rudderAngle = 0;
+int sternLeftDir = 1;
+int sternRightDir = 1;
+int rudderDir = 1;
+int sternLeftTest=0;
+int sternRightTest=0;
+int rudderTest=0;
 // Propeller
 int propellerA = LOW;
 int propellerB = LOW;
@@ -38,6 +44,7 @@ decode_results receiverResult;
 // Commands
 unsigned long duration = 0;
 unsigned long start = 0;
+unsigned long route = 0;
 int shore = 1;
 
 // RGB LED
@@ -104,31 +111,48 @@ void wait() {
   digitalWrite(PIN_PROPELLER_A, propellerA);
   digitalWrite(PIN_PROPELLER_B, propellerB);
   setColor(255, 255, 255);
+  setSterns(30);
+  setRudder(0);
 }
 // Commands
 void go(unsigned long seconds) {
+  setSterns(0);
   duration = seconds * 1000;
   shore = 0;
   forward();
   start = millis();
 }
 void testLeftStern() {
-  sternLeftAngle = (sternLeftAngle + 1) % 90;
-  setSternLeft(sternLeftAngle);
+  if(sternLeftTest){
+    setSternLeft((sternLeftAngle + sternLeftDir));
+    if (sternLeftAngle == 0 || sternLeftAngle == 90) {
+      sternLeftDir *= -1;
+    }
+    delay(20);
+  }
 }
 void testRightStern() {
-  sternLeftAngle = (sternLeftAngle + 1) % 90;
-  setSternLeft(sternLeftAngle);
-
+  if(sternRightTest){
+    setSternRight((sternRightAngle + sternRightDir));
+    if (sternRightAngle == 0 || sternRightAngle == 90) {
+      sternRightDir *= -1;
+    }
+    delay(20);
+  }
 }
 void testSterns() {
   testLeftStern();
   testRightStern();
-
+  delay(20);
 }
 void testRudder() {
-  rudderAngle = (rudderAngle + 1) % 90;
-  setRudder(rudderAngle);
+  if(rudderTest){
+    setRudder((rudderAngle + rudderDir));
+    if (rudderAngle == 0 || rudderAngle == 90) {
+      rudderDir *= -1;
+    }
+    delay(20);
+  }
 }
 // Receiver
 void receiveCommand() {
@@ -158,8 +182,6 @@ void setup() {
   sternLeft.attach(PIN_STERN_LEFT);
   sternRight.attach(PIN_STERN_RIGHT);
   rudder.attach(PIN_RUDDER);
-  setSterns(0);
-  setRudder(0);
   // Propeller
   pinMode(PIN_PROPELLER_A, OUTPUT);
   pinMode(PIN_PROPELLER_B, OUTPUT);
@@ -170,9 +192,9 @@ void setup() {
 int angle = 0;
 int dir = 1;
 void loop() {
-  //testLeftStern();
-  //testRightStern();
-  //testRudder();
+  testLeftStern();
+  testRightStern();
+  testRudder();
   printLed();
   propeller();
   receiveCommand();
