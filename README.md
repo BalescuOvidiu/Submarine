@@ -6,8 +6,6 @@
 <p>   Oceanele ocupă aproximativ 70% din suprafața planetei și cea mai mare parte a lor e neexplorată.</p>
 <p>   Carcasa submarinul este construită din 4 sticle de PET susținută de un schelet metalic. Aripile, cârma și pupele sunt construite din tabla de la conserve, acoperite cu PET. Toate acestea sunt înfășurate în bandă adezivă.</p>
 
-<img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/IMG_20190222_184755.jpg"/>
-
 <h3>Detalii tehnice</h3>
 
 <table>
@@ -56,6 +54,8 @@
       <td>294 RON</td>
   </tr>
 </table>
+
+<img style="width:50%;" src="https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/IMG_20190222_184755.jpg"/>
 
 <h3>Componente</h3>
 
@@ -146,7 +146,7 @@
   </tr>
 </table>
 
-<img src=""/>
+<img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/parts.png"/>
 
 <ol>
   <li>Camera propulsiei</li>
