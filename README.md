@@ -1,6 +1,6 @@
 # Submarin
+<h3>Proiect la cursul de Robotică</h3>
 <p>Universitatea București - Facultatea de Matematică și Informatică</p>
-<p>Proiect la cursul de Robotică</p>
 <p><b>Student</b>: Bălescu Ovidiu-Gheorghe</p>
 <p><b>Laborant</b>: Ivona Octavia</p>
 <p><b>Profesor coordonator</b>: Bardezi Andrei</p>
@@ -21,7 +21,7 @@
 <h3>Detalii tehnice</h3>
 
 <table><tr>
-<td valign="top" width="20%"><table>
+<td valign="top" width="30%"><table>
   <tr>
       <td>Nume model</td>
       <td>UB-FMI-212</td>
@@ -67,7 +67,7 @@
       <td>294 RON</td>
   </tr>
 </table></td>
-<td valign="top" width="80%"><table>
+<td valign="top" width="70%"><table>
   <tr>
       <td>Nume</td>
       <td>Cantitate</td>
