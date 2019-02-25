@@ -13,7 +13,7 @@
 <h3>Detalii tehnice</h3>
 
 <table><tr>
-<td><table>
+<td valign="top"><table>
   <tr>
       <td>Nume model</td>
       <td>UB-FMI-212</td>
@@ -59,7 +59,7 @@
       <td>294 RON</td>
   </tr>
 </table></td>
-<td><table>
+<td valign="top"><table>
   <tr>
       <td>Nume</td>
       <td>Cantitate</td>
@@ -147,16 +147,23 @@
 </table></td>
 </tr></table>
 
-<img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/parts.png"/>
-
-<ol>
-  <li>Camera propulsiei</li>
-  <li>camera de control al motoarelor</li>
-  <li>Camera de comandă</li>
-  <li>Camera de comunicare</li>
-  <li>Camera bateriilor</li>
-  <li>Pernă de aer</li>
-</ol>
+<table>
+   <tr>
+     <td valign="top" width="70%">
+      <img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/parts.png"/>
+     </td>
+     <td valign="top" width="30%">
+      <ol>
+        <li>Camera propulsiei</li>
+        <li>camera de control al motoarelor</li>
+        <li>Camera de comandă</li>
+        <li>Camera de comunicare</li>
+        <li>Camera bateriilor</li>
+        <li>Pernă de aer</li>
+      </ol>
+     </td>
+  </tr>
+</table>
 
 <img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/schematic.png"/>
 
