@@ -2,18 +2,23 @@
 <p>Student: Bălescu Ovidiu-Gheorghe</p>
 <p>Profesor coordonator: Bardezi Andrei</p>
 
-<p>   Proiect la cursul de Robotică, reprezentat de un submarin controlabil printr-o telecomandă, încă în dezvoltare. Acesta are ca scop de a încuraja reciclarea și explorarea oceanelor.</p>
-<p>   Oceanele ocupă aproximativ 70% din suprafața planetei și cea mai mare parte a lor e neexplorată.</p>
-<p>   Carcasa submarinul este construită din 4 sticle de PET susținută de un schelet metalic. Aripile, cârma și pupele sunt construite din tabla de la conserve, acoperite cu PET. Toate acestea sunt înfășurate în bandă adezivă.</p>
-
-
-<img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/IMG_20190222_184755.jpg"/>
-
+<table>
+  <tr>
+    <td valign="top" width="30%">
+      <p>   Proiect la cursul de Robotică, reprezentat de un submarin controlabil printr-o telecomandă, încă în dezvoltare. Acesta are ca scop de a încuraja reciclarea și explorarea oceanelor.</p>
+      <p>   Oceanele ocupă aproximativ 70% din suprafața planetei și cea mai mare parte a lor e neexplorată.</p>
+      <p>   Carcasa submarinul este construită din 4 sticle de PET susținută de un schelet metalic. Aripile, cârma și pupele sunt construite din tabla de la conserve, acoperite cu PET. Toate acestea sunt înfășurate în bandă adezivă.</p>
+    </td>
+    <td valign="top" width="70%">
+      <img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/IMG_20190222_184755.jpg"/>
+    </td>
+  </tr>
+</table>
 
 <h3>Detalii tehnice</h3>
 
 <table><tr>
-<td valign="top"><table>
+<td valign="top" width="20%"><table>
   <tr>
       <td>Nume model</td>
       <td>UB-FMI-212</td>
@@ -59,7 +64,7 @@
       <td>294 RON</td>
   </tr>
 </table></td>
-<td valign="top"><table>
+<td valign="top" width="80%"><table>
   <tr>
       <td>Nume</td>
       <td>Cantitate</td>
@@ -172,11 +177,20 @@
 <p>   Acesta este încă în dezvoltare, urmând să aibe implementări și îmbunătățiri ulterioare.<p>
 
 <h3>Viitoare implementări</h3>
-<ol>
-  <li>Îmbunătățirea scheletului</li>
-  <li>Etanșarea și modularizarea carcasei</li>
-  <li>Implementarea balastului</li>
-  <li>Implementarea unei device de orientare</li>
-  <li>Înlocuirea bateriilor cu un generator din cupru și aluminiu</li>
-</ol>
-<img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/IMG_20190222_184814.jpg"/>
+
+<table>
+  <tr>
+    <td valign="top" width="40%">
+      <ol>
+        <li>Îmbunătățirea scheletului</li>
+        <li>Etanșarea și modularizarea carcasei</li>
+        <li>Implementarea balastului</li>
+        <li>Implementarea unei device de orientare</li>
+        <li>Înlocuirea bateriilor cu un generator din cupru și aluminiu</li>
+      </ol>  
+    </td valign="top" width="60%">
+    <td>
+      <img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/IMG_20190222_184814.jpg"/>
+    </td>
+  </tr>
+</table>
