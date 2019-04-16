@@ -66,7 +66,7 @@
   </tr>
   <tr>
       <td>Cost</td>
-      <td>294 RON</td>
+      <td>361 RON</td>
   </tr>
 </table></td>
 <td valign="top" width="70%"><table>
@@ -95,10 +95,10 @@
       <td>60 RON</td>
   </tr>
   <tr>
-      <td>Motor DC 6 V</td>
+      <td>Motor DC Pololu 250:1 6 V</td>
       <td>1</td>
-      <td>10 RON</td>
-      <td>10 RON</td>
+      <td>77 RON</td>
+      <td>77 RON</td>
   </tr>
   <tr>
       <td>Driver de motoare Dual L9110S</td>
