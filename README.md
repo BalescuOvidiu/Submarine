@@ -182,7 +182,7 @@
   <tr>
     <td valign="top" width="40%">
       <h3>Dezvoltare</h3>
-      <p align=justify>   Momentan s-au adunat 90 de ore de lucru la construirea acestui prototip: curățarea sticlelor și conservelor, modelarea carcasei și aripiilor,  construirea scheletului, asamblarea și conectarea componentelor electronice.<p>
+      <p align=justify>   Momentan s-au adunat 114 de ore de lucru la construirea acestui prototip: curățarea sticlelor și conservelor, modelarea carcasei și aripiilor,  construirea scheletului, asamblarea și conectarea componentelor electronice.<p>
       <p align=justify>   Acesta este încă în dezvoltare, urmând să aibe implementări și îmbunătățiri ulterioare.<p>
       <h3>Viitoare implementări</h3>
       <ol>
