@@ -10,8 +10,8 @@
       <p><b>Laborant</b>: Ivona Octavia</p>
       <p><b>Profesor coordonator</b>: Bardezi Andrei</p>
       <p align=justify>   Proiect la cursul de Robotică, reprezentat de un submarin controlabil printr-o telecomandă, încă în dezvoltare. Acesta are ca scop de a încuraja reciclarea și explorarea oceanelor.</p>
-      <p align=justify>   Oceanele ocupă aproximativ 70% din suprafața planetei și cea mai mare parte a lor e neexplorată.</p>
-      <p align=justify>   Carcasa submarinul este construită din 4 sticle de PET susținută de un schelet metalic. Aripile, cârma și pupele sunt construite din tabla de la conserve, acoperite cu PET. Toate acestea sunt înfășurate în bandă adezivă.</p>
+      <p align=justify>   Oceanele ocupă aproximativ 71% din suprafața planetei și cea mai mare parte a lor e neexplorată.</p>
+      <p align=justify>   Carcasa submarinul este construită din 4 sticle de PET susținută de un schelet metalic și acoperită cu lac de lemn. Aripile, cârma și pupele sunt construite din tabla de la conserve, acoperite cu PET. Toate acestea sunt înfășurate în bandă adezivă și acoperite cu lac de lemn.</p>
       <a href="https://drive.google.com/open?id=14xfywLaQ-WlN_2uQ3R290HlvZGqdsxAs">Video</a>
     </td>
     <td valign="top" width="50%">
@@ -37,7 +37,7 @@
       <td>6 cm</td>
   </tr>
   <tr>
-      <td>Lățime</td>
+      <td>Lățime totală</td>
       <td>24 cm</td>
   </tr>
   <tr>
@@ -50,15 +50,15 @@
   </tr>
   <tr>
       <td>Alimentare</td>
-      <td>21 V baterii</td>
+      <td>1 x baterie externă de 5 V, 2200 mAh și 8 x baterii de 1.5 V</td>
   </tr>
   <tr>
       <td>Propulsie</td>
-      <td>Motor electric 6 V</td>
+      <td>Motor electric de 6 V</td>
   </tr>
   <tr>
-      <td>Input</td>
-      <td>Sensor infraroșu</td>
+      <td>Control</td>
+      <td>Telecomandă și sensor infraroșu</td>
   </tr>
   <tr>
       <td>Output</td>
@@ -66,7 +66,7 @@
   </tr>
   <tr>
       <td>Cost</td>
-      <td>361 RON</td>
+      <td>372 RON</td>
   </tr>
 </table></td>
 <td valign="top" width="70%"><table>
@@ -77,10 +77,10 @@
       <td>Preț total</td>
   </tr>
   <tr>
-      <td>Arduino Genuino </td>
+      <td>Arduino Nano V3</td>
       <td>1</td>
-      <td>28 RON</td>
-      <td>28 RON</td>
+      <td>20 RON</td>
+      <td>20 RON</td>
   </tr>
   <tr>
       <td>Breadboard alb</td>
@@ -95,7 +95,7 @@
       <td>60 RON</td>
   </tr>
   <tr>
-      <td>Motor DC Pololu 250:1 6 V</td>
+      <td>Motor DC Pololu 250:1 6V</td>
       <td>1</td>
       <td>77 RON</td>
       <td>77 RON</td>
@@ -125,13 +125,13 @@
       <td>40 RON</td>
   </tr>
   <tr>
-      <td>Suport baterie 9 V</td>
+      <td>Baterie externă 5V și 2200mAh</td>
       <td>1</td>
-      <td>1 RON</td>
-      <td>1 RON</td>
+      <td>20 RON</td>
+      <td>20 RON</td>
   </tr>
   <tr>
-      <td>Suport baterii pătrat 4 x 1.5 V</td>
+      <td>Suport baterii pătrat 4 x 1.5V</td>
       <td>2</td>
       <td>10 RON</td>
       <td>20 RON</td>
@@ -182,7 +182,7 @@
   <tr>
     <td valign="top" width="40%">
       <h3>Dezvoltare</h3>
-      <p align=justify>   Momentan s-au adunat 114 de ore de lucru la construirea acestui prototip: curățarea sticlelor și conservelor, modelarea carcasei și aripiilor,  construirea scheletului, asamblarea și conectarea componentelor electronice.<p>
+      <p align=justify>   Momentan s-au adunat 120 de ore de lucru la construirea acestui prototip: curățarea sticlelor și conservelor, modelarea carcasei și aripiilor,  construirea scheletului, asamblarea și conectarea componentelor electronice.<p>
       <p align=justify>   Acesta este încă în dezvoltare, urmând să aibe implementări și îmbunătățiri ulterioare.<p>
       <h3>Viitoare implementări</h3>
       <ol>
@@ -190,7 +190,7 @@
         <li>Etanșarea și modularizarea carcasei</li>
         <li>Implementarea balastului</li>
         <li>Implementarea unei device de orientare</li>
-        <li>Înlocuirea bateriilor cu un generator din cupru și aluminiu</li>
+        <li>Adăugarea unui generator din cupru și aluminiu care să încarce acumulatorii</li>
       </ol>  
     </td valign="top" width="60%">
     <td>
