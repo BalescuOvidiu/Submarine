@@ -27,8 +27,8 @@
 #define PIN_BLUE        4
 // Servomotors
 #define PIN_STERN_LEFT  5
-#define PIN_RUDDER      6
-#define PIN_STERN_RIGHT 7
+#define PIN_STERN_RIGHT 6
+#define PIN_RUDDER      7
 #define MID             90
 // Propeller
 #define PIN_PROPELLER_A 8
@@ -118,6 +118,7 @@ Led::Led(Color color, bool commonAnode) {
   this->pin = color;
   this->color = Color();
   this->commonAnode = commonAnode;
+  this->loop();
 }
 Led::Led(short red, short green, short blue, bool commonAnode) {
   pinMode(red, OUTPUT);
@@ -126,6 +127,7 @@ Led::Led(short red, short green, short blue, bool commonAnode) {
   this->pin = Color(red, green, blue);
   this->color = Color();
   this->commonAnode = commonAnode;
+  this->loop();
 }
 void Led::loop() {
   if (this->commonAnode) {
@@ -156,10 +158,11 @@ class Servomotor {
   private:
     Servo s;
     short angle;
-    short dir;
+    int dir;
     short pin;
     bool test;
   public:
+    Servomotor();
     Servomotor(short pin, short angle);
     void write(short angle);
     void loop();
@@ -171,19 +174,22 @@ class Servomotor {
     void testIt();
     ~Servomotor();
 };
+Servomotor::Servomotor() {
+  this->detach();
+}
 Servomotor::Servomotor(short pin, short angle) {
-  this->pin = pin;
   this->attach(pin);
   this->write(angle);
 }
 void Servomotor::loop() {
   this->s.write(this->angle);
+  this->testIt();
 }
 void Servomotor::write(short angle) {
   this->angle = angle;
-  this->loop();
 }
 void Servomotor::attach(short pin) {
+  this->pin = pin;
   this->s.attach(pin);
   this->reset();
 }
@@ -195,10 +201,10 @@ void Servomotor::reset() {
   this->test = false;
 }
 void Servomotor::enableTest() {
-  this->test = 1;
+  this->test = true;
 }
 void Servomotor::disableTest() {
-  this->test = 0;
+  this->reset();
 }
 void Servomotor::testIt() {
   if (this->test) {
@@ -206,7 +212,6 @@ void Servomotor::testIt() {
       dir *= -1;
     }
     this->angle += dir;
-    this->loop();
   }
 }
 Servomotor::~Servomotor() {
@@ -269,9 +274,11 @@ TimeInterval timeServo(0, 800);
 // Objects
 Led output(PIN_RED, PIN_GREEN, PIN_BLUE, false);
 Motor propeller(0, 0, PIN_PROPELLER_A, PIN_PROPELLER_B);
-Servomotor sternLeft(PIN_STERN_LEFT, ANGLE_MID);
+Servomotor sternLeft;
 Servomotor sternRight(PIN_STERN_RIGHT, ANGLE_MID);
-Servomotor rudder(PIN_RUDDER, ANGLE_MID);
+Servomotor rudder;
+Servo a;
+double angle = 0, dir = 1;
 
 // Receiver
 IRrecv receiver(PIN_RECEIVER);
@@ -280,20 +287,22 @@ decode_results receiverResult;
 // Other functions
 void loopServo() {
   if (timeServo.elapse()) {
+    idServo = (idServo + 1) % 3;
+  }
+  else {
     switch (idServo) {
-      case 0: sternLeft.loop(); break;
+      //case 0: sternLeft.loop(); break;
       case 1: sternRight.loop(); break;
-      case 2: rudder.loop(); break;
+      //case 2: rudder.loop(); break;
       default: break;
     }
-    idServo = (idServo + 1) % 3;
   }
 }
 void wait() {
   shore = true;
   propeller.stop();
   output.write(WHITE);
-  rudder.write(0);
+  rudder.write(ANGLE_MID);
 }
 void go(unsigned long duration, short speed, int dir) {
   output.write(BLUE);
@@ -305,8 +314,8 @@ void go(unsigned long duration, short speed, int dir) {
 void receiveCommand() {
   if (shore) {
     if (receiver.decode(&receiverResult)) {
-      Serial.println(receiverResult.value, HEX);
-      go(5 * SECOND, 255, 0);
+      //Serial.println(receiverResult.value, HEX);
+      go(25 * SECOND, 255, 0);
       receiver.resume();
     }
   }
@@ -321,8 +330,13 @@ void receiveCommand() {
 void setup() {
   Serial.begin(9600);
   wait();
+  // Servomotors
+  sternLeft = Servomotor(PIN_STERN_LEFT, ANGLE_MID);
+  sternRight = Servomotor(PIN_STERN_RIGHT, ANGLE_MID);
+  rudder = Servomotor(PIN_RUDDER, ANGLE_MID);
   // Receiver
   receiver.enableIRIn();
+  sternRight.enableTest();
 }
 void loop() {
   propeller.loop();
@@ -331,7 +345,4 @@ void loop() {
   receiveCommand();
   // Servomotors
   loopServo();
-  sternLeft.testIt();
-  sternRight.testIt();
-  rudder.testIt();
 }
