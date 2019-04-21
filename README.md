@@ -66,7 +66,7 @@
   </tr>
   <tr>
       <td>Cost</td>
-      <td>372 RON</td>
+      <td>408 RON</td>
   </tr>
 </table></td>
 <td valign="top" width="70%"><table>
@@ -125,7 +125,7 @@
       <td>40 RON</td>
   </tr>
   <tr>
-      <td>Baterie externă 5V și 2200mAh</td>
+      <td>Baterie externă de 5 V și 2200 mAh</td>
       <td>1</td>
       <td>20 RON</td>
       <td>20 RON</td>
@@ -149,10 +149,16 @@
       <td>36 RON</td>
   </tr>
   <tr>
-      <td>Bandă adezivă oțel</td>
+      <td>Bandă reparații gri 50 m x 50 mm</td>
       <td>1</td>
       <td>50 RON</td>
       <td>50 RON</td>
+  </tr>
+  <tr>
+      <td>Lac protector</td>
+      <td>1</td>
+      <td>29 RON</td>
+      <td>29 RON</td>
   </tr>
 </table></td>
 </tr></table>
