@@ -336,7 +336,6 @@ void setup() {
   rudder = Servomotor(PIN_RUDDER, ANGLE_MID);
   // Receiver
   receiver.enableIRIn();
-  sternRight.enableTest();
 }
 void loop() {
   propeller.loop();
