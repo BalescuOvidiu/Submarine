@@ -274,9 +274,9 @@ TimeInterval timeServo(0, 800);
 // Objects
 Led output(PIN_RED, PIN_GREEN, PIN_BLUE, false);
 Motor propeller(0, 0, PIN_PROPELLER_A, PIN_PROPELLER_B);
-Servomotor sternLeft;
+Servomotor sternLeft(PIN_STERN_LEFT, ANGLE_MID);
 Servomotor sternRight(PIN_STERN_RIGHT, ANGLE_MID);
-Servomotor rudder;
+Servomotor rudder(PIN_RUDDER, ANGLE_MID);;
 Servo a;
 double angle = 0, dir = 1;
 
@@ -331,9 +331,7 @@ void setup() {
   Serial.begin(9600);
   wait();
   // Servomotors
-  sternLeft = Servomotor(PIN_STERN_LEFT, ANGLE_MID);
-  sternRight = Servomotor(PIN_STERN_RIGHT, ANGLE_MID);
-  rudder = Servomotor(PIN_RUDDER, ANGLE_MID);
+  rudder.enableTest();
   // Receiver
   receiver.enableIRIn();
 }
