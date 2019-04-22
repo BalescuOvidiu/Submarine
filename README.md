@@ -54,7 +54,7 @@
   </tr>
   <tr>
       <td>Propulsie</td>
-      <td>Motor electric de 6 V</td>
+      <td>Motor electric</br>6 V</td>
   </tr>
   <tr>
       <td>Control</td>
