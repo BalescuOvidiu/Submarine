@@ -6,9 +6,9 @@
       <h3>Proiect la cursul de Robotică</h3>
       <h4>Universitatea București</h4>
       <h4>Facultatea de Matematică și Informatică</h4>
-      <p><b>Student</b>: Bălescu Ovidiu-Gheorghe</p>
-      <p><b>Laborant</b>: Ivona Octavia</p>
       <p><b>Profesor coordonator</b>: Bardezi Andrei</p>
+      <p><b>Laborant</b>: Ivona Octavia</p>
+      <p><b>Student</b>: Bălescu Ovidiu-Gheorghe</p>
       <p align=justify>   Proiect la cursul de Robotică, reprezentat de un submarin controlabil printr-o telecomandă, încă în dezvoltare. Acesta are ca scop de a încuraja reciclarea și explorarea oceanelor.</p>
       <p align=justify>   Oceanele ocupă aproximativ 71% din suprafața planetei și cea mai mare parte a lor e neexplorată.</p>
       <p align=justify>   Carcasa submarinul este construită din 4 sticle de PET susținută de un schelet metalic și acoperită cu lac de lemn. Aripile, cârma și pupele sunt construite din tabla de la conserve, acoperite cu PET. Toate acestea sunt înfășurate în bandă adezivă și acoperite cu lac de lemn.</p>
