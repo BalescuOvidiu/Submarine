@@ -23,7 +23,7 @@
 <h3>Detalii tehnice</h3>
 
 <table><tr>
-<td valign="top" width="30%"><table>
+<td valign="top" width="35%"><table>
   <tr>
       <td>Nume model</td>
       <td>UB-FMI-212</td>
@@ -50,7 +50,7 @@
   </tr>
   <tr>
       <td>Alimentare</td>
-      <td>1 x baterie externă de 5 V, 2200 mAh și 8 x baterii de 1.5 V</td>
+      <td>Baterii:</br>1 x 5 V, 2200 mAh<br/>8 x 1.5 V</td>
   </tr>
   <tr>
       <td>Propulsie</td>
@@ -69,7 +69,7 @@
       <td>408 RON</td>
   </tr>
 </table></td>
-<td valign="top" width="70%"><table>
+<td valign="top" width="65%"><table>
   <tr>
       <td>Nume</td>
       <td>Cantitate</td>
@@ -125,7 +125,7 @@
       <td>40 RON</td>
   </tr>
   <tr>
-      <td>Baterie externă de 5 V și 2200 mAh</td>
+      <td>Baterie externă de 5 V, 2200 mAh</td>
       <td>1</td>
       <td>20 RON</td>
       <td>20 RON</td>
@@ -182,7 +182,7 @@
   </tr>
 </table>
 
-<img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/schematic.png"/>
+<img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/schem.png"/>
 
 <table>
   <tr>
