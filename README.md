@@ -94,7 +94,7 @@
       <td>60 RON</td>
   </tr>
   <tr>
-      <td>Motor DC Pololu 250:1 6V</td>
+      <td>Motor DC Pololu 250:1 6 V</td>
       <td>1</td>
       <td>77 RON</td>
       <td>77 RON</td>
@@ -130,7 +130,7 @@
       <td>20 RON</td>
   </tr>
   <tr>
-      <td>Suport baterii pătrat 4 x 1.5V</td>
+      <td>Suport baterii pătrat 4 x 1.5 V</td>
       <td>2</td>
       <td>10 RON</td>
       <td>20 RON</td>
