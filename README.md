@@ -65,7 +65,7 @@
   </tr>
   <tr>
       <td>Cost</td>
-      <td>411 RON</td>
+      <td>406 RON</td>
   </tr>
 </table></td>
 <td valign="top" width="65%"><table>
@@ -108,8 +108,8 @@
   <tr>
       <td>LED RGB</td>
       <td>1</td>
-      <td>8 RON</td>
-      <td>8 RON</td>
+      <td>1 RON</td>
+      <td>1 RON</td>
   </tr>
   <tr>
       <td>Receptor infraroșu</td>
