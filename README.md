@@ -65,7 +65,7 @@
   </tr>
   <tr>
       <td>Cost</td>
-      <td>408 RON</td>
+      <td>411 RON</td>
   </tr>
 </table></td>
 <td valign="top" width="65%"><table>
@@ -155,9 +155,21 @@
   </tr>
   <tr>
       <td>Lac protector</td>
+      <td>0.2</td>
+      <td>29 RON</td>
+      <td>5.4 RON</td>
+  </tr>
+  <tr>
+      <td>Vopsea</td>
+      <td>0.5</td>
+      <td>19 RON</td>
+      <td>9.5 RON</td>
+  </tr>
+  <tr>
+      <td>Inel de strângere</td>
       <td>1</td>
-      <td>29 RON</td>
-      <td>29 RON</td>
+      <td>19 RON</td>
+      <td>19 RON</td>
   </tr>
 </table></td>
 </tr></table>
