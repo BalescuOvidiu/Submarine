@@ -286,14 +286,14 @@ decode_results receiverResult;
 
 // Other functions
 void loopServo() {
-  if (timeServo.elapse()) {
+  if (timeServo.elapsed()) {
     idServo = (idServo + 1) % 3;
   }
   else {
     switch (idServo) {
-      //case 0: sternLeft.loop(); break;
+      case 0: sternLeft.loop(); break;
       case 1: sternRight.loop(); break;
-      //case 2: rudder.loop(); break;
+      case 2: rudder.loop(); break;
       default: break;
     }
   }
