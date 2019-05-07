@@ -10,7 +10,7 @@
     <td valign="top" width="50%">
       <p align=justify>   Proiect la cursul de Robotică, reprezentat de un submarin controlabil printr-o telecomandă, încă în dezvoltare. Acesta are ca scop de a încuraja reciclarea și explorarea oceanelor.</p>
       <p align=justify>   Oceanele ocupă aproximativ 71% din suprafața planetei și cea mai mare parte a lor e neexplorată.</p>
-      <p align=justify>   Carcasa submarinul este construită din 4 sticle de PET susținută de un schelet metalic și acoperită cu lac de lemn. Aripile, cârma și pupele sunt construite din tabla de la conserve, acoperite cu PET. Toate acestea sunt înfășurate în bandă adezivă și acoperite cu lac de lemn.</p>
+      <p align=justify>   Carcasa submarinul este construită din 4 sticle de PET susținută de un schelet metalic și acoperită cu lac de lemn. Aripile și cârmele sunt construite din tabla de la conserve, acoperite cu PET. Toate acestea sunt înfășurate în bandă adezivă și acoperite cu lac de lemn.</p>
       <a href="https://www.youtube.com/watch?v=reCAACpi1qQ">Video</a>
     </td>
     <td valign="top" width="50%">
