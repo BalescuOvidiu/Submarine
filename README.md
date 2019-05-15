@@ -183,9 +183,9 @@
       <h3>Compartimente</h3>
       <ol>
         <li>Camera propulsiei</li>
-        <li>camera de control al motoarelor</li>
-        <li>Camera de comandă</li>
-        <li>Camera de comunicare</li>
+        <li>Camera de control al motoarelor</li>
+        <li>Camera circuitelor</li>
+        <li>Corpul de navigare</li>
         <li>Camera bateriilor</li>
         <li>Pernă de aer</li>
       </ol>
