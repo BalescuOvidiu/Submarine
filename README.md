@@ -45,7 +45,7 @@
   </tr>
   <tr>
       <td>Volum</td>
-      <td>5.497 l</td>
+      <td>4.040 l</td>
   </tr>
   <tr>
       <td>Alimentare</td>
