@@ -13,6 +13,7 @@ class Motor {
     byte speed;
   public:
     // Constructors
+    Motor(byte pinA, byte pinB);
     Motor(bool a, bool b, byte pinA, byte pinB);
     Motor(bool a, bool b, byte pinA, byte pinB, byte speed);
     // Methods
@@ -27,6 +28,15 @@ class Motor {
     ~Motor();
 };
 // Constructors
+Motor::Motor(byte pinA, byte pinB) {
+  pinMode(pinA, OUTPUT);
+  pinMode(pinB, OUTPUT);
+  this->a = 0;
+  this->b = 1;
+  this->pinA = pinA;
+  this->pinB = pinB;
+  this->speed = 0;
+}
 Motor::Motor(bool a, bool b, byte pinA, byte pinB) {
   pinMode(pinA, OUTPUT);
   pinMode(pinB, OUTPUT);

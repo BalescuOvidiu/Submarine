@@ -39,8 +39,8 @@ TimeInterval::TimeInterval(unsigned long start, unsigned long duration) {
   this->duration = duration;
 }
 // Methods
-unsigned long TimeInterval::elapsedTime(){
-  return millis()-this->start;
+unsigned long TimeInterval::elapsedTime() {
+  return millis() - this->start;
 }
 bool TimeInterval::isElapsed() {
   return this->start + this->duration <= millis();
