@@ -15,21 +15,31 @@
 #include "timeInterval.h"
 
 // These are principal values of servomotor's angle: minimum, middle and maximum.
-#define ANGLE_MIN 0
-#define ANGLE_MID 90
-#define ANGLE_MAX 180
+#define ANGLE_LEFT   0
+#define ANGLE_MIDDLE 90
+#define ANGLE_RIGHT  180
 
+/**
+ * This class allows programmer to control servomotor device more easy.
+ * First layer is represent by implementation of arduino standard Servo
+ * object. Second layer is represent by methods which allows to test it
+ * or to rotate servomotor to special angle.
+ */
 class Servomotor : public Servo {
   
    public:
       void loop ();
 
-      void decreaseAngle (int a);
-      void increaseAngle (int a);
+      void decreaseAngle (int rate);
+      void increaseAngle (int rate);
+
+      void left ();
+      void middle ();
+      void right ();
 
       int getLastAngle ();
       long getError ();
-
+      
       void enableTest (unsigned long duration);
       void disableTest ();
 

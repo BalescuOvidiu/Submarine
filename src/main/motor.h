@@ -11,33 +11,39 @@
 
 #include <Arduino.h>
 
-// Value for minimum speed and value for maximum speed send by arduino
-#define MIN_SPEED 0
-#define MAX_SPEED 255
+// These are values for minimum speed and value for maximum speed send by arduino.
+#define MOTOR_FORWARD     255
+#define MOTOR_IDLE        0
+#define MOTOR_BACKWARD   -255
 
+/**
+ * This class allow programmer to control DC motor more easy.
+ * This contains pins location of device who send electronic signal to motor.
+ * If value of velocity is negative, then the motor will rotate to right, forward.
+ * If value of velocity is negative, then the motor will rotate to left, backward.
+ */
 class Motor {
    public:
-      Motor(byte pinA, byte pinB);
-      Motor(bool a, bool b, byte pinA, byte pinB);
-      Motor(bool a, bool b, byte pinA, byte pinB, byte speed);
+      Motor (byte pinA, byte pinB);
+      Motor (byte pinA, byte pinB, int velocity);
       
       ~Motor();
 
-      void write(bool a, bool b);
-      void stop();
-      byte read();
+      void write (int velocity);
+      void stop ();
       
-      void loop();
-      
-      void increaseSpeed(byte rate);
-      void decreaseSpeed(byte rate);
+      void loop ();
+
+      void forward ();
+      void backward ();
+
+      void increaseVelocity (int rate);
+      void decreaseVelocity (int rate);
 
    private:
-      bool a;
-      bool b;
       byte pinA;
       byte pinB;
-      byte speed;
+      int velocity;
 };
 
 #endif

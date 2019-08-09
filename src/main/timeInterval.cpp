@@ -48,51 +48,51 @@ TimeInterval::~TimeInterval () {
 }
 
 /**
- * This function return elapsed time 
+ * This function returns elapsed time 
  * from the start moment of interval.
  * 
- * @return: time elapsed from start moment of interval.
+ * @return: - time elapsed from start moment of interval.
  */
 unsigned long TimeInterval::elapsedTimeFromStart () {
    return millis() - this->start;
 }
 
 /** 
- * This function return elapsed time from the 
+ * This function returns elapsed time from the 
  * end moment of interval.
  * 
- * @return: time elapsed from end moment of interval.
+ * @return: - time elapsed from end moment of interval.
  */
 unsigned long TimeInterval::elapsedTimeFromEnd () {
    return millis() - this->start - this->duration;
 }
 
 /**
- * The function check if the interval has started.
+ * The function checks if the interval has started.
  * 
- * @return: true if current moment is over the start moment 
- *          of interval or false if interval has not started.
+ * @return: - true if current moment is over the start moment of interval
+            - false if interval has not started.
  */
 bool TimeInterval::isStarted () {
    return this->start <= millis();
 }
 
 /**
- * The function check if the interval is elapsed.
+ * The function checks if the interval is elapsed.
  * 
- * @return: true if interval is elapsed or false if
- *          present moment is before end moment of interval.
+ * @return: - true if interval is elapsed
+ *          - false if present moment is before end moment of interval.
  */
 bool TimeInterval::isElapsed () {
    return this->start + this->duration <= millis();
 }
 
 /** 
- * Check if the interval is elapsed 
+ * This function checks if the interval is elapsed 
  * and restart it with current moment.
  * 
- * @return: true if interval is elapsed and false in if end moment 
- *          of interval is over present moment.
+ * @return: - true if interval is elapsed;
+ *          - false in if end moment of interval is over present moment.
  */
 bool TimeInterval::elapse () {
    if (this->isElapsed()) {
@@ -103,19 +103,19 @@ bool TimeInterval::elapse () {
 }
 
 /**
- * Set the start moment of interval with current moment.
+ * This sets the start moment of interval with current moment.
  */
 void TimeInterval::restart () {
    this->start = millis();
 }
 
 /** 
- * Set the start moment of interval with 
+ * This sets the start moment of interval with 
  * current moment with given duration.
  * 
  * @params: duration - new duration of interval after restart.
  */
-void TimeInterval::restart(unsigned long duration) {
+void TimeInterval::restart (unsigned long duration) {
    this->start = millis();
    this->duration = duration;
 }

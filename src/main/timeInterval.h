@@ -11,7 +11,7 @@
 
 #include <Arduino.h>
 
-// Time units in miliseconds
+// These are time units in miliseconds.
 #define HALF_SECOND 500
 #define SECOND      1000
 #define MINUTE      60000
@@ -19,7 +19,7 @@
 #define DAY         86400000
 
 /**
- * This object is a representation of a time interval. Variable 
+ * This class is a representation of a time interval. Variable 
  * start is moment of begin of interval.Duration of interval 
  * is represent by variable duration.End of interval is 
  * calculated automatic by sum of start moment and duration for 

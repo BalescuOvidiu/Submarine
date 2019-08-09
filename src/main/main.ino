@@ -1,44 +1,44 @@
 #include "main.h"
 
-// Motors
+// Objects used to control motors.
 Motor propeller(PIN_PROPELLER_A, PIN_PROPELLER_B);
 Motor ballast(PIN_BALLAST_A, PIN_BALLAST_B);
 
-// Servomotors
+// Objects used to control rudders and planes.
+Servomotor rudderBottom;
+Servomotor rudderTop;
 Servomotor planeLeft;
 Servomotor planeRight;
-Servomotor rudderUp;
-Servomotor rudderDown;
 
-// Communications
+// Objects used for infra-red communication.
 IRrecv receiverIR(PIN_RECEIVER_IR);
 decode_results resultIR;
 TimeInterval receiverIntervalIR(RECEIVER_WAITING_TIME);
 
 // Move functions
-void stabilize() {
-   planeLeft.write(ANGLE_MID);
-   planeRight.write(ANGLE_MID);
-   rudderUp.write(ANGLE_MID);
-   rudderDown.write(ANGLE_MID);
+void stabilize () {
+   rudderBottom.middle ();
+   rudderTop.middle ();
+   planeLeft.middle ();
+   planeRight.middle ();
 }
-void wait() {
+void wait () {
    propeller.stop();
    stabilize();
 }
-void setRudderAngle(short angle) {
-   rudderUp.write(ANGLE_MID + angle);
-   rudderDown.write(ANGLE_MID - angle);
+void setRudderAngle (int angle) {
+   rudderBottom.write(ANGLE_MIDDLE - angle);
+   rudderTop.write(ANGLE_MIDDLE + angle);
 }
-void setPlaneAngle(short angle) {
-   planeLeft.write(ANGLE_MID + angle);
-   planeRight.write(ANGLE_MID - angle);
+void setPlaneAngle (int angle) {
+   planeLeft.write(ANGLE_MIDDLE + angle);
+   planeRight.write(ANGLE_MIDDLE - angle);
 }
-void loopServo() {
+void loopServo () {
+   rudderBottom.loop();
+   rudderTop.loop();
    planeLeft.loop();
    planeRight.loop();
-   rudderUp.loop();
-   rudderDown.loop();
 }
 
 // Sensors functions
@@ -63,10 +63,10 @@ void receiveCommandIR() {
 // Main functions
 void setup() {
    // Servomotors
+   rudderBottom.attach(PIN_RUDDER_BOTTOM);
+   rudderTop.attach(PIN_RUDDER_TOP);
    planeLeft.attach(PIN_PLANE_LEFT);
    planeRight.attach(PIN_PLANE_RIGHT);
-   rudderUp.attach(PIN_RUDDER_UP);
-   rudderDown.attach(PIN_RUDDER_DOWN);
    // Main
    Serial.begin(9600);
    wait();
@@ -76,10 +76,6 @@ void loop() {
    propeller.loop();
    // Servomotors
    loopServo();
-   // Sensors
-   if (getHumidity() > HUMIDITY_LIMIT) {
-      Serial.println("Water in submarine!");
-   }
    // Comuncations
    receiveCommandIR();
 }
