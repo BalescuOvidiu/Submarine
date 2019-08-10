@@ -1,6 +1,18 @@
 #include "motor.h"
 
 /**
+ * This is copy constructor.
+ * 
+ * @params: source - is motor object.
+ */
+Motor::Motor(const Motor &source) {
+   this->pinA = source.pinA;
+   this->pinB = source.pinB;
+   
+   this->write (MOTOR_IDLE);
+}
+
+/**
  * This is a constructor of motor object.
  * @params: pinA - connected to first wire of motor;
  *          pinB - connected to second wire of motor.
@@ -11,7 +23,8 @@ Motor::Motor(byte pinA, byte pinB) {
 
    this->pinA = pinA;
    this->pinB = pinB;
-   this->velocity = MOTOR_IDLE;
+   
+   this->write (MOTOR_IDLE);
 }
 
 /**

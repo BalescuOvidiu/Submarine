@@ -26,30 +26,29 @@
 #define PIN_BALLAST_A       8
 #define PIN_BALLAST_B       9
 
-// Sensors
+// Pins of sensors
 #define PIN_SENSOR_HUMIDITY A1
-#define HUMIDITY_LIMIT      100
 
-// Infra-red communications
-#define PIN_RECEIVER_IR       A0
-#define RECEIVER_WAITING_TIME 200
+// Pin of infra-red communication
+#define PIN_IR_RECEIVER A0
 
-// Codes speed
-#define C_FASTER
-#define C_SLOWER
-#define C_STOP
+// Codes used for propeller speed.
+#define C_FASTER 0
+#define C_SLOWER 1
+#define C_STOP   2
+#define C_WAIT   3
 
-// Codes direction
-#define C_LEFT
-#define C_RIGHT
-#define C_DOWN
-#define C_UP
-#define C_STABILIZE
+// Codes used for direction.
+#define C_LEFT      4
+#define C_RIGHT     5
+#define C_DOWN      6
+#define C_UP        7
+#define C_STABILIZE 8
 
-// Codes for test
-#define C_TEST_RUDDER_TOP
-#define C_TEST_RUDDER_BOTTOM
-#define C_TEST_PLANE_LEFT 
-#define C_TEST_PLANE_RIGHT
+// Codes used for for test.
+#define C_TEST_RUDDER_BOTTOM 9
+#define C_TEST_RUDDER_TOP    10
+#define C_TEST_PLANE_LEFT    11
+#define C_TEST_PLANE_RIGHT   12
 
 #endif

@@ -1,6 +1,13 @@
 #include "servomotor.h"
 
 /**
+ * 
+ */
+Servomotor::~Servomotor() {
+  this->write (ANGLE_LEFT);
+}
+
+/**
  * This function sends signal to mantain angle of electronic device.
  * If test is enabled, then this function send signal for a round-trip
  * move to test his speed , response time and functionality.
@@ -105,4 +112,18 @@ void Servomotor::enableTest (unsigned long duration) {
 void Servomotor::disableTest () {
    this->testEnabled = false;
    this->testDirection = 1;
+}
+
+/**
+ * This function sends change signal to enable or disable test move.
+ * 
+ * @params: duration - between two moves of servomotor.
+ */
+void Servomotor::toggleTest (unsigned long duration) {
+  if (this->testEnabled) {
+    this-> disableTest ();
+  }
+  else {
+    this->enableTest (duration);
+  }
 }

@@ -1,13 +1,12 @@
 #include "irDevice.h"
 
+static decode_results result;
+
 /**
- * This initialize fields of second layer of infra-red receiver.
- * @params: value - of time in miliseconds of input loop.
+ * This is constructor.
  */
-void IrDevice::initialize (unsigned long value) {
-  this->numberValues = 0;
-  this->standardValue = NULL;
-  this->setInputLoopTime (value);
+IrDevice::IrDevice (byte pin) : IRrecv (pin) {
+  
 }
 
 /**
@@ -19,19 +18,17 @@ void IrDevice::setInputLoopTime (unsigned long value) {
 }
 
 /**
- * This add value on list of standard value of your project.
+ * This function set list of standard value of your project.
  * @params: newValue - new value added in list.
  */
-void IrDevice::addValue (unsigned long newValue) {
-  if (this->standardValue == NULL) {
-    this->standardValue = (unsigned long*)malloc (sizeof (unsigned long)*2);
-    this->standardValue[0] = newValue;
+void IrDevice::setStandardValue (const unsigned long values[]) {
+  this->standardValue = NULL;
+  this->numberValues = sizeof (*values) / sizeof (values[0]);
+  this->standardValue = (unsigned long*)malloc (sizeof (unsigned long) * numberValues);
+
+  for (unsigned i = 0; i < numberValues; i++) {
+    this->standardValue[i] = values[i];
   }
-  else {
-      
-  }
-  
-  this->numberValues++;
 }
 
 /**
@@ -44,23 +41,26 @@ unsigned long IrDevice::check () {
   unsigned long minIndex = 0;
   unsigned long minDifference;
   if (this->inputLoopTime.isElapsed()) {
-    if (this->decode(&this->result)) {
+    if (this->decode(&result)) {
+      Serial.println(result.value, HEX);
       this->resume();
       this->inputLoopTime.restart();
       
       if (this->standardValue == NULL) {
-        return this->result.value;
+        return result.value;
       }
 
-      minDifference = abs (this->standardValue[minIndex] - this->result.value);
+      minDifference = abs (this->standardValue[minIndex] - result.value);
       for (unsigned index = 1; index < numberValues; index++) {
-        if (abs (this->standardValue[index] - this->result.value) < minDifference) {
+        if (abs (this->standardValue[index] - result.value) < minDifference) {
           minIndex = index;
-          minDifference = abs (this->standardValue[minIndex] - this->result.value);
+          minDifference = abs (this->standardValue[minIndex] - result.value);
         }
       }
+      
+      return this->standardValue[minIndex];
     }
   }
   
-  return this->standardValue[minIndex];
+  return 0;
 }

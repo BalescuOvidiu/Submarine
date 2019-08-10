@@ -4,6 +4,7 @@
  * Board:      Arduino Nano
  * Processor:  ATmega298P(Old bootloader)
  * Programmer: Arduino as ISP
+ * This uses Servo library of Arduino.
  */
 
 #ifndef SERVOMOTOR_H
@@ -16,6 +17,7 @@
 
 // These are principal values of servomotor's angle: minimum, middle and maximum.
 #define ANGLE_LEFT   0
+#define ANGLE_ACUTE  45
 #define ANGLE_MIDDLE 90
 #define ANGLE_RIGHT  180
 
@@ -28,6 +30,8 @@
 class Servomotor : public Servo {
   
    public:
+      ~Servomotor();
+      
       void loop ();
 
       void decreaseAngle (int rate);
@@ -42,6 +46,7 @@ class Servomotor : public Servo {
       
       void enableTest (unsigned long duration);
       void disableTest ();
+      void toggleTest (unsigned long duration);
 
    private:
       int lastAngle;

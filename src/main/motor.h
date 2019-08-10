@@ -11,6 +11,12 @@
 
 #include <Arduino.h>
 
+// These are standard values for rate of decrease and increase rate.
+
+#define RATE_SMALL  5
+#define RATE_MEDIUM 51
+#define RATE_BIG    100
+
 // These are values for minimum speed and value for maximum speed send by arduino.
 #define MOTOR_FORWARD     255
 #define MOTOR_IDLE        0
@@ -24,10 +30,23 @@
  */
 class Motor {
    public:
+      Motor (const Motor& source);
       Motor (byte pinA, byte pinB);
       Motor (byte pinA, byte pinB, int velocity);
       
       ~Motor();
+
+      /**
+       * This is assignment operator.
+       * 
+       * @params: source - is a motor object.
+       */
+      Motor& operator = (const Motor& source){
+        this->pinA = source.pinA;
+        this->pinB = source.pinB;
+        this->write (MOTOR_IDLE);
+        return *this;
+      }
 
       void write (int velocity);
       void stop ();

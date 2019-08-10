@@ -1,3 +1,12 @@
+/**
+ * Programmer: Balescu Ovidiu-Gheorghe
+ * Data:       20 June 2019
+ * Board:      Arduino Nano
+ * Processor:  ATmega298P(Old bootloader)
+ * Programmer: Arduino as ISP
+ * This uses IRremote library of Arduino.
+ */
+
 #ifndef IR_DEVICE_H
 #define IR_DEVICE_H
 
@@ -19,14 +28,14 @@
 class IrDevice : public IRrecv {
 
   public:
-    void initialize (unsigned long value);
+    IrDevice (byte pin);
+    
     void setInputLoopTime (unsigned long value);
-    void addValue (unsigned long newValue);
+    void setStandardValue (const unsigned long values[]);
 
     unsigned long check ();
     
-  private:    
-    decode_results result;
+  private:
     
     TimeInterval inputLoopTime;
     
