@@ -21,8 +21,9 @@ $(DIRECTORY_BIN)/%.o: $(DIRECTORY_SRC)/%.cpp
 $(TARGET): $(DEPS)
 	$(CC) $(DEPS) $(LIBS) $(FLAGS) -o $@
 
+.PHONY: clean
 clean:
 	-rm -f $(DEPS) $(DIRECTORY_BIN)/$(TARGET)
-	
+
 run:
 	./$(TARGET)
