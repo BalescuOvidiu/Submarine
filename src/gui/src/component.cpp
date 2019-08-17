@@ -4,74 +4,164 @@ using namespace std;
 using namespace sf;
 using namespace gui;
 
-// Public methods
-Component::Component () {
-
+/**
+ * 
+ */
+Component::Component (const Component& source) {
+	this->position = source.position;
+	this->label = source.label;
+	this->point = source.point;
+	this->buffer = source.buffer;
 }
-Component::Component (Vector2f position) {
-	position = toGrid (position);
 
-	this->position = position;
-	this->type = Lines;
+/**
+ * 
+ */
+Component::Component (
+	Vector2f position, 
+	PrimitiveType type, 
+	string text
+) {
+	this->position = toGrid (position);
 
-	text (this->label, position, String (""));
+	this->buffer = VertexBuffer (type);
+
+	gui::text (this->label, this->position, text);
 }
-Component::Component (sf::Vector2f position, sf::PrimitiveType type) {
-	position = toGrid (position);
 
-	this->position = position;
-	this->type = type;
-
-	text (this->label, position, String (""));
+/**
+ * 
+ */
+Component::~Component () {
+	this->buffer.create (0);
+	this->point.clear ();
 }
-Component::Component (sf::Vector2f position, std::string label) {
-	position = toGrid (position);
 
-	this->position = position;
-
-	text (this->label, position, label);
-}
-Component::Component (sf::Vector2f position, std::string label, sf::PrimitiveType type) {
-	position = toGrid (position);
-
-	this->position = position;
-	this->type = Lines;
-
-	text (this->label, position, label);
-}
-// Update
+/**
+ * 
+ */
 void Component::render (RenderWindow *window) {
 	window->draw (this->label);
-	window->draw (&this->line[0], this->line.size (), this->type);
+	window->draw (this->buffer);
 }
+
+/**
+ * 
+ */
 void Component::move (double x, double y) {
 	toGrid (x, y);
 
 	this->position.x += x;
 	this->position.y += y;
 	this->label.move (x, y);
-	for (unsigned i = 0; i < this->line.size (); i++) {
-		this->line[i].position.x += x;
-		this->line[i].position.y += y;
+	for (unsigned i = 0; i < this->point.size (); i++) {
+		this->point[i].position.x += x;
+		this->point[i].position.y += y;
 	}
 }
-// Draw
-void Component::setLabel (String string) {
-	this->label.setString (string);
+
+/*
+ *
+ */
+void Component::update () {
+	this->buffer.create (this->point.size ());
+	this->buffer.update (
+		this->point.data (), 
+		this->point.size (), 
+		0
+	);
 }
-void Component::setLabel (Color color) {
-	this->label.setColor (color);
+
+/**
+ * 
+ */
+void Component::clear () {
+	this->buffer.create (0);
+	this->point.clear ();
 }
-// Points
-void Component::setPoint (unsigned long i, Vector2f position) {
-	this->line[i].position = toGrid (position);
-}
-void Component::setPoint (unsigned long i, Color color) {
-	this->line[i].color = color;
-}
-void Component::addPoint (double x, double y, Color color) {
+
+/**
+ * 
+ */
+void Component::setPosition (double x, double y) {
 	toGrid (x, y);
-	this->line.push_back (Vertex (
+	this->position = Vector2f (x, y);
+	this->label.setPosition (this->position);
+}
+
+/**
+ * 
+ */
+void Component::setPosition (sf::Vector2f point) {
+	this->position = toGrid (point);
+	this->label.setPosition (this->position);
+}
+
+
+void Component::setLabel (sf::Color color) {
+	this->label.setFillColor (color);	
+}
+
+/**
+ * 
+ */
+void Component::setLabel (
+	string text, 
+	Color color
+) {
+	this->label.setString (text);
+	this->label.setFillColor (color);
+}
+
+/**
+ * 
+ */
+void Component::setLabel (
+	String text, 
+	Color color
+) {
+	this->label.setString (text);
+	this->label.setFillColor (color);
+}
+
+
+/**
+ * 
+ */
+void Component::setPoint (
+	unsigned long i, 
+	Vector2f position, 
+	sf::Color color
+) {
+	this->point[i].position = toGrid (position);
+	this->point[i].color = color;
+}
+
+/**
+ * 
+ */
+void Component::setPoint (unsigned long i, Vector2f position) {
+	this->point[i].position = toGrid (position);
+}
+
+/**
+ * 
+ */
+void Component::setPoint (unsigned long i, Color color) {
+	this->point[i].color = color;
+}
+
+/**
+ * 
+ */
+void Component::addPoint (
+	double x, 
+	double y, 
+	Color color
+) {
+
+	toGrid (x, y);
+	this->point.push_back (Vertex (
 		Vector2f (
 			this->position.x + x, 
 			this->position.y + y
@@ -79,102 +169,316 @@ void Component::addPoint (double x, double y, Color color) {
 		color
 	));
 }
-void Component::addPoint (Vector2f position, Color color) {
+
+/**
+ * 
+ */
+void Component::addPoint (
+	Vector2f position, 
+	Color color
+) {
 	position = toGrid (position);
-	this->line.push_back (Vertex (Vector2f (this->position + position), color));
+	this->point.push_back (Vertex (
+		Vector2f (this->position + position), 
+		color
+	));
 }
-// Joints
-void Component::addJoint (double x, double y, Color color) {
+
+/**
+ * 
+ */
+void Component::addJoint (
+	double x, 
+	double y, 
+	Color color
+) {
 	this->addPoint (x, y, color);
 	this->addPoint (x, y, color);
 }
-void Component::addJoint (Vector2f position, Color color) {
+
+/**
+ * 
+ */
+void Component::addJoint (
+	Vector2f position, 
+	Color color
+) {
 	this->addPoint (position, color);
 	this->addPoint (position, color);
 }
-// Lines
-void Component::addLine (double a, double b, double c, double d, Color color) {
+
+/**
+ * 
+ */
+void Component::addLine (
+	double a, 
+	double b, 
+	double c, 
+	double d, 
+	Color color
+) {
 	this->addPoint (a, b, color);
 	this->addPoint (c, d, color);
 }
-void Component::addLine (Vector2f begin, Vector2f end, Color color) {
+
+/**
+ * 
+ */
+void Component::addLine (
+	Vector2f begin, 
+	Vector2f end, 
+	Color color
+) {
 	this->addPoint (begin, color);
 	this->addPoint (end, color);
 }
-// Other draw functions
-void Component::addCircle (sf::Vector2f origin, double radiusA, double radiusB, unsigned count, unsigned division, unsigned radiusDivision, double a, double b) {
-	Color color = COLOR_GRID;
-	double stepA = radiusA / radiusDivision;
-	double stepB = radiusB / radiusDivision;
+
+/**
+ * 
+ */
+void Component::addRectangle ( 
+	Color colorGrid,
+	Color colorMargin,
+	double width, 
+	double height, 
+	double widthDivision, 
+	double heightDivision,
+	bool margin,
+	Vector2f origin
+) {
+
+	// Horizontal lines
+	for (double y = 0; y <= height; y += heightDivision) {
+		this->addLine (
+			origin.x, 
+			origin.y + y,
+			origin.x + width, 
+			origin.y + y,
+			colorGrid
+		);
+	}
+
+	// Vertical lines
+	for (double x = 0; x <= width; x += widthDivision) {
+		this->addLine (
+			origin.x + x,
+			origin.y,
+			origin.x + x, 
+			origin.y + height,
+			colorGrid
+		);
+	}
+
+	// Margins
+	if (margin) {
+		this->addLine (
+			origin.x, 
+			origin.y,
+			origin.x, 
+			origin.y + height,
+			colorMargin
+		);
+		this->addLine (
+			origin.x, 
+			origin.y + height,
+			origin.x + width, 
+			origin.y + height,
+			colorMargin
+		);
+		this->addLine (
+			origin.x + width, 
+			origin.y,
+			origin.x + width, 
+			origin.y + height,
+			colorMargin
+		);
+		this->addLine (
+			origin.x, 
+			origin.y,
+			origin.x + width, 
+			origin.y,
+			colorMargin
+		);
+	}
+}
+
+/**
+ *
+ */
+void Component::addSquare (
+	Color colorGrid,
+	Color colorMargin,
+	double width,
+	double widthDivision,
+	bool margin,
+	Vector2f origin
+) {
+	this->addRectangle (
+		colorGrid,
+		colorMargin,
+		width,
+		width,
+		widthDivision,
+		widthDivision,
+		margin,
+		origin
+	);
+}
+
+/**
+ * 
+ */
+void Component::addEllipse (
+	Color colorGrid,
+	Color colorMargin,
+	double ellipseCount,
+	double radiusDivision, 
+	double radiusX, 
+	double radiusY,
+	double angleDivison,
+	double angleBegin, 
+	double angleEnd,
+	bool margin,
+	Vector2f origin
+) {
+	double stepX = radiusX / radiusDivision;
+	double stepY = radiusY / radiusDivision;
+
 	// Lines
-	for (unsigned i = a; i <= b; i++) {
+	for (
+		double angle = angleBegin; 
+		angle <= angleEnd; 
+		angle += angleDivison
+	) {
 		this->addLine (
 		    origin.x,
 		    origin.y,
-		    origin.x + radiusA * cos (i * (2 * PI / division)),
-		    origin.y + radiusB * sin (i * (2 * PI / division)),
-		    color
+		    origin.x + radiusX * COS (angle),
+		    origin.y + radiusY * SIN (angle),
+		    colorGrid
 		);
 	}
-	a = a * count / division;
-	b = b * count / division;
+
 	// Circles
-	for (unsigned div = 1; div <= radiusDivision; div++) {
-		// Color
-		if (div == radiusDivision) {
-			color = COLOR_TEXT;
-		}
-		// Lines
+	for (double div = 1; div <= radiusDivision; div ++) {
+
+		// Begin of circle
 		this->addPoint (
-		    origin.x + stepA * div * cos (a * (2 * PI / count)),
-		    origin.y + stepB * div * sin (a * (2 * PI / count)),
-		    color
+		    origin.x + stepX * div * COS (angleBegin),
+		    origin.y + stepY * div * SIN (angleBegin),
+		    colorGrid
 		);
-		for (unsigned i = a; i <= b; i++) {
+
+		for (
+			double angle = angleBegin; 
+			angle <= angleEnd; 
+			angle += angleDivison / ellipseCount
+		)  {
 			this->addJoint (
-			    origin.x + stepA * div * cos (i * (2 * PI / count)),
-			    origin.y + stepB * div * sin (i * (2 * PI / count)),
-			    color
+			    origin.x + stepX * div * COS (angle),
+			    origin.y + stepY * div * SIN (angle),
+		    	colorGrid
 			);
 		}
+
+		// End of circle
 		this->addPoint (
-		    origin.x + stepA * div * cos (b * (2 * PI / count)),
-		    origin.y + stepB * div * sin (b * (2 * PI / count)),
-		    color
+		    origin.x + stepX * div * COS (angleEnd),
+		    origin.y + stepY * div * SIN (angleEnd),
+		    colorGrid
+		);
+	}
+
+	// Margin
+	if (margin) {
+
+		// Begin of circle
+		this->addPoint (
+		    origin.x + radiusX * COS (angleBegin),
+		    origin.y + radiusY * SIN (angleBegin),
+		    colorMargin
+		);
+
+		for (
+			double angle = angleBegin; 
+			angle <= angleEnd; 
+			angle += angleDivison / ellipseCount
+		)  {
+			this->addJoint (
+			    origin.x + radiusX * COS (angle),
+			    origin.y + radiusY * SIN (angle),
+		    	colorMargin
+			);
+		}
+
+		// End of circle
+		this->addPoint (
+		    origin.x + radiusX * COS (angleEnd),
+		    origin.y + radiusY * SIN (angleEnd),
+		    colorMargin
 		);
 	}
 }
-void Component::clear () {
-	this->line.clear ();
+
+/**
+ * 
+ */
+void Component::addCircle (
+	Color colorGrid,
+	Color colorMargin,
+	double circleCount, 
+	double radiusDivision, 
+	double radius, 
+	double angleDivison,
+	double angleBegin, 
+	double angleEnd,
+	bool margin,
+	Vector2f origin
+) {
+	this->addEllipse (
+		colorGrid,
+		colorMargin,
+		circleCount,
+		radiusDivision,
+		radius,
+		radius,
+		angleDivison,
+		angleBegin,
+		angleEnd,
+		margin,
+		origin
+	);
 }
-// Position
+
+/**
+ * 
+ */
 Vector2f Component::getPosition () {
 	return fromGrid (this->position);
 }
+
+/**
+ * 
+ */
 Vector2f Component::getPoint (unsigned long i) {
-	return fromGrid (this->line[i].position);
+	if (i < this->point.size ()) {
+		return fromGrid (this->point[i].position);
+	}
+	return Vector2f (-1, -1);
 }
-Vector2f Component::getLeftWire () {
-	return this->line.front ().position;
+
+/**
+ * 
+ */
+Vector2f Component::getFirstPoint () {
+	return fromGrid (this->point[0].position);
 }
-Vector2f Component::getRightWire () {
-	return this->line.back ().position;
-}
-Vector2f Component::getLeftGrid () {
-	return fromGrid (this->line.front ().position);
-}
-Vector2f Component::getRightGrid () {
-	return fromGrid (this->line.back ().position);
-}
-Component::~Component () {
-	this->line.clear ();
-}
-// Other
-Component circleRadar (Vector2f position, double radius, unsigned count, unsigned division, unsigned radiusDivision) {
-	Component c (position, Lines);
-	c.addCircle (Vector2f (0, 0), radius, radius, count, division, radiusDivision, 0, count);
-	// Principal lines
-	c.addLine (radius, 0, -radius, 0, COLOR_TEXT);
-	c.addLine (0, radius, 0, -radius, COLOR_TEXT);
-	return c;
+
+/**
+ * 
+ */
+Vector2f Component::getLastPoint () {
+	return fromGrid (
+		this->point[this->point.size () - 1].position
+	);
 }

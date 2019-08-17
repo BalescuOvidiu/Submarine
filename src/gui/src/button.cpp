@@ -79,7 +79,7 @@ void Button::setFontSize(short size) {
 void Button::setColor(sf::Color color) {
 	for (unsigned i = 0; i < 5; i++)
 		this->border[i].color = color;
-	this->text->setColor(color);
+	this->text->setFillColor(color);
 }
 void Button::setBorder(sf::Color color) {
 	for (unsigned i = 0; i < 5; i++)
@@ -108,17 +108,17 @@ void Button::setGradient(sf::Color a, sf::Color b) {
 	this->background[3].color = a;
 }
 void Button::setText(sf::Color color) {
-	this->text->setColor(color);
+	this->text->setFillColor(color);
 }
 void Button::setText(sf::Color color, std::string text) {
-	this->text->setColor(color);
+	this->text->setFillColor(color);
 	this->text->setString(sf::String(text));
 }
 void Button::setText(std::string text) {
 	this->text->setString(sf::String(text));
 }
 void Button::setTextLeft(sf::Color color) {
-	this->text->setColor(color);
+	this->text->setFillColor(color);
 	this->text->setPosition(this->border[0].position.x + 5, this->border[0].position.y + 5);
 }
 // Mouse cursor

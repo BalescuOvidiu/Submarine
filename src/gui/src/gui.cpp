@@ -8,13 +8,19 @@ namespace gui {
 	const unsigned width = sf::VideoMode::getDesktopMode ().width;
 	const unsigned height = sf::VideoMode::getDesktopMode ().height;
 	const double grid = width * 0.01;
+	double moveViewSpeed = 10.0;
+	double circlePrecision = 5.0;
+	bool exit = false;
 
 	// Variables of view
 	double zoomFactor = 1;
 	sf::Vector2f positionOfView = sf::Vector2f (0, 0);
 
 	// Communications
-	std::fstream log;
+	std::string name = "Unknown";
+	std::string timeFormat = "%Y-%m-%d, %I:%M%p - ";
+	std::fstream log (FILE_LOG, std::fstream::out | std::fstream::app);
+	time_t currentTime = time(0);
 
 	// Time
 	sf::Clock click;
@@ -23,21 +29,79 @@ namespace gui {
 	 * 
 	 */
 	void initialize () {
-		log.open (FILE_LOG, std::fstream::out | std::fstream::app);
-		if (!font.loadFromFile (FILE_FONT)) {
-			LOG ("File " << FILE_FONT << " not found!");
+		
+		// Config file
+		std::ifstream config (FILE_CONFIG);
+		if (config.is_open ()) {
+			std::getline (config, name);
+			std::getline (config, timeFormat);
+			config >> moveViewSpeed;
+			config >> circlePrecision;
+
+			LOG ("Execution of " + name + " begins.");
+			LOG (
+				"File " + std::string (FILE_CONFIG) + " was loaded!"
+			);
 		}
 		else {
-			LOG ("Font was loaded!");
+
+			LOG ("Execution of " + name + " begins.");
+			LOG (
+				"File " + std::string (FILE_CONFIG) + " doesn't found!"
+			);			
 		}
-		LOG ("Execution of " << NAME << " has begun at " << __DATE__ << " " << __TIME__ << ".");
+
+		// Vertex buffer
+		if (sf::VertexBuffer::isAvailable ()) {
+			LOG ("The VertexBuffer is available.");
+		}
+		else {
+			LOG ("The VertexBuffer is not available.");			
+		}
+
+		config.close ();
+
+		// Font file
+		if (!font.loadFromFile (FILE_FONT)) {
+			LOG (
+				"File " + std::string (FILE_FONT) + " doesn't found!"
+			);
+		}
+		else {
+			LOG (
+				"File " + std::string (FILE_FONT) + " was loaded!"
+			);
+		}
+
+	}
+
+	/**
+	 * 
+	 */
+	void logMessage (std::string message) {
+		// Time
+		currentTime = time(0);
+		tm* timeinfo = localtime (&currentTime);
+  		char buffer [80];
+
+		strftime (buffer, 80, timeFormat.c_str (), timeinfo);
+
+		// Message on file
+		if (log.is_open ()) {
+			log << buffer;
+			log << message;
+		}
+
+		// Message on console
+		std::cout << buffer;
+		std::cout << message; 
 	}
 
 	/**
 	 * 
 	 */
 	void move (sf::Vector2f position) {
-
+		positionOfView += position;
 	}
 	
 	/**
@@ -49,8 +113,8 @@ namespace gui {
 		std::string string
 	) {
 		text = sf::Text (string, font, grid);
-		text.setColor (COLOR_TEXT);
-		text.setPosition (position);
+		text.setFillColor (COLOR_TEXT);
+		text.setPosition (toGrid (position));
 	}
 
 	/**
@@ -62,8 +126,19 @@ namespace gui {
 		sf::String string
 	) {
 		text = sf::Text (string, font, grid);
-		text.setColor (COLOR_TEXT);
-		text.setPosition (position);
+		text.setFillColor (COLOR_TEXT);
+		text.setPosition (toGrid (position));
+	}
+
+	/**
+	 *
+	 */
+	void textCenter (sf::Text &text) {
+		sf::FloatRect rectangle = text.getLocalBounds();
+		text.setOrigin(
+			rectangle.left + rectangle.width /2.0,
+       		rectangle.top  + rectangle.height/2.0
+       	);
 	}
 	
 	/**

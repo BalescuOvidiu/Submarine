@@ -1,8 +1,32 @@
-#include "panel.h"
+#include "main.h"
 
 using namespace std;
 using namespace sf;
 using namespace gui;
+
+/**
+ * This function check if conditions of exit from
+ * applications are true.
+ */
+bool checkForExit () {
+	if (gui::exit) {
+		return true;
+	}
+
+	// Standard exit
+	if (Keyboard::isKeyPressed (Keyboard::Key::Escape)) {
+		return true;
+	}
+
+	// Linux stop process style
+	if (Keyboard::isKeyPressed (Keyboard::Key::LControl)) {
+		if (Keyboard::isKeyPressed (Keyboard::Key::C)) {
+			return true;
+		}
+	}
+
+	return false;
+}
 
 /**
  * This function run the program. It initializes GUI 
@@ -11,39 +35,45 @@ using namespace gui;
  */
 int main () {
 
-	// Objects
-	Panel panel;
-	Event event;
-
 	// Window
 	RenderWindow window (
 		VideoMode ().getDesktopMode (), 
-		NAME, 
+		name, 
 		sf::Style::Fullscreen
 	);
 	View view (FloatRect (0, 0, width, height));
-	window.setFramerateLimit (60);
+	window.setFramerateLimit (FRAME_LIMIT);
 	window.setView (view);
 
 	gui::initialize ();
 
+	Event event;
+	Panel panel (gui::moveViewSpeed);
+	panel.load ();
+
 	while (window.isOpen ()) {
+
 		// Event
 		while (window.pollEvent (event)) {
 			if (event.type == Event::Closed) {
-				window.close ();
+				gui::exit = true;
 			}
 		}
+
 		// Exit
-		if (Keyboard::isKeyPressed (Keyboard::Key::Escape)) {
-			LOG ("Execution of " << NAME << " end at " << __DATE__ << " " << __TIME__ << ".");
+		if (checkForExit ()) {
+			LOG ("Execution of " + name + " ends.");
 			gui::log.close ();
 			window.close ();
 		}
-		// Draw
+
+		// Draw		
 		window.clear ();
+
 		panel.render (&window);
+
 		panel.update (&window, &view);
+
 		window.display ();
 	}
 	return 0;
