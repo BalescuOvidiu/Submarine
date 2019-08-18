@@ -1,29 +1,35 @@
 #include "gui.h"
 
+using namespace std;
+using namespace sf;
+
 namespace gui {
 	// Font variable
-	sf::Font font;
+	Font font;
 
 	// Variables of screen
-	const unsigned width = sf::VideoMode::getDesktopMode ().width;
-	const unsigned height = sf::VideoMode::getDesktopMode ().height;
+	const unsigned width = VideoMode::getDesktopMode ().width;
+	const unsigned height = VideoMode::getDesktopMode ().height;
 	const double grid = width * 0.01;
+
+	// Variables for precision
+	bool exit = false;
 	double moveViewSpeed = 10.0;
 	double circlePrecision = 5.0;
-	bool exit = false;
+	unsigned decimalsNumber = 1;
 
 	// Variables of view
 	double zoomFactor = 1;
-	sf::Vector2f positionOfView = sf::Vector2f (0, 0);
+	Vector2f positionOfView = Vector2f (0, 0);
 
 	// Communications
-	std::string name = "Unknown";
-	std::string timeFormat = "%Y-%m-%d, %I:%M%p - ";
-	std::fstream log (FILE_LOG, std::fstream::out | std::fstream::app);
+	string name = "Unknown";
+	string timeFormat = "%Y-%m-%d, %I:%M%p - ";
+	fstream log (FILE_LOG, fstream::out | fstream::app);
 	time_t currentTime = time(0);
 
 	// Time
-	sf::Clock click;
+	Clock click;
 
 	/**
 	 * 
@@ -31,45 +37,46 @@ namespace gui {
 	void initialize () {
 		
 		// Config file
-		std::ifstream config (FILE_CONFIG);
+		ifstream config (FILE_CONFIG);
 		if (config.is_open ()) {
-			std::getline (config, name);
-			std::getline (config, timeFormat);
+			getline (config, name);
+			getline (config, timeFormat);
 			config >> moveViewSpeed;
 			config >> circlePrecision;
+			config >> decimalsNumber;
 
 			LOG ("Execution of " + name + " begins.");
 			LOG (
-				"File " + std::string (FILE_CONFIG) + " was loaded!"
+				"File " + string (FILE_CONFIG) + " was loaded!"
 			);
 		}
 		else {
 
 			LOG ("Execution of " + name + " begins.");
 			LOG (
-				"File " + std::string (FILE_CONFIG) + " doesn't found!"
+				"File " + string (FILE_CONFIG) + " doesn't found!"
 			);			
 		}
 
+		config.close ();
+
 		// Vertex buffer
-		if (sf::VertexBuffer::isAvailable ()) {
+		if (VertexBuffer::isAvailable ()) {
 			LOG ("The VertexBuffer is available.");
 		}
 		else {
 			LOG ("The VertexBuffer is not available.");			
 		}
 
-		config.close ();
-
 		// Font file
 		if (!font.loadFromFile (FILE_FONT)) {
 			LOG (
-				"File " + std::string (FILE_FONT) + " doesn't found!"
+				"File " + string (FILE_FONT) + " doesn't found!"
 			);
 		}
 		else {
 			LOG (
-				"File " + std::string (FILE_FONT) + " was loaded!"
+				"File " + string (FILE_FONT) + " was loaded!"
 			);
 		}
 
@@ -78,7 +85,7 @@ namespace gui {
 	/**
 	 * 
 	 */
-	void logMessage (std::string message) {
+	void logMessage (string message) {
 		// Time
 		currentTime = time(0);
 		tm* timeinfo = localtime (&currentTime);
@@ -93,14 +100,14 @@ namespace gui {
 		}
 
 		// Message on console
-		std::cout << buffer;
-		std::cout << message; 
+		cout << buffer;
+		cout << message; 
 	}
 
 	/**
 	 * 
 	 */
-	void move (sf::Vector2f position) {
+	void move (Vector2f position) {
 		positionOfView += position;
 	}
 	
@@ -108,11 +115,11 @@ namespace gui {
 	 * 
 	 */
 	void text (
-		sf::Text &text, 
-		sf::Vector2f position, 
-		std::string string
+		Text &text, 
+		Vector2f position, 
+		string string
 	) {
-		text = sf::Text (string, font, grid);
+		text = Text (string, font, grid);
 		text.setFillColor (COLOR_TEXT);
 		text.setPosition (toGrid (position));
 	}
@@ -121,11 +128,11 @@ namespace gui {
 	 * 
 	 */
 	void text (
-		sf::Text &text, 
-		sf::Vector2f position, 
-		sf::String string
+		Text &text, 
+		Vector2f position, 
+		String string
 	) {
-		text = sf::Text (string, font, grid);
+		text = Text (string, font, grid);
 		text.setFillColor (COLOR_TEXT);
 		text.setPosition (toGrid (position));
 	}
@@ -133,8 +140,8 @@ namespace gui {
 	/**
 	 *
 	 */
-	void textCenter (sf::Text &text) {
-		sf::FloatRect rectangle = text.getLocalBounds();
+	void textCenter (Text &text) {
+		FloatRect rectangle = text.getLocalBounds();
 		text.setOrigin(
 			rectangle.left + rectangle.width /2.0,
        		rectangle.top  + rectangle.height/2.0
@@ -152,7 +159,7 @@ namespace gui {
 	 * 
 	 */
 	bool canLeft (short time) {
-		if (sf::Mouse::isButtonPressed (sf::Mouse::Left))
+		if (Mouse::isButtonPressed (Mouse::Left))
 			return (canClick (time));
 		return 0;
 	}
@@ -161,7 +168,7 @@ namespace gui {
 	 * 
 	 */
 	bool canRight (short time) {
-		if (sf::Mouse::isButtonPressed (sf::Mouse::Right))
+		if (Mouse::isButtonPressed (Mouse::Right))
 			return (canClick (time));
 		return 0;
 	}
@@ -176,41 +183,41 @@ namespace gui {
 	/**
 	 * 
 	 */
-	sf::Vector2f mousePosition () {
-		return sf::Vector2f (
-			sf::Mouse::getPosition ().x + positionOfView.x,
-			sf::Mouse::getPosition ().y + positionOfView.y
+	Vector2f mousePosition () {
+		return Vector2f (
+			Mouse::getPosition ().x + positionOfView.x,
+			Mouse::getPosition ().y + positionOfView.y
 		);
 	}
 
 	/**
 	 * 
 	 */
-	sf::Vector2f mouseZoomed () {
+	Vector2f mouseZoomed () {
 		return zoomPoint (mousePosition ());
 	}
 
 	/**
 	 * 
 	 */
-	sf::Vector2f centerOfScreen () {
-		return positionOfView + sf::Vector2f (width * 0.5, height * 0.5);
+	Vector2f centerOfScreen () {
+		return positionOfView + Vector2f (width * 0.5, height * 0.5);
 	}
 
 	/**
 	 * 
 	 */
-	sf::Vector2f zoomPoint (sf::Vector2f point) {
-		return sf::Vector2f (
-		           (point.x - centerOfScreen ().x) * zoomFactor + centerOfScreen ().x,
-		           (point.y - centerOfScreen ().y) * zoomFactor + centerOfScreen ().y
-		       );
+	Vector2f zoomPoint (Vector2f point) {
+		return Vector2f (
+           (point.x - centerOfScreen ().x) * zoomFactor + centerOfScreen ().x,
+           (point.y - centerOfScreen ().y) * zoomFactor + centerOfScreen ().y
+       );
 	}
 
 	/**
 	 * 
 	 */
-	sf::Vector2f toGrid (sf::Vector2f vector) {
+	Vector2f toGrid (Vector2f vector) {
 		vector.x *= grid;
 		vector.y *= grid;
 		return vector;
@@ -219,9 +226,63 @@ namespace gui {
 	/**
 	 * 
 	 */
-	sf::Vector2f fromGrid (sf::Vector2f vector) {
+	Vector2f fromGrid (Vector2f vector) {
 		vector.x /= grid;
 		vector.y /= grid;
 		return vector;
+	}
+
+	/**
+	 *
+	 */
+	string format (double value) {
+		stringstream stream;
+		stream<<fixed<<setprecision (decimalsNumber)<<value;
+		return stream.str ();
+	}
+
+	/**
+	 *
+	 */
+	string format (short value) {
+
+		if (value < 1000) {
+			return to_string (value);
+		}
+
+		string text = to_string (value / 1000) + ".";
+		text += to_string (value / 100 % 10) + " k";
+
+		return text;
+	}
+
+	/**
+	 *
+	 */
+	string format (int value) {
+
+		if (value < 1000) {
+			return to_string (value);
+		}
+
+		string text = to_string (value / 1000) + ".";
+		text += to_string (value / 100 % 10) + " k";
+
+		return text;
+	}
+
+	/**
+	 *
+	 */
+	string format (unsigned value) {
+
+		if (value < 1000) {
+			return to_string (value);
+		}
+
+		string text = to_string (value / 1000) + ".";
+		text += to_string (value / 100 % 10) + " k";
+
+		return text;
 	}
 }

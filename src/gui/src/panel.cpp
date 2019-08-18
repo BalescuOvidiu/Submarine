@@ -9,36 +9,42 @@ using namespace gui;
 #define PANEL_TRACK this->component[1]
 #define SHIP        this->component[2]
 
+// Labels list
+#define RADAR_GUIDE this->text[0]
+
 // Size, margins... 
 #define MARGIN                 3.0
 #define RADAR_RADIUS          15.0
-#define RADAR_ANGLE_PRECISION 15.0
+#define RADAR_RADIUS_MINOR    12.0
+#define RADAR_RADIUS_MAJOR     3.0
+#define RADAR_ANGLE_PRECISION 10.0
+
+// Test
+#define DISTANCE_SENSOR_MIN   0.0
+#define DISTANCE_SENSOR_MAX 200.0
 
 /**
  *
  */
-Panel::Panel (double speedMove) {
+Panel::Panel (double speedMoveView) {
 	this->background.setSize (Vector2f (width, height));
 	this->background.setFillColor (COLOR_BACKGROUND);
 
-	this->speedMove = speedMove;
+	this->speedMoveView = speedMoveView;
 
 	this->add (Component (Vector2f (
 		MARGIN + RADAR_RADIUS, 
 		fromGrid (height) - MARGIN - RADAR_RADIUS
 	)));
-	this->add (Component (Vector2f (
-		3 * MARGIN + 2 * RADAR_RADIUS, 
-		fromGrid (height) - MARGIN - 2 * RADAR_RADIUS
-	)));
-	this->add (Component (
-		Vector2f(
+	this->add (Component ());
+	this->add (Component (Vector2f(
 			MARGIN + RADAR_RADIUS, 
 			fromGrid (height) - MARGIN - RADAR_RADIUS
-		),
-		sf::TriangleStrip
-
-	));
+	)));
+	this->add (
+		sf::Vector2f (0, 0),
+		""
+	);
 }
 
 /**
@@ -74,18 +80,60 @@ void Panel::move (sf::View *view, double x, double y) {
  * 
  */
 void Panel::update (RenderWindow *window, View *view) {
+
+	Vector2f mousePositionOnGrid = fromGrid (mousePosition ());
+
+	double orientation = translateDegreesToScreen (	getAngleInDegrees (
+		toGrid (RADAR.getPosition ()),
+		mousePosition ()
+	));
+	double distanceOnRadar = scaleToInterval (
+		DISTANCE (RADAR.getPosition (), mousePositionOnGrid),
+		2.0 * RADAR_RADIUS / RADAR_RADIUS_MINOR,
+		RADAR_RADIUS,
+		DISTANCE_SENSOR_MIN,
+		DISTANCE_SENSOR_MAX
+	);
+
 	// View
 	if (Keyboard::isKeyPressed (Keyboard::A)) {
-		this->move (view, -this->speedMove, 0);
+		this->move (view, -this->speedMoveView, 0.0);
 	}
 	if (Keyboard::isKeyPressed (Keyboard::D)) {
-		this->move (view, this->speedMove, 0);
+		this->move (view, this->speedMoveView, 0.0);
 	}
 	if (Keyboard::isKeyPressed (Keyboard::W)) {
-		this->move (view, 0, -this->speedMove);
+		this->move (view, 0.0, -this->speedMoveView);
 	}
 	if (Keyboard::isKeyPressed (Keyboard::S)) {
-		this->move (view, 0, this->speedMove);
+		this->move (view, 0.0, this->speedMoveView);
+	}
+
+	// Radar
+	if (DISTANCE_SENSOR_MAX >= distanceOnRadar) {
+		SHIP.setRotation (getAngleInDegrees (
+			RADAR.getPosition (),
+			mousePositionOnGrid
+		));
+
+		RADAR_GUIDE.setPosition (mousePosition ());
+
+		if (DISTANCE_SENSOR_MIN <= distanceOnRadar) {
+			RADAR_GUIDE.setString (
+				format (orientation) + S_DEGREES + String("\n") +
+				format (distanceOnRadar) + S_CENTIMETER
+			);
+			
+		}
+		else {
+			RADAR_GUIDE.setString (
+				format (orientation)  + "\n" + 
+				gui::name
+			);
+		}
+	}
+	else {
+		RADAR_GUIDE.setString (String (""));
 	}
 }
 
@@ -109,12 +157,13 @@ void Panel::add (Vector2f position, String string) {
  *
  */
 void Panel::load () {
-	RADAR.addCircle (
+	RADAR.addCircleWithHole (
 		COLOR_GRID_MINOR,
 		COLOR_LINE,
 		circlePrecision,
-		12.0,
+		RADAR_RADIUS_MINOR,
 		RADAR_RADIUS,
+		RADAR_RADIUS / RADAR_RADIUS_MINOR,
 		RADAR_ANGLE_PRECISION,
 		0.0,
 		360.0,
@@ -124,59 +173,85 @@ void Panel::load () {
 		COLOR_GRID,
 		COLOR_LINE,
 		circlePrecision, 
-		3.0, 
+		RADAR_RADIUS_MAJOR, 
 		RADAR_RADIUS, 
-		3.0 * RADAR_ANGLE_PRECISION,
+		RADAR_ANGLE_PRECISION * RADAR_RADIUS_MAJOR,
 		0.0, 
 		360.0
 	);
 	RADAR.update ();
 
-	for (unsigned angle = 0; angle < 360; angle += 15) {
+	for (double angle = 0.0; angle < 360.0; angle += RADAR_ANGLE_PRECISION) {
 
 		this->add (
 			RADAR.getPosition () + sf::Vector2f (
-				(1 + RADAR_RADIUS) * COS (angle),
-				(- 1 - RADAR_RADIUS) * SIN (angle)
+				(+ 1.5 + RADAR_RADIUS) * COS (angle),
+				(- 1.5 - RADAR_RADIUS) * SIN (angle)
 			),
-			std::to_string (angle)
+			std::to_string ( (int)angle)
 		);
 
 		textCenter (LAST (this->text, 0));
 	}
 
+	double panelWidth = fromGrid (width) - 2 * RADAR_RADIUS - 4 * MARGIN;
+	panelWidth = floor (panelWidth / (RADAR_RADIUS / RADAR_RADIUS_MAJOR));
+	panelWidth *= RADAR_RADIUS / RADAR_RADIUS_MAJOR;
+
+	PANEL_TRACK.setPosition (
+		fromGrid (width) - MARGIN - panelWidth, 
+		fromGrid (height) - MARGIN - 2 * RADAR_RADIUS
+	);
+
 	PANEL_TRACK.addRectangle (
 		COLOR_GRID_MINOR,
 		COLOR_LINE,
-		fromGrid (width) - 2 * RADAR_RADIUS - 4 * MARGIN,
+		panelWidth,
 		2 * RADAR_RADIUS,
-		RADAR_RADIUS / 12.0,
-		RADAR_RADIUS / 12.0,
+		RADAR_RADIUS / RADAR_RADIUS_MINOR,
+		RADAR_RADIUS / RADAR_RADIUS_MINOR,
 		false
 	);
 	PANEL_TRACK.addRectangle (
 		COLOR_GRID,
 		COLOR_LINE,
-		fromGrid (width) - 2 * RADAR_RADIUS - 4 * MARGIN,
+		panelWidth,
 		2 * RADAR_RADIUS,
-		RADAR_RADIUS / 3.0,
-		RADAR_RADIUS / 3.0
+		RADAR_RADIUS / RADAR_RADIUS_MAJOR,
+		RADAR_RADIUS / RADAR_RADIUS_MAJOR
 	);
 	PANEL_TRACK.update ();
 
-	SHIP.addCircle (
-		COLOR_BACKGROUND,
+	SHIP.addEllipse (
+		COLOR_GRID,
 		COLOR_LINE,
 		circlePrecision,
 		1.0,
-		RADAR_RADIUS / 13,
-		RADAR_ANGLE_PRECISION,
+		2.0 * RADAR_RADIUS / RADAR_RADIUS_MINOR,
+		RADAR_RADIUS / RADAR_RADIUS_MINOR,
+		90.0,
 		0.0,
-		360.0,
-		false
+		360.0
 
 	);
+	SHIP.addPoint (
+		- 0.5 * RADAR_RADIUS / RADAR_RADIUS_MINOR,
+		- 0.5 * RADAR_RADIUS / RADAR_RADIUS_MINOR,
+		COLOR_LINE
+	);
+	SHIP.addJoint (
+		0.5 * RADAR_RADIUS / RADAR_RADIUS_MINOR,
+		0.0,
+		COLOR_LINE
+	);
+	SHIP.addPoint (
+		- 0.5 * RADAR_RADIUS / RADAR_RADIUS_MINOR,
+		+ 0.5 * RADAR_RADIUS / RADAR_RADIUS_MINOR,
+		COLOR_LINE
+	);
 	SHIP.update ();
+
+	RADAR_GUIDE.setOrigin (0, 2.5 * grid);
 }
 
 /**
