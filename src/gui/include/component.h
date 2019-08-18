@@ -1,3 +1,9 @@
+/**
+ * Programmer: Balescu Ovidiu-Gheorghe
+ * Date:       15 May 2019
+ * Library:    SFML 2.5.1
+ */
+
 #ifndef COMPONENT_H
 #define COMPONENT_H
 
@@ -123,20 +129,69 @@ class Component {
 			double angleEnd,
 			bool margin = true,
 			sf::Vector2f origin = sf::Vector2f (0, 0)
-
+		);
+		void addEllipseWithHole (
+			sf::Color colorGrid,
+			sf::Color colorMargin,
+			double ellipseCount, 
+			double radiusDivision, 
+			double radiusX, 
+			double radiusY, 
+			double radiusHoleX, 
+			double radiusHoleY, 
+			double angleDivison,
+			double angleBegin, 
+			double angleEnd,
+			bool margin = true,
+			sf::Vector2f origin = sf::Vector2f (0, 0)
+		);
+		void addCircleWithHole (
+			sf::Color colorGrid,
+			sf::Color colorMargin,
+			double circleCount, 
+			double radiusDivision, 
+			double radius,
+			double radiusHole, 
+			double angleDivison,
+			double angleBegin, 
+			double angleEnd,
+			bool margin = true,
+			sf::Vector2f origin = sf::Vector2f (0, 0)
 		);
 
-		// Methods used to get position of important points
+		// Methods used to get position of important points.
 		sf::Vector2f getPosition ();
 		sf::Vector2f getPoint (unsigned long i);
 		sf::Vector2f getFirstPoint ();
 		sf::Vector2f getLastPoint ();
 
-	protected:
-		std::vector<sf::Vertex> point;
+		// Methods to check if a point is over the component
+		bool isInRectangle (sf::Vector2f point);
+		bool isInCircle (sf::Vector2f point);
 
+		// Methods that work with mouse.
+		bool click (bool conditionMouseOver);
+		bool left (bool conditionMouseOver);
+		bool right (bool conditionMouseOver);
+
+		// Methods used to work with angle and rotation.
+		void setRotation (double newAngle);
+		void rotate (double newAngle);
+		double getRotation ();
+
+	protected:
+
+		// Variables used for draw.
+		std::vector<sf::Vertex> point;
 		sf::VertexBuffer buffer;
+
+		// Variables used for calculations.
 		sf::Vector2f position;
+		sf::Vector2f min;
+		sf::Vector2f max;
+		double angle;
+
+		// Text if it's necessary.
 		sf::Text label;
 };
 

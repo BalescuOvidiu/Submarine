@@ -1,34 +1,26 @@
+/**
+ * Programmer: Balescu Ovidiu-Gheorghe
+ * Date:       15 May 2019
+ * Library:    SFML 2.5.1
+ */
+
 #ifndef GUI_H
 #define GUI_H
 
-// Math
-#include <cmath>
+// Time
+#include <ctime>
+
+// STL objects
+#include <stack>
+#include <string>
 
 // SFML
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <SFML/OpenGL.hpp>
 
-// Input/output
-#include <fstream>
-#include <iostream>
-
-// STL objects
-#include <stack>
-#include <string>
-#include <vector>
-
-// Time
-#include <ctime>
-
-// Math constants
-#define PI              3.14159265358979323846
-
-// Math macro           
-#define COS(angle)      cos ( (angle) * PI / 180.0)
-#define SIN(angle)      sin ( (angle) * PI / 180.0)
-#define MID(a, b)       0.5 * (a + b)
-#define LAST(vector, i) vector[vector.size () - i - 1]
+// Mathematical constants and functions
+#include "mathematics.h"
 
 // Window
 #define WIDTH(percent)  0.01 * gui::width * percent
@@ -67,9 +59,12 @@ namespace gui {
 	extern const unsigned width;
 	extern const unsigned height;
 	extern const double grid;
+
+	// Variables for precision
 	extern bool exit;
 	extern double moveViewSpeed;
 	extern double circlePrecision;
+	extern unsigned decimalsNumber;
 
 	// Variables of view
 	extern double zoomFactor;
@@ -113,6 +108,12 @@ namespace gui {
 	// Functions used for conversion between bidimensional vectors and grid values.
 	sf::Vector2f toGrid (sf::Vector2f vector);
 	sf::Vector2f fromGrid (sf::Vector2f vector);
+
+	// Functions who convert numbers to string.
+	std::string format (double value);
+	std::string format (short value);
+	std::string format (int value);
+	std::string format (unsigned value);
 
 	/**
 	 * This function scale a number to grid values.

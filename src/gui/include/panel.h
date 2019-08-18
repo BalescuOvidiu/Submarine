@@ -1,7 +1,13 @@
+/**
+ * Programmer: Balescu Ovidiu-Gheorghe
+ * Date:       15 May 2019
+ * Library:    SFML 2.5.1
+ */
+
 #ifndef PANEL_H
 #define PANEL_H
 
-#include "button.h"
+#include "component.h"
 
 class Panel {
 
@@ -33,7 +39,7 @@ class Panel {
 		std::vector<sf::Text> text;
 
 		// Variables
-		double speedMove;
+		double speedMoveView;
 };
 
 #endif
