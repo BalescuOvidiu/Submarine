@@ -3,7 +3,7 @@
 /**
  * This is copy constructor.
  * 
- * @params: source - is motor object.
+ * @param source is motor object.
  */
 Motor::Motor(const Motor &source) {
    this->pinA = source.pinA;
@@ -14,8 +14,8 @@ Motor::Motor(const Motor &source) {
 
 /**
  * This is a constructor of motor object.
- * @params: pinA - connected to first wire of motor;
- *          pinB - connected to second wire of motor.
+ * @param pinA connected to first wire of motor;
+ * @param pinB connected to second wire of motor.
  */
 Motor::Motor(byte pinA, byte pinB) {
    pinMode(pinA, OUTPUT);
@@ -29,9 +29,9 @@ Motor::Motor(byte pinA, byte pinB) {
 
 /**
  * This is a constructor of motor object.
- * @params: pinA - connected to first wire of motor;
- *          pinB - connected to second wire of motor;
- *          velocity - speed of motor. 
+ * @param pinA connected to first wire of motor;
+ * @param pinB connected to second wire of motor;
+ * @param velocity speed of motor. 
  */
 Motor::Motor(byte pinA, byte pinB, int velocity) {
    pinMode(pinA, OUTPUT);
@@ -44,8 +44,8 @@ Motor::Motor(byte pinA, byte pinB, int velocity) {
 }
 
 /**
- * This is destructor of motor object. This stops the electronic signal
- * to it.
+ * This is destructor of motor object. 
+ * This stops the electronic signal to it.
  */
 Motor::~Motor() {
    this->stop ();

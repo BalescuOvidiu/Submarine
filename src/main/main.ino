@@ -47,7 +47,7 @@ void wait () {
 /**
  * This function sets angle of rudders.
  * 
- * @params: angle - new orientation of servomotors.
+ * @param angle new orientation of servomotors.
  */
 void setRudderAngle (int angle) {
   rudderBottom.write (ANGLE_MIDDLE - angle);
@@ -57,7 +57,7 @@ void setRudderAngle (int angle) {
 /**
  * This function sets angle of planes.
  * 
- * @params: angle - new orientation of servomotors.
+ * @param: angle new orientation of servomotors.
  */
 void setPlaneAngle (int angle) {
   planeLeft.write (ANGLE_MIDDLE + angle);
@@ -82,6 +82,7 @@ void command() {
   // Infra-red communication
   unsigned long value = irReceiver.check();
   if (value) {
+    Serial.print ("Command: ");
     Serial.println (value, HEX);
     irReceiver.resume ();
     
@@ -150,6 +151,7 @@ void setup() {
   planeLeft.attach (PIN_PLANE_LEFT);
   planeRight.attach (PIN_PLANE_RIGHT);
   
+  
   wait();
 
   unsigned long standardValue[] = {
@@ -167,8 +169,13 @@ void setup() {
     C_TEST_PLANE_LEFT,
     C_TEST_PLANE_RIGHT    
   };
+  
+  irReceiver.enableIRIn ();
   irReceiver.setInputLoopTime (INPUT_CICLE_MEDIUM);
-  irReceiver.setStandardValue (standardValue);
+  irReceiver.setStandardValue (
+    standardValue, 
+    sizeof (standardValue) / sizeof (standardValue[0])
+  );
 
   Serial.begin(9600);
 }

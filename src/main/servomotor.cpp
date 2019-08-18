@@ -1,7 +1,7 @@
 #include "servomotor.h"
 
 /**
- * 
+ * This is destructor of class.
  */
 Servomotor::~Servomotor() {
   this->write (ANGLE_LEFT);
@@ -10,7 +10,7 @@ Servomotor::~Servomotor() {
 /**
  * This function sends signal to mantain angle of electronic device.
  * If test is enabled, then this function send signal for a round-trip
- * move to test his speed , response time and functionality.
+ * move to test his speed, response time and functionality.
  */
 void Servomotor::loop () {
    if  (this->testEnabled) {
@@ -29,7 +29,7 @@ void Servomotor::loop () {
  * This function sends a signal to decrease angle of electronic device with a 
  * value or until of his limit.
  * 
- * @params: rate - value low from angle.
+ * @param rate value low from angle.
  */
 void Servomotor::decreaseAngle (int rate) {
    if  (this->lastAngle - rate >= ANGLE_LEFT) {
@@ -44,7 +44,7 @@ void Servomotor::decreaseAngle (int rate) {
  * This function sends a signal to increase angle of electronic device with a 
  * value or until of his limit.
  * 
- * @params: rate - value added to angle.
+ * @param rate value added to angle.
  */
 void Servomotor::increaseAngle (int rate) {
    if  (this->lastAngle + rate <= ANGLE_RIGHT) {
@@ -79,7 +79,7 @@ void Servomotor::right () {
 /**
  * This function return last value send to servo.
  * 
- * @return: - last value sends to the electronic device.
+ * @return last value sends to the electronic device.
  */
 int Servomotor::getLastAngle () {
    return this->lastAngle;
@@ -88,9 +88,8 @@ int Servomotor::getLastAngle () {
 /**
  * This function returns error of servo rotation electronic device.
  * 
- * @return: - difference between last angle value send to device and
- *            current angle of device. If that is zero, then servomotor
- *            is precise.
+ * @return difference between last angle value send to device and 
+ * current angle of device. If that is zero, then servomotor is precise.
  */
 long Servomotor::getError () {
    return  this->lastAngle - this->read ();
@@ -99,7 +98,7 @@ long Servomotor::getError () {
 /**
  * This function sends signal to enable test move.
  * 
- * @params: duration - between two moves of servomotor.
+ * @param: duration between two moves of servomotor.
  */
 void Servomotor::enableTest (unsigned long duration) {
    this->testEnabled = true;
@@ -117,7 +116,7 @@ void Servomotor::disableTest () {
 /**
  * This function sends change signal to enable or disable test move.
  * 
- * @params: duration - between two moves of servomotor.
+ * @param: duration between two moves of servomotor.
  */
 void Servomotor::toggleTest (unsigned long duration) {
   if (this->testEnabled) {

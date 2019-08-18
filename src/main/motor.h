@@ -1,6 +1,6 @@
 /**
  * Programmer: Balescu Ovidiu-Gheorghe
- * Data:       20 June 2019
+ * Date:       20 June 2019
  * Board:      Arduino Nano
  * Processor:  ATmega298P(Old bootloader)
  * Programmer: Arduino as ISP

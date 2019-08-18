@@ -1,6 +1,6 @@
 /**
  * Programmer: Balescu Ovidiu-Gheorghe
- * Data:       22 February 2019
+ * Date:       22 February 2019
  * Board:      Arduino Nano
  * Processor:  ATmega298P(Old bootloader)
  * Programmer: Arduino as ISP
@@ -30,25 +30,25 @@
 #define PIN_SENSOR_HUMIDITY A1
 
 // Pin of infra-red communication
-#define PIN_IR_RECEIVER A0
+#define PIN_IR_RECEIVER 10
 
 // Codes used for propeller speed.
-#define C_FASTER 0
-#define C_SLOWER 1
-#define C_STOP   2
-#define C_WAIT   3
+#define C_FASTER 0xE0E0A25D
+#define C_SLOWER 0xE0E012ED
+#define C_STOP   0xE0E052AD
+#define C_WAIT   0xE0E0629D
 
 // Codes used for direction.
-#define C_LEFT      4
-#define C_RIGHT     5
-#define C_DOWN      6
-#define C_UP        7
-#define C_STABILIZE 8
+#define C_LEFT      0xE0E0A659
+#define C_RIGHT     0xE0E046B9
+#define C_DOWN      0xE0E08679
+#define C_UP        0xE0E006F9
+#define C_STABILIZE 0xE0E016E9
 
 // Codes used for for test.
-#define C_TEST_RUDDER_BOTTOM 9
-#define C_TEST_RUDDER_TOP    10
-#define C_TEST_PLANE_LEFT    11
-#define C_TEST_PLANE_RIGHT   12
+#define C_TEST_RUDDER_BOTTOM 0xE0E036C9
+#define C_TEST_RUDDER_TOP    0xE0E028D7
+#define C_TEST_PLANE_LEFT    0xE0E0A857
+#define C_TEST_PLANE_RIGHT   0xE0E06897
 
 #endif
