@@ -7,15 +7,6 @@ Carcasa submarinul este construită din 4 sticle de PET lipite între ele și vo
 ![Pe apă](https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/onWater.jpg "În Parcul Tineretului pe lac")
 
 
-## Proiect la cursul de Robotică
-
-| Universitatea București | Facultatea de Matematică și Informatică |
-|:------------------------|:----------------------------------------|
-| Profesor coordonator    | Bardezi Andrei                          |  
-| Laborant                | Ivona Octavia                           |
-| Student                 | Bălescu Ovidiu-Gheorghe                 |
-
-
 ## Caracteristici generale
 
 | Nume 	| UB-FMI-212 	|
@@ -33,45 +24,42 @@ Carcasa submarinul este construită din 4 sticle de PET lipite între ele și vo
 | Alimentare 	| 4 acumulatori 1.2 V, 2100 mAh <br> 8 acumulatori 1.6 V, 1500 mAh 	|
 
 
+## Compartimente
 
-<table>
-   <tr>
-     <td valign="top" width="70%">
-      <img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/parts.png"/>
-     </td>
-     <td valign="top" width="30%">
-      Compartimente
-      <ol>
-        <li>Camera propulsiei</li>
-        <li>Camera de control al motoarelor</li>
-        <li>Camera circuitelor</li>
-        <li>Corpul de navigare</li>
-        <li>Camera bateriilor</li>
-        <li>Pernă de aer</li>
-      </ol>
-     </td>
-  </tr>
-</table>
+1. Camera propulsiei
+2. Camera de control al motoarelor
+3. Compartimentul circuitelor
+4. Corpul de navigare
+5. Camera bateriilor
+6. Pernă de aer
 
-<img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/schem.png"/>
+![Pe lac](https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/parts.png)
 
-<table>
-  <tr>
-    <td valign="top" width="40%">
-      Dezvoltare
-      Momentan s-au adunat 120 de ore de lucru la construirea acestui prototip: curățarea sticlelor și conservelor, modelarea carcasei și aripiilor,  construirea scheletului, asamblarea și conectarea componentelor electronice.
-      Acesta este încă în dezvoltare, urmând să aibe implementări și îmbunătățiri ulterioare.
-      Viitoare implementări
-      <ol>
-        <li>Îmbunătățirea scheletului</li>
-        <li>Etanșarea și modularizarea carcasei</li>
-        <li>Implementarea balastului</li>
-        <li>Implementarea unei device de orientare</li>
-        <li>Adăugarea unui generator din cupru și aluminiu care să încarce acumulatorii</li>
-      </ol>  
-    </td valign="top" width="60%">
-    <td>
-      <img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/inside.jpg"/>
-    </td>
-  </tr>
-</table>
+
+## Circuit electric
+
+![Schema](https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/schem.png)
+
+
+## Dezvoltare
+
+Momentan s-au adunat 120 de ore de lucru la construirea acestui prototip: curățarea sticlelor și conservelor, modelarea carcasei și aripiilor, construirea scheletului, asamblarea și conectarea componentelor electronice.
+Acesta este încă în dezvoltare, urmând să aibe implementări și îmbunătățiri ulterioare.
+
+__Viitoare implementări:__
+1.Îmbunătățirea scheletului
+2.Etanșarea și modularizarea carcasei
+3.Implementarea balastului
+4.Implementarea unei device de orientar
+5.Adăugarea unui generator din cupru și aluminiu care să încarce acumulatorii
+   
+![Interior](https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/inside.jpg")
+
+
+## Proiect la cursul de Robotică
+
+| Universitatea București | Facultatea de Matematică și Informatică |
+|:------------------------|:----------------------------------------|
+| Profesor coordonator    | Bardezi Andrei                          |  
+| Laborant                | Ivona Octavia                           |
+| Student                 | Bălescu Ovidiu-Gheorghe                 |
