@@ -4,20 +4,17 @@
 
 ### Universitatea București
 
-####Facultatea de Matematică și Informatică
+#### Facultatea de Matematică și Informatică
 
 **Profesor coordonator**: Bardezi Andrei  
 **Laborant**: Ivona Octavia  
 **Student**: Bălescu Ovidiu-Gheorghe  
 
-||                |
+|                        |                                                  |
 |------------------------|--------------------------------------------------|
-| |
+|                |
 
-
-
-![Pe apă](https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/onWater.jpg "În lacul Parcul Tineretului")
-|
+![Pe apă](https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/onWater.jpg "În Parcul Tineretului pe lac") |
 Proiect la cursul de Robotică, reprezentat de un submarin controlabil printr-o telecomandă, încă în dezvoltare. Acesta are ca scop de a încuraja reciclarea și explorarea oceanelor.
 Oceanele ocupă aproximativ 71% din suprafața planetei și cea mai mare parte a lor e neexplorată.
 Carcasa submarinul este construită din 4 sticle de PET susținută de un schelet metalic și acoperită cu lac de lemn. Aripile și cârmele sunt construite din tabla de la conserve, acoperite cu PET. Toate acestea sunt înfășurate în bandă adezivă și acoperite cu lac de lemn.
