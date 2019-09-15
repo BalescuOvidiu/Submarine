@@ -25,7 +25,7 @@
 ## Caracteristici generale
 
 |                              |                                                                                                                        |
-|----------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+|-------------------------------|-------------------------------------------------------------------------------------|
 | Nume                             | UB-FMI-212                                                                                                                       |
 | Deplasament                      | 2.5 kg                                                                                                                           |
 | Lungime                          | 95.0 cm                                                                                                                          |
@@ -36,7 +36,7 @@
 | Automonie                        | 5 ore                                                                                                                            |
 | Adâncime operațională            | 5 metri                                                                                                                          |
 | Sensori și  sisteme de procesare | 1 placă de dezvoltare Arduino Nano 1 receptor infra-roșu pentru telecomandă 1 senzor de umiditate pentru detectarea scurgeriilor |
-| Alimentare                       | 4 acumulatori 1.2 V, 2100 mAh  8 acumulatori 1.6 V, 1500 mAh                                                                     |
+| Alimentare                       | 4 acumulatori 1.2 V, 2100 mAh <br> 8 acumulatori 1.6 V, 1500 mAh                                                                     |
 
 
 <table><tr>
