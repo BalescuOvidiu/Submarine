@@ -22,55 +22,24 @@
   </tr>
 </table>
 
-Detalii tehnice
+## Caracteristici generale
+
+| Nume                             | UB-FMI-212                                                                                                                       |
+|----------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| Deplasament                      | 2.5 kg                                                                                                                           |
+| Lungime                          | 95.0 cm                                                                                                                          |
+| Lățime                           | 9 cm                                                                                                                             |
+| Pescaj                           | 5 cm                                                                                                                             |
+| Propulsie                        | 1 Motor HPCB 6 V 1 Elice cu 7 lame                                                                                               |
+| Viteză                           | 5.2 noduri (9.7 km / h)                                                                                                          |
+| Automonie                        | 5 ore                                                                                                                            |
+| Adâncime operațională            | 5 metri                                                                                                                          |
+| Sensori și  sisteme de procesare | 1 placă de dezvoltare Arduino Nano 1 receptor infra-roșu pentru telecomandă 1 senzor de umiditate pentru detectarea scurgeriilor |
+| Alimentare                       | 4 acumulatori 1.2 V, 2100 mAh  8 acumulatori 1.6 V, 1500 mAh                                                                     |
+
 
 <table><tr>
-<td valign="top" width="35%"><table>
-  <tr>
-      <td>Nume model</td>
-      <td>UB-FMI-212</td>
-  </tr>
-  <tr>
-      <td>Lungime</td>
-      <td>80 cm</td>
-  </tr>
-  <tr>
-      <td>Lungime aripi</td>
-      <td>6 cm</td>
-  </tr>
-  <tr>
-      <td>Lățime totală</td>
-      <td>22 cm</td>
-  </tr>
-  <tr>
-      <td>Masă</td>
-      <td>2.545 kg</td>
-  </tr>
-  <tr>
-      <td>Volum</td>
-      <td>4.040 l</td>
-  </tr>
-  <tr>
-      <td>Alimentare</td>
-      <td>Baterii:</br>1 x 5 V, 2200 mAh<br/>8 x 1.5 V</td>
-  </tr>
-  <tr>
-      <td>Propulsie</td>
-      <td>Motor electric</br>6 V</td>
-  </tr>
-  <tr>
-      <td>Control</td>
-      <td>Telecomandă și sensor infraroșu</td>
-  </tr>
-  <tr>
-      <td>Viteză</td>
-      <td>10.8 km/h, 5.83 noduri</td>
-  </tr>
-  <tr>
-      <td>Cost</td>
-      <td>406 RON</td>
-  </tr>
-</table></td>
+<td valign="top" width="35%"></td>
 <td valign="top" width="65%"><table>
   <tr>
       <td>Nume</td>
