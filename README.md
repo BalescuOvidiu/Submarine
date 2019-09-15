@@ -1,6 +1,6 @@
 # Submarin
 
-Oceanele ocupă cel puțin 71% din suprafața planetei și cea mai mare parte a lor e neexplorată. Ideologia pe care se bazează acest submarin este aceea de respecta oceanele și de a le explora. PET-ul este o masă plastică folosită de obicei la fabricarea diverselor ambalaje, care în cele din urmă ajung gunoi și contaminând apa cu microplastic. Totuși aceasta poate fi folosită pentru a proteja câteva circuite de apa rece a mării. Iar o structură metalică, poate oferi o rezistență deosebită.
+Oceanele ocupă cel puțin 71% din suprafața planetei și cea mai mare parte a lor e neexplorată. Ideologia pe care se bazează acest submarin este aceea de respecta oceanele și de a le explora. PET-ul este o masă plastică folosită de obicei la fabricarea diverselor ambalaje, care în cele din urmă ajung gunoi și contaminează apa cu microplastic. Totuși aceasta poate fi folosită pentru a proteja câteva circuite de apa rece a mării. Iar o structură metalică, poate oferi o rezistență deosebită.
 
 Carcasa submarinul este construită din 4 sticle de PET lipite între ele și vopsită cu două straturi de lac de lemn. Structura interioară a submarinului se bazează pe un schelet metalic construit din plăcuțe de îmbinare, colțare și capace metalice. de asemnea fiecare compartiment a structurii are o carcasă proprie de PET Componentele electronice, motoarele și senzorii, sunt controlate cu o placă de dezvoltare Arduino Nano. Submarinul a fost testat de câteva ori în lacul Tineretului din București, un video [aici](https://www.youtube.com/watch?v=reCAACpi1qQ|alt=octocat).
 
@@ -53,7 +53,7 @@ __Viitoare implementări:__
 4.Implementarea unei device de orientar
 5.Adăugarea unui generator din cupru și aluminiu care să încarce acumulatorii
    
-![Interior](https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/inside.jpg")
+![Interior](https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/inside.jpg)
 
 
 ## Proiect la cursul de Robotică
