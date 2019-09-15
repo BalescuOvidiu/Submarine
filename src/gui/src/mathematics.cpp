@@ -81,7 +81,7 @@ namespace mathematics {
 	 *
 	 */
 	double scaleToInterval (double value, double a, double b, double c, double d) {
-		return c + (d - c) / (b - a) * (value - a);
+		return c + (d - c) * (value - a) / (b - a);
 	}
 
 	/**

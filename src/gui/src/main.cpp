@@ -34,26 +34,30 @@ bool checkForExit () {
  * execution.
  */
 int main () {
+	config::initialize ();
 
-	/** Window. */
 	sf::RenderWindow window (
 		sf::VideoMode ().getDesktopMode (), 
 		config::getNameOfApplication (), 
 		sf::Style::Fullscreen
 	);
-	sf::View view (sf::FloatRect (
-		0, 
-		0, 
-		config::width, 
-		config::height
-	));
+	sf::View view (
+		sf::FloatRect (
+			0, 
+			0, 
+			config::getWidth (), 
+			config::getHeight ()
+		)
+	);
+
+	Panel panel (config::getMoveViewSpeed ());
+
+	sf::Event event;
+
+
 	window.setFramerateLimit (config::getFrameRate ());
 	window.setView (view);
 
-	config::initialize ();
-
-	sf::Event event;
-	Panel panel (config::getMoveViewSpeed ());
 	panel.load ();
 
 	while (window.isOpen ()) {
@@ -74,7 +78,6 @@ int main () {
 		window.clear ();
 
 		panel.render (&window);
-
 		panel.update (&window, &view);
 
 		window.display ();

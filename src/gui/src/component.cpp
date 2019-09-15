@@ -1,6 +1,6 @@
 #include "component.h"
 
-#define CLICK_TIME_WAIT_MS 400
+#define CLICK_TIME_WAIT_MS 320
 
 using namespace std;
 using namespace sf;
@@ -51,6 +51,28 @@ Component::Component (
 /**
  * 
  */
+Component::Component (
+	PrimitiveType type,
+	Vector2f position,
+	bool visible,
+	double angle
+) {
+	this->position = toGrid (position);
+	this->min = position;
+	this->max = position;
+
+	this->visible = visible;
+
+	this->setRotation (angle);
+
+	this->buffer = VertexBuffer (type);
+
+	this->label = NULL;
+}
+
+/**
+ * 
+ */
 Component::~Component () {
 	this->buffer.create (0);
 	this->point.clear ();
@@ -66,6 +88,18 @@ void Component::render (RenderWindow *window) {
 		}
 		window->draw (this->buffer);
 	}
+}
+
+void Component::movePoints (double x, double y) {
+	toGrid (x, y);
+
+	if (NULL != this->label) {
+		this->label->move (x, y);
+	}
+	for (unsigned i = 0; i < this->point.size (); i++) {
+		this->point[i].position.x += x;
+		this->point[i].position.y += y;
+	}	
 }
 
 /**
@@ -91,20 +125,22 @@ void Component::move (double x, double y) {
  */
 void Component::update () {
 
-	// Update bounds
+	/** Update bounds. */
+	this->min = this->position;
+	this->max = this->position;
+
 	for (unsigned i = 0; i < this->point.size (); i++) {
 		
-		// Get min y and min x of points
+		/** Get min y and min x of points. */
 		this->min.x = mathematics::min (min.x, point[i].position.x);
 		this->min.y = mathematics::min (min.y, point[i].position.y);
 
-		// Get max y and min x of points
+		/** Get max y and min x of points. */
 		this->max.x = mathematics::max (max.x, point[i].position.x);
 		this->max.y = mathematics::max (max.y, point[i].position.y);
-
 	}
 
-	// Update buffer
+	/** Update buffer. */
 	this->buffer.create (this->point.size ());
 	this->buffer.update (
 		this->point.data (), 
@@ -346,7 +382,7 @@ void Component::addRectangle (
 	Vector2f origin
 ) {
 
-	// Horizontal lines
+	/** Horizontal lines. */
 	for (double y = 0; y <= height; y += heightDivision) {
 		this->addLine (
 			origin.x, 
@@ -357,7 +393,7 @@ void Component::addRectangle (
 		);
 	}
 
-	// Vertical lines
+	/** Vertical lines. */
 	for (double x = 0; x <= width; x += widthDivision) {
 		this->addLine (
 			origin.x + x,
@@ -368,7 +404,7 @@ void Component::addRectangle (
 		);
 	}
 
-	// Margins
+	/** Margins. */
 	if (margin) {
 		this->addLine (
 			origin.x, 
@@ -443,7 +479,7 @@ void Component::addEllipse (
 	double stepX = radiusX / radiusDivision;
 	double stepY = radiusY / radiusDivision;
 
-	// Lines
+	/** Lines. */
 	for (
 		double angle = angleBegin; 
 		angle <= angleEnd; 
@@ -458,10 +494,10 @@ void Component::addEllipse (
 		);
 	}
 
-	// Circles
+	/** Circles. */
 	for (double div = 1; div <= radiusDivision; div ++) {
 
-		// Begin of circle
+		/** Begin of circle. */
 		this->addPoint (
 		    origin.x + stepX * div * COS (angleBegin),
 		    origin.y + stepY * div * SIN (angleBegin),
@@ -480,7 +516,7 @@ void Component::addEllipse (
 			);
 		}
 
-		// End of circle
+		/** End of circle. */
 		this->addPoint (
 		    origin.x + stepX * div * COS (angleEnd),
 		    origin.y + stepY * div * SIN (angleEnd),
@@ -488,10 +524,10 @@ void Component::addEllipse (
 		);
 	}
 
-	// Margin
+	/** Margin. */
 	if (margin) {
 
-		// Begin of circle
+		/** Begin of circle. */
 		this->addPoint (
 		    origin.x + radiusX * COS (angleBegin),
 		    origin.y + radiusY * SIN (angleBegin),
@@ -510,7 +546,7 @@ void Component::addEllipse (
 			);
 		}
 
-		// End of circle
+		/** End of circle. */
 		this->addPoint (
 		    origin.x + radiusX * COS (angleEnd),
 		    origin.y + radiusY * SIN (angleEnd),
@@ -570,7 +606,7 @@ void Component::addEllipseWithHole (
 	double stepX = radiusX / radiusDivision;
 	double stepY = radiusY / radiusDivision;
 
-	// Lines
+	/** Lines. */
 	for (
 		double angle = angleBegin; 
 		angle <= angleEnd; 
@@ -585,10 +621,10 @@ void Component::addEllipseWithHole (
 		);
 	}
 
-	// Circles
+	/** Circles. */
 	for (double div = 1; div <= radiusDivision; div ++) {
 
-		// Begin of circle
+		/** Begin of circle. */
 		this->addPoint (
 		    origin.x + stepX * div * COS (angleBegin),
 		    origin.y + stepY * div * SIN (angleBegin),
@@ -607,7 +643,7 @@ void Component::addEllipseWithHole (
 			);
 		}
 
-		// End of circle
+		/** End of circle. */
 		this->addPoint (
 		    origin.x + stepX * div * COS (angleEnd),
 		    origin.y + stepY * div * SIN (angleEnd),
@@ -615,10 +651,10 @@ void Component::addEllipseWithHole (
 		);
 	}
 
-	// Margin
+	/** Margin. */
 	if (margin) {
 
-		// Begin of circle
+		/** Begin of circle. */
 		this->addPoint (
 		    origin.x + radiusX * COS (angleBegin),
 		    origin.y + radiusY * SIN (angleBegin),
@@ -637,7 +673,7 @@ void Component::addEllipseWithHole (
 			);
 		}
 
-		// End of circle
+		/** End of circle. */
 		this->addPoint (
 		    origin.x + radiusX * COS (angleEnd),
 		    origin.y + radiusY * SIN (angleEnd),
@@ -708,27 +744,44 @@ Vector2f Component::getFirstPoint () {
  * 
  */
 Vector2f Component::getLastPoint () {
-	return fromGrid (
-		this->point[this->point.size () - 1].position
-	);
+	if (this->point.size ()) {
+		return fromGrid (
+			this->point[this->point.size () - 1].position
+		);
+	}
+	return this->position;
 }
 
 /**
  * 
  */
-bool Component::isInRectangle (sf::Vector2f point) {
-	return ::isInRectangle (
-		this->min,
-		this->max.x - this->min.x,
-		this->max.y - this->min.y,
+bool Component::isInRectangle (Vector2f point) {
+
+	bool check = isInTriangle (
+		Vector2f (this->min.x, this->min.y),
+		Vector2f (this->max.x, this->min.y),
+		Vector2f (this->max.x, this->max.y),
 		point
 	);
+
+	if (check) {
+		return true;
+	}
+
+	check = isInTriangle (
+		Vector2f (this->min.x, this->min.y),
+		Vector2f (this->min.x, this->max.y),
+		Vector2f (this->max.x, this->max.y),
+		point
+	);
+
+	return check;
 }
 
 /**
  * 
  */
-bool Component::isInCircle (sf::Vector2f point) {
+bool Component::isInCircle (Vector2f point) {
 	double radius = 0.5 * mathematics::min (
 		this->max.x - this->min.x, 
 		this->max.y - this->min.y
@@ -759,7 +812,7 @@ bool Component::click (bool conditionMouseOver) {
 bool Component::left (bool conditionMouseOver) {
 
 	if (conditionMouseOver) {
-		if (canRight (CLICK_TIME_WAIT_MS)) {
+		if (canLeft (CLICK_TIME_WAIT_MS)) {
 			restartClick ();
 			return true;
 		}
@@ -774,7 +827,7 @@ bool Component::left (bool conditionMouseOver) {
 bool Component::right (bool conditionMouseOver) {
 
 	if (conditionMouseOver) {
-		if (canLeft (CLICK_TIME_WAIT_MS)) {
+		if (canRight (CLICK_TIME_WAIT_MS)) {
 			restartClick ();
 			return true;
 		}
@@ -803,17 +856,17 @@ void Component::rotate (double newAngle) {
 
 	for (unsigned i = 0; i < this->point.size (); i++) {
 
-		// Translate point to global origin.
+		/** Translate point to global origin. */
 		this->point[i].position.x -= this->position.x;
 		this->point[i].position.y -= this->position.y;
 
-		// Rotate point
+		/** Rotate point. */
 		oldX = this->point[i].position.x;
 		oldY = this->point[i].position.y;
 		this->point[i].position.x = newCos * oldX - newSin * oldY;
 		this->point[i].position.y = newCos * oldY + newSin * oldX;
 
-		// Translate point to initial origin.
+		/** Translate point to initial origin. */
 		this->point[i].position.x += this->position.x;
 		this->point[i].position.y += this->position.y;
 	}
