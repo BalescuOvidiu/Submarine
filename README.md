@@ -24,18 +24,18 @@
 
 ## Caracteristici generale
 
-|                              |                                                                                                                        |
+| Caracteristici generale  |                                                                                                                        |
 |-------------------------------|-------------------------------------------------------------------------------------|
-| Nume                             | UB-FMI-212                                                                                                                       |
-| Deplasament                      | 2.5 kg                                                                                                                           |
-| Lungime                          | 95.0 cm                                                                                                                          |
-| Lățime                           | 9 cm                                                                                                                             |
-| Pescaj                           | 5 cm                                                                                                                             |
-| Propulsie                        | 1 Motor HPCB 6 V 1 Elice cu 7 lame                                                                                               |
-| Viteză                           | 5.2 noduri (9.7 km / h)                                                                                                          |
-| Automonie                        | 5 ore                                                                                                                            |
-| Adâncime operațională            | 5 metri                                                                                                                          |
-| Sensori și  sisteme de procesare | 1 placă de dezvoltare Arduino Nano <br>1 receptor infra-roșu pentru telecomandă <br> 1 senzor de umiditate pentru detectarea scurgeriilor |
+| Nume                             | UB-FMI-212                                                                                                              |
+| Deplasament                      | 2.5 kg                                                                                                                  |
+| Lungime                          | 95.0 cm                                                                                                                 |
+| Lățime                           | 9 cm                                                                                                                    |
+| Pescaj                           | 5 cm                                                                                                                    |
+| Propulsie                        | 1 Motor HPCB 6 V 1 Elice cu 7 lame                                                                                      |
+| Viteză                           | 5.2 noduri (9.7 km / h)                                                                                                 |
+| Automonie                        | 5 ore                                                                                                                   |
+| Adâncime operațională            | 5 metri                                                                                                                 |
+| Sensori și <br> sisteme de procesare | 1 placă de dezvoltare Arduino Nano <br>1 receptor infra-roșu pentru telecomandă <br> 1 senzor de umiditate pentru detectarea scurgeriilor |
 | Alimentare                       | 4 acumulatori 1.2 V, 2100 mAh <br> 8 acumulatori 1.6 V, 1500 mAh                                                                     |
 
 
