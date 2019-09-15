@@ -4,8 +4,8 @@
  * Library:    SFML 2.5.1
  */
 
-#ifndef PANEL_H
-#define PANEL_H
+#ifndef PANEL_H_
+#define PANEL_H_
 
 #include "component.h"
 

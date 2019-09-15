@@ -4,34 +4,48 @@
  * Library:    SFML 2.5.1
  */
 
-#ifndef COMPONENT_H
-#define COMPONENT_H
+#ifndef COMPONENT_H_
+#define COMPONENT_H_
 
-#include "gui.h"
+#include "config.h"
 
 class Component {
 
 	public:
 		Component (const Component& source);
 		Component (
-			sf::Vector2f position = sf::Vector2f (0, 0), 
+			sf::Vector2f position = sf::Vector2f (0, 0),
 			sf::PrimitiveType type = sf::Lines,
-			std::string text = std::string ("")
+			std::string text = std::string (""),
+			bool visible = true,
+			double angle = ANGLE_MIN
+		);
+		Component (
+			sf::PrimitiveType type,
+			sf::Vector2f position = sf::Vector2f (0, 0),
+			bool visible = true,
+			double angle = ANGLE_MIN
 		);
 
 		~Component ();
 
-		// Update methods.
+		/** Update methods. */
 		void render (sf::RenderWindow *window);
 		void move (double x, double y);
 		void update ();
 		void clear ();
 
-		// Methods used to set position.
+		/** Visibilty methods. */
+		void show ();
+		void hide ();
+		void toggleVisibility ();
+		bool isVisible ();
+
+		/** Methods used to set position. */
 		void setPosition (double x, double y);
 		void setPosition (sf::Vector2f point);
 
-		// Methods used to set label.
+		/** Methods used to set label. */
 		void setLabel (sf::Color color);
 		void setLabel (
 			std::string text = std::string (""), 
@@ -41,8 +55,9 @@ class Component {
 			sf::String text = sf::String (""), 
 			sf::Color color = COLOR_TEXT
 		);
+		void removeLabel ();
 		
-		// Methods used to add points.
+		/** Methods used to add points. */
 		void setPoint (
 			unsigned long i, 
 			sf::Vector2f position, 
@@ -60,7 +75,7 @@ class Component {
 			sf::Color color = COLOR_GRID
 		);
 		
-		// Methods used to add joints.
+		/** Methods used to add joints. */
 		void addJoint (
 			double x, 
 			double y, 
@@ -71,7 +86,7 @@ class Component {
 			sf::Color color = COLOR_GRID
 		);
 		
-		// Methods used to add lines on component.
+		/** Methods used to add lines on component. */
 		void addLine (
 			double a, 
 			double b, 
@@ -85,7 +100,7 @@ class Component {
 			sf::Color color = COLOR_GRID
 		);
 		
-		// Other methods used to draw
+		/** Other methods used to draw */
 		void addRectangle (
 			sf::Color colorGrid,
 			sf::Color colorMargin,
@@ -159,40 +174,41 @@ class Component {
 			sf::Vector2f origin = sf::Vector2f (0, 0)
 		);
 
-		// Methods used to get position of important points.
+		/** Methods used to get position of important points. */
 		sf::Vector2f getPosition ();
 		sf::Vector2f getPoint (unsigned long i);
 		sf::Vector2f getFirstPoint ();
 		sf::Vector2f getLastPoint ();
 
-		// Methods to check if a point is over the component
+		/** Methods to check if a point is over the component */
 		bool isInRectangle (sf::Vector2f point);
 		bool isInCircle (sf::Vector2f point);
 
-		// Methods that work with mouse.
+		/** Methods that work with mouse. */
 		bool click (bool conditionMouseOver);
 		bool left (bool conditionMouseOver);
 		bool right (bool conditionMouseOver);
 
-		// Methods used to work with angle and rotation.
+		/** Methods used to work with angle and rotation. */
 		void setRotation (double newAngle);
 		void rotate (double newAngle);
 		double getRotation ();
 
 	protected:
 
-		// Variables used for draw.
+		/** Variables used for draw. */
+		bool visible;
 		std::vector<sf::Vertex> point;
 		sf::VertexBuffer buffer;
 
-		// Variables used for calculations.
+		/** Variables used for calculations. */
+		double angle;
 		sf::Vector2f position;
 		sf::Vector2f min;
 		sf::Vector2f max;
-		double angle;
 
-		// Text if it's necessary.
-		sf::Text label;
+		/** Text if it's necessary. */
+		sf::Text *label;
 };
 
 #endif

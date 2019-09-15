@@ -4,8 +4,8 @@
  * Library:    SFML 2.5.1
  */
 
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef MAIN_H_
+#define MAIN_H_
 
 #include "panel.h"
 
