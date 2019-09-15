@@ -1,6 +1,9 @@
 # Submarin
 
-## Proiect la cursul de Robotică
+## Proiect la cursul de Robotică 
+
+:------------------------|--------------------------------------------------:
+|       
 
 ### Universitatea București
 
@@ -8,11 +11,7 @@
 
 **Profesor coordonator**: Bardezi Andrei  
 **Laborant**: Ivona Octavia  
-**Student**: Bălescu Ovidiu-Gheorghe  
-
-|                        |                                                  |
-:------------------------|--------------------------------------------------:
-|        text            | ![Pe apă](https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/onWater.jpg "În Parcul Tineretului pe lac") |
+**Student**: Bălescu Ovidiu-Gheorghe           | ![Pe apă](https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/onWater.jpg "În Parcul Tineretului pe lac") |
 
 
 Proiect la cursul de Robotică, reprezentat de un submarin controlabil printr-o telecomandă, încă în dezvoltare. Acesta are ca scop de a încuraja reciclarea și explorarea oceanelor.
@@ -22,7 +21,6 @@ Carcasa submarinul este construită din 4 sticle de PET susținută de un schele
 
 ## Caracteristici generale
 
-||                |
 |------------------------|--------------------------------------------------|
 | Nume                             | UB-FMI-212                                                                                                              |
 | Deplasament                      | 2.5 kg                                                                                                                  |
