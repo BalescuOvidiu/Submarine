@@ -1,10 +1,11 @@
 #include "component.h"
 
-#define CLICK_TIME_WAIT 400
+#define CLICK_TIME_WAIT_MS 400
 
 using namespace std;
 using namespace sf;
-using namespace gui;
+using namespace config;
+using namespace mathematics;
 
 /**
  * 
@@ -19,25 +20,32 @@ Component::Component (const Component& source) {
 	this->label = source.label;
 	this->point = source.point;
 	this->buffer = source.buffer;
+	this->visible = source.visible;
 }
 
 /**
  * 
  */
 Component::Component (
-	Vector2f position, 
-	PrimitiveType type, 
-	string text
+	Vector2f position,
+	PrimitiveType type,
+	string text,
+	bool visible,
+	double angle
 ) {
 	this->position = toGrid (position);
 	this->min = position;
 	this->max = position;
 
-	this->angle = 0;
+	this->visible = visible;
+
+	this->setRotation (angle);
 
 	this->buffer = VertexBuffer (type);
 
-	gui::text (this->label, this->position, text);
+	this->label = new Text ();
+
+	config::text (*this->label, this->position, text);
 }
 
 /**
@@ -52,8 +60,12 @@ Component::~Component () {
  * 
  */
 void Component::render (RenderWindow *window) {
-	window->draw (this->label);
-	window->draw (this->buffer);
+	if (this->visible) {
+		if (NULL != this->label) {
+			window->draw (*this->label);
+		}
+		window->draw (this->buffer);
+	}
 }
 
 /**
@@ -64,7 +76,10 @@ void Component::move (double x, double y) {
 
 	this->position.x += x;
 	this->position.y += y;
-	this->label.move (x, y);
+
+	if (NULL != this->label) {
+		this->label->move (x, y);
+	}
 	for (unsigned i = 0; i < this->point.size (); i++) {
 		this->point[i].position.x += x;
 		this->point[i].position.y += y;
@@ -80,12 +95,12 @@ void Component::update () {
 	for (unsigned i = 0; i < this->point.size (); i++) {
 		
 		// Get min y and min x of points
-		min.x = ::min (min.x, point[i].position.x);
-		min.y = ::min (min.y, point[i].position.y);
+		this->min.x = mathematics::min (min.x, point[i].position.x);
+		this->min.y = mathematics::min (min.y, point[i].position.y);
 
 		// Get max y and min x of points
-		max.x = ::max (max.x, point[i].position.x);
-		max.y = ::max (max.y, point[i].position.y);
+		this->max.x = mathematics::max (max.x, point[i].position.x);
+		this->max.y = mathematics::max (max.y, point[i].position.y);
 
 	}
 
@@ -109,10 +124,41 @@ void Component::clear () {
 /**
  * 
  */
+void Component::show () {
+	this->visible = true;
+}
+
+/**
+ * 
+ */
+void Component::hide () {
+	this->visible = false;
+}
+
+/**
+ * 
+ */
+void Component::toggleVisibility () {
+	this->visible = !visible;
+}
+
+/**
+ * 
+ */
+bool Component::isVisible () {
+	return this->visible;
+}
+
+/**
+ * 
+ */
 void Component::setPosition (double x, double y) {
 	toGrid (x, y);
 	this->position = Vector2f (x, y);
-	this->label.setPosition (this->position);
+
+	if (NULL != this->label) {
+		this->label->setPosition (this->position);
+	}
 }
 
 /**
@@ -120,12 +166,21 @@ void Component::setPosition (double x, double y) {
  */
 void Component::setPosition (sf::Vector2f point) {
 	this->position = toGrid (point);
-	this->label.setPosition (this->position);
+
+	if (NULL != this->label) {
+		this->label->setPosition (this->position);
+	}
 }
 
 
 void Component::setLabel (sf::Color color) {
-	this->label.setFillColor (color);	
+	if (NULL == this->label) {
+		this->label = new Text ();
+
+		config::text (*this->label, this->position, string (""));
+	}
+
+	this->label->setFillColor (color);
 }
 
 /**
@@ -135,8 +190,13 @@ void Component::setLabel (
 	string text, 
 	Color color
 ) {
-	this->label.setString (text);
-	this->label.setFillColor (color);
+	if (NULL == this->label) {
+		this->label = new Text ();
+
+		config::text (*this->label, this->position, text);
+	}
+	this->label->setString (text);
+	this->label->setFillColor (color);	
 }
 
 /**
@@ -146,10 +206,23 @@ void Component::setLabel (
 	String text, 
 	Color color
 ) {
-	this->label.setString (text);
-	this->label.setFillColor (color);
+	if (NULL == this->label) {
+		this->label = new Text ();
+
+		config::text (*this->label, this->position, text);
+	}
+
+	this->label->setString (text);
+	this->label->setFillColor (color);
 }
 
+/**
+ * 
+ */
+void Component::removeLabel () {
+	delete this->label;
+	this->label = NULL;
+}
 
 /**
  * 
@@ -656,7 +729,7 @@ bool Component::isInRectangle (sf::Vector2f point) {
  * 
  */
 bool Component::isInCircle (sf::Vector2f point) {
-	double radius = 0.5 * ::min (
+	double radius = 0.5 * mathematics::min (
 		this->max.x - this->min.x, 
 		this->max.y - this->min.y
 	);
@@ -686,7 +759,7 @@ bool Component::click (bool conditionMouseOver) {
 bool Component::left (bool conditionMouseOver) {
 
 	if (conditionMouseOver) {
-		if (canRight (CLICK_TIME_WAIT)) {
+		if (canRight (CLICK_TIME_WAIT_MS)) {
 			restartClick ();
 			return true;
 		}
@@ -701,7 +774,7 @@ bool Component::left (bool conditionMouseOver) {
 bool Component::right (bool conditionMouseOver) {
 
 	if (conditionMouseOver) {
-		if (canLeft (CLICK_TIME_WAIT)) {
+		if (canLeft (CLICK_TIME_WAIT_MS)) {
 			restartClick ();
 			return true;
 		}

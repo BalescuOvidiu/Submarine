@@ -2,24 +2,25 @@
 
 using namespace std;
 using namespace sf;
-using namespace gui;
+using namespace config;
+using namespace mathematics;
 
-// Components list
+/** Components list. */
 #define RADAR       this->component[0]
 #define PANEL_TRACK this->component[1]
 #define SHIP        this->component[2]
 
-// Labels list
+/** Labels list. */
 #define RADAR_GUIDE this->text[0]
 
-// Size, margins... 
+/** Size, margins... */ 
 #define MARGIN                 3.0
 #define RADAR_RADIUS          15.0
 #define RADAR_RADIUS_MINOR    12.0
 #define RADAR_RADIUS_MAJOR     3.0
 #define RADAR_ANGLE_PRECISION 10.0
 
-// Test
+/** Test. */
 #define DISTANCE_SENSOR_MIN   0.0
 #define DISTANCE_SENSOR_MAX 200.0
 
@@ -72,7 +73,7 @@ void Panel::render (RenderWindow *window) {
  *
  */
 void Panel::move (sf::View *view, double x, double y) {
-	gui::move (x, y);
+	config::move (x, y);
 	view->move (x, y);
 }
 
@@ -95,7 +96,7 @@ void Panel::update (RenderWindow *window, View *view) {
 		DISTANCE_SENSOR_MAX
 	);
 
-	// View
+	/** View. */
 	if (Keyboard::isKeyPressed (Keyboard::A)) {
 		this->move (view, -this->speedMoveView, 0.0);
 	}
@@ -109,7 +110,7 @@ void Panel::update (RenderWindow *window, View *view) {
 		this->move (view, 0.0, this->speedMoveView);
 	}
 
-	// Radar
+	/** Radar. */
 	if (DISTANCE_SENSOR_MAX >= distanceOnRadar) {
 		SHIP.setRotation (getAngleInDegrees (
 			RADAR.getPosition (),
@@ -120,15 +121,15 @@ void Panel::update (RenderWindow *window, View *view) {
 
 		if (DISTANCE_SENSOR_MIN <= distanceOnRadar) {
 			RADAR_GUIDE.setString (
-				format (orientation) + S_DEGREES + String("\n") +
-				format (distanceOnRadar) + S_CENTIMETER
+				format (orientation) + SYMBOL_DEGREES + String("\n") +
+				format (distanceOnRadar) + SYMBOL_CENTIMETER
 			);
 			
 		}
 		else {
 			RADAR_GUIDE.setString (
-				format (orientation)  + "\n" + 
-				gui::name
+				format (orientation) + SYMBOL_DEGREES + "\n" + 
+				config::getNameOfApplication ()
 			);
 		}
 	}
@@ -150,7 +151,7 @@ void Panel::add (Component component) {
 void Panel::add (Vector2f position, String string) {
 	this->text.push_back (Text ());
 
-	gui::text (LAST (this->text, 0), position, string);
+	config::text (LAST (this->text, 0), position, string);
 }
 
 /**
@@ -160,7 +161,7 @@ void Panel::load () {
 	RADAR.addCircleWithHole (
 		COLOR_GRID_MINOR,
 		COLOR_LINE,
-		circlePrecision,
+		getCirclePrecision (),
 		RADAR_RADIUS_MINOR,
 		RADAR_RADIUS,
 		RADAR_RADIUS / RADAR_RADIUS_MINOR,
@@ -172,7 +173,7 @@ void Panel::load () {
 	RADAR.addCircle (
 		COLOR_GRID,
 		COLOR_LINE,
-		circlePrecision, 
+		getCirclePrecision (), 
 		RADAR_RADIUS_MAJOR, 
 		RADAR_RADIUS, 
 		RADAR_ANGLE_PRECISION * RADAR_RADIUS_MAJOR,
@@ -188,10 +189,10 @@ void Panel::load () {
 				(+ 1.5 + RADAR_RADIUS) * COS (angle),
 				(- 1.5 - RADAR_RADIUS) * SIN (angle)
 			),
-			std::to_string ( (int)angle)
+			toString ( (int)angle)
 		);
 
-		textCenter (LAST (this->text, 0));
+		textCentered (LAST (this->text, 0));
 	}
 
 	double panelWidth = fromGrid (width) - 2 * RADAR_RADIUS - 4 * MARGIN;
@@ -225,7 +226,7 @@ void Panel::load () {
 	SHIP.addEllipse (
 		COLOR_GRID,
 		COLOR_LINE,
-		circlePrecision,
+		getCirclePrecision (),
 		1.0,
 		2.0 * RADAR_RADIUS / RADAR_RADIUS_MINOR,
 		RADAR_RADIUS / RADAR_RADIUS_MINOR,
@@ -251,7 +252,7 @@ void Panel::load () {
 	);
 	SHIP.update ();
 
-	RADAR_GUIDE.setOrigin (0, 2.5 * grid);
+	RADAR_GUIDE.setOrigin (0, 2.5 * getGrid ());
 }
 
 /**

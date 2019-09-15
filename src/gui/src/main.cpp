@@ -1,26 +1,26 @@
 #include "main.h"
 
 using namespace std;
-using namespace sf;
-using namespace gui;
 
 /**
  * This function check if conditions of exit from
  * applications are true.
  */
 bool checkForExit () {
-	if (gui::exit) {
+	if (config::canExit ()) {
 		return true;
 	}
 
-	// Standard exit
-	if (Keyboard::isKeyPressed (Keyboard::Key::Escape)) {
+	/** Standard exit. */
+	if (sf::Keyboard::isKeyPressed (sf::Keyboard::Escape)) {
+		config::exit ();
 		return true;
 	}
 
-	// Linux stop process style
-	if (Keyboard::isKeyPressed (Keyboard::Key::LControl)) {
-		if (Keyboard::isKeyPressed (Keyboard::Key::C)) {
+	/** Linux stop process style. */
+	if (sf::Keyboard::isKeyPressed (sf::Keyboard::LControl)) {
+		if (sf::Keyboard::isKeyPressed (sf::Keyboard::C)) {
+			config::exit ();
 			return true;
 		}
 	}
@@ -35,39 +35,42 @@ bool checkForExit () {
  */
 int main () {
 
-	// Window
-	RenderWindow window (
-		VideoMode ().getDesktopMode (), 
-		name, 
+	/** Window. */
+	sf::RenderWindow window (
+		sf::VideoMode ().getDesktopMode (), 
+		config::getNameOfApplication (), 
 		sf::Style::Fullscreen
 	);
-	View view (FloatRect (0, 0, width, height));
-	window.setFramerateLimit (FRAME_LIMIT);
+	sf::View view (sf::FloatRect (
+		0, 
+		0, 
+		config::width, 
+		config::height
+	));
+	window.setFramerateLimit (config::getFrameRate ());
 	window.setView (view);
 
-	gui::initialize ();
+	config::initialize ();
 
-	Event event;
-	Panel panel (gui::moveViewSpeed);
+	sf::Event event;
+	Panel panel (config::getMoveViewSpeed ());
 	panel.load ();
 
 	while (window.isOpen ()) {
 
-		// Event
+		/** Event */
 		while (window.pollEvent (event)) {
-			if (event.type == Event::Closed) {
-				gui::exit = true;
+			if (event.type == sf::Event::Closed) {
+				config::exit ();
 			}
 		}
 
-		// Exit
+		/** Exit. */
 		if (checkForExit ()) {
-			LOG ("Execution of " + name + " ends.");
-			gui::log.close ();
 			window.close ();
 		}
 
-		// Draw		
+		/** Draw. */
 		window.clear ();
 
 		panel.render (&window);
@@ -76,5 +79,5 @@ int main () {
 
 		window.display ();
 	}
-	return 0;
+	return EXIT_SUCCESS;
 }
