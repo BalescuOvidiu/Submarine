@@ -1,38 +1,36 @@
 # Submarin
 
-| Proiect la cursul de Robotică |                                           |
-:------------------------|--------------------------------------------------:
-|        
+Oceanele ocupă cel puțin 71% din suprafața planetei și cea mai mare parte a lor e neexplorată. Ideologia pe care se bazează acest submarin este aceea de respecta oceanele și de a le explora. PET-ul este o masă plastică folosită de obicei la fabricarea diverselor ambalaje, care în cele din urmă ajung gunoi și contaminând apa cu microplastic. Totuși aceasta poate fi folosită pentru a proteja câteva circuite de apa rece a mării. Iar o structură metalică, poate oferi o rezistență deosebită.
 
-### Universitatea București
+Carcasa submarinul este construită din 4 sticle de PET lipite între ele și vopsită cu două straturi de lac de lemn. Structura interioară a submarinului se bazează pe un schelet metalic construit din plăcuțe de îmbinare, colțare și capace metalice. de asemnea fiecare compartiment a structurii are o carcasă proprie de PET Componentele electronice, motoarele și senzorii, sunt controlate cu o placă de dezvoltare Arduino Nano. Submarinul a fost testat de câteva ori în lacul Tineretului din București, un video [aici](https://www.youtube.com/watch?v=reCAACpi1qQ|alt=octocat).
 
-#### Facultatea de Matematică și Informatică
-
-**Profesor coordonator**: Bardezi Andrei  
-**Laborant**: Ivona Octavia  
-**Student**: Bălescu Ovidiu-Gheorghe              | ![Pe apă](https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/onWater.jpg "În Parcul Tineretului pe lac") |
+![Pe apă](https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/onWater.jpg "În Parcul Tineretului pe lac")
 
 
-Proiect la cursul de Robotică, reprezentat de un submarin controlabil printr-o telecomandă, încă în dezvoltare. Acesta are ca scop de a încuraja reciclarea și explorarea oceanelor.
-Oceanele ocupă aproximativ 71% din suprafața planetei și cea mai mare parte a lor e neexplorată.
-Carcasa submarinul este construită din 4 sticle de PET susținută de un schelet metalic și acoperită cu lac de lemn. Aripile și cârmele sunt construite din tabla de la conserve, acoperite cu PET. Toate acestea sunt înfășurate în bandă adezivă și acoperite cu lac de lemn.
-<a href="https://www.youtube.com/watch?v=reCAACpi1qQ">Video</a>
+## Proiect la cursul de Robotică
+
+| Universitatea București | Facultatea de Matematică și Informatică |
+|:------------------------|:----------------------------------------|
+| Profesor coordonator    | Bardezi Andrei                          |  
+| Laborant                | Ivona Octavia                           |
+| Student                 | Bălescu Ovidiu-Gheorghe                 |
+
 
 ## Caracteristici generale
 
-|  Caracteristici generale  |                |
-|------------------------|--------------------------------------------------|
-| Nume                             | UB-FMI-212                                                                                                              |
-| Deplasament                      | 2.5 kg                                                                                                                  |
-| Lungime                          | 95.0 cm                                                                                                                 |
-| Lățime                           | 9 cm                                                                                                                    |
-| Pescaj                           | 5 cm                                                                                                                    |
-| Propulsie                        | 1 Motor HPCB 6 V 1 Elice cu 7 lame                                                                                      |
-| Viteză                           | 5.2 noduri (9.7 km / h)                                                                                                 |
-| Automonie                        | 5 ore                                                                                                                   |
-| Adâncime operațională            | 5 metri                                                                                                                 |
-| Sensori și <br> sisteme de procesare | 1 placă de dezvoltare Arduino Nano <br>1 receptor infra-roșu pentru telecomandă <br> 1 senzor de umiditate pentru detectarea scurgeriilor |
-| Alimentare                       | 4 acumulatori 1.2 V, 2100 mAh <br> 8 acumulatori 1.6 V, 1500 mAh                                                                     |
+| Nume 	| UB-FMI-212 	|
+|:-----------------|:-------------------------|
+| Cost 	| 457.5 RON 	|
+| Deplasament 	| 2.5 kg 	|
+| Lungime 	| 95.0 cm 	|
+| Lățime 	| 9 cm 	|
+| Pescaj 	| 5 cm 	|
+| Propulsie 	| 1 Motor HPCB 6 V 1 Elice cu 7 lame 	|
+| Viteză 	| 5.2 noduri (9.7 km / h) 	|
+| Automonie 	| 5 ore 	|
+| Adâncime operațională 	| 5 metri 	|
+| Sensori și  sisteme de procesare 	| 1 placă de dezvoltare Arduino Nano <br> 1 receptor infra-roșu pentru telecomandă <br> 1 senzor de umiditate pentru detectarea scurgeriilor 	|
+| Alimentare 	| 4 acumulatori 1.2 V, 2100 mAh <br> 8 acumulatori 1.6 V, 1500 mAh 	|
 
 
 
