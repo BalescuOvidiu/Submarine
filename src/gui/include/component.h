@@ -32,6 +32,7 @@ class Component {
 		/** Update methods. */
 		void render (sf::RenderWindow *window);
 		void move (double x, double y);
+		void movePoints (double x, double y);
 		void update ();
 		void clear ();
 

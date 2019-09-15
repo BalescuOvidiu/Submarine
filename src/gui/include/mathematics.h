@@ -30,6 +30,9 @@
 #define SYMBOL_KM_PER_HOUR   String (" km/h")
 #define SYMBOL_M_PER_SECOND  String (" m/s")
 
+#define SYMBOL_K             string ("k")
+#define SYMBOL_DECIMAL       string (".")
+
 /** Math constants. */
 #define PI              3.141592653589793
 #define EULER           2.718281828459045
@@ -37,6 +40,7 @@
 /** Position macros. */
 #define MID(a, b)       0.5 * (a + b)
 #define MIDDLE(a, b)    sf::Vector2f (MID (a.x, b.x), MID (a.y, b.y))
+#define ORIGIN          sf::Vector2f (0, 0)
 
 /** List macros. */
 #define LAST(vector, i) vector[vector.size () - i - 1]
@@ -45,6 +49,11 @@
 #define SQUARE(a)       (a) * (a)
 #define DIST(a, b)		(SQUARE (a.x - b.x) + SQUARE (a.y - b.y))
 #define DISTANCE(a, b)  sqrt (DIST (a, b))
+
+/** Percents. */
+#define PERCENT_MAX 100
+#define PERCENT_MID  50
+#define PERCENT_MIN   0
 
 /** Angles macross. */
 #define ANGLE_MIN      0.0

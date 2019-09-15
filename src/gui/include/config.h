@@ -31,9 +31,11 @@
 #define COLOR_GRID_MINOR  sf::Color (48, 48, 48)
 #define COLOR_GRID        sf::Color (64, 64, 64)
 #define COLOR_LINE        sf::Color (128, 128, 128)
-#define COLOR_TEXT        sf::Color (232, 232, 255)                       
+#define COLOR_TEXT        sf::Color (232, 232, 255) 
+#define COLOR_WARNING     sf::Color (216, 128, 32)                      
 
-#define LOG(text)  gui::logMessage (text);
+#define MOUSE_TIMEOUT 320
+#define KEY_TIMEOUT    20
 
 /**
  * This namespace contains data of screen, grid, font, position
@@ -50,12 +52,6 @@
  */
 namespace config {
 
-	/** Variables of screen. */
-	extern const unsigned width;
-	extern const unsigned height;
-	extern const double grid;
-	extern sf::Vector2f positionOfView;
-
 	/** Precision. */
 	void exit ();
 	bool canExit ();
@@ -64,13 +60,18 @@ namespace config {
 	unsigned getDecimalsNumber ();
 
 	/** Communications. */
+	bool writeConfigFile ();
 	std::string getNameOfApplication ();
 
 	double getGrid ();
 	unsigned getWidth ();
 	unsigned getWidth (short percent);
+	unsigned getWidthGrid ();
+	unsigned getWidthGrid (short percent);
 	unsigned getHeight ();
 	unsigned getHeight (short percent);
+	unsigned getHeightGrid ();
+	unsigned getHeightGrid (short percent);
 	unsigned getFrameRate ();
 
 	void initialize ();
@@ -97,6 +98,7 @@ namespace config {
 	void restartClick ();
 
 	/** Functions used to get mouse coordinate. */
+	sf::Vector2f mousePositionOnGrid ();
 	sf::Vector2f mousePosition ();
 	sf::Vector2f mouseZoomed ();
 
@@ -155,7 +157,7 @@ namespace config {
 	 */
 	template <class T>
 	T toGrid (T a) {
-		return a * grid;
+		return a * getGrid ();
 	}
 
 	/**
@@ -166,8 +168,8 @@ namespace config {
 	 */
 	template <class T>
 	void toGrid (T& x, T& y) {
-		x *= grid;
-		y *= grid;
+		x *=  config::getGrid ();
+		y *=  config::getGrid ();
 	}
 
 	/**
@@ -178,8 +180,8 @@ namespace config {
 	 */
 	template <class T>
 	void fromGrid (T& x, T& y) {
-		x /= grid;
-		y /= grid;
+		x /= config::getGrid ();
+		y /= config::getGrid ();
 	}
 
 	/**
@@ -191,7 +193,7 @@ namespace config {
 	 */
 	template <class T>
 	T fromGrid (T a) {
-		return a / grid;
+		return a / config::getGrid ();
 	}
 }
 
