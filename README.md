@@ -2,9 +2,12 @@
 
 ## Proiect la cursul de Robotică
 #### Universitatea București - Facultatea de Matematică și Informatică
-**Profesor coordonator**: Bardezi Andrei
-**Laborant**: Ivona Octavia
-**Student**: Bălescu Ovidiu-Gheorghe
+
+**Profesor coordonator**: Bardezi Andrei  
+**Laborant**: Ivona Octavia  
+**Student**: Bălescu Ovidiu-Gheorghe  
+
+
 <table>
   <tr>
     <td valign="top" width="50%">
