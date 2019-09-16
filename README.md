@@ -37,7 +37,7 @@ Carcasa submarinul este construită din 4 sticle de PET lipite între ele și es
 | 4 | Alimentare cârme | 9 | Control hidroplane față |
 | 5 | Balast | 10 | Stabilizator |
 
-![](https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/parts.png)
+![](img/parts.png?raw=true)
 
 
 ## Circuit electric
