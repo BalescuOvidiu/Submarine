@@ -1,0 +1,23 @@
+h1, h2, h3, h4, h5 ,h6 {
+	font-family: Verdana;
+	margin-top: 1.5em;
+}
+p {
+	font-family: Times News Roman;
+	font-size: 1em;
+}
+img {
+	max-width: 100%;
+}
+
+table {
+	border-collapse: collapse;
+	font-family: Verdana;
+	width: 100%;
+}
+
+table td, table th {
+	border: 1px solid #777777;
+	border-collapse: collapse;
+	padding: 0.25em;
+}
