@@ -1,23 +1,45 @@
-h1, h2, h3, h4, h5 ,h6 {
+body {
+	color: #111111;
 	font-family: Verdana;
+}
+
+a {
+	color: #111111;
+	text-decoration: none;
+}
+
+h1 {
+	color: #333333;
 	margin-top: 1.5em;
 }
-p {
-	font-family: Times News Roman;
-	font-size: 1em;
+h2, h3, h4, h5 ,h6 {
+	color: #333333;
+	font-size: 1.2em;
+	margin-top: 1.5em;
 }
+
+p {
+	font-size: 1em;
+	text-indent: 1em;
+}
+
 img {
+	margin-left: -1em;
+	min-width: 100%;
 	max-width: 100%;
 }
 
 table {
 	border-collapse: collapse;
-	font-family: Verdana;
-	width: 100%;
+	font-family: Arial;
+	min-width: 100%;
 }
-
 table td, table th {
-	border: 1px solid #777777;
+	border: 1px solid #CCCCCC;
 	border-collapse: collapse;
 	padding: 0.25em;
+}
+
+.odd {
+	background-color: #F7F7F7;
 }
