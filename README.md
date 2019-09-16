@@ -36,12 +36,12 @@ Carcasa submarinul este construită din 4 sticle de PET lipite între ele și vo
 5. Camera bateriilor,
 6. Pernă de aer.
 
-![Pe lac](https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/parts.png)
+![](https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/parts.png)
 
 
 ## Circuit electric
 
-![Schema](https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/schem.png)
+![](https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/schem.png)
 
 
 ## Dezvoltare
@@ -59,7 +59,7 @@ __Viitoare implementări:__
 4. Implementarea unei device de orientar,
 5. Adăugarea unui generator din cupru și aluminiu care să încarce acumulatorii.
 
-![Interior](https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/inside.jpg)
+![](https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/inside.jpg)
 
 
 ## Proiect la cursul de Introducere în Robotică, anul universitar 2018 - 2019
