@@ -5,16 +5,16 @@
 
 1. <a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#despre-proiect">
 Despre proiect
-</a>
+</a><br>
 2. <a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#principiu-de-construire">
 Principiu de construire
-</a>
-3. <a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#caracteristici-generale">Caracteristici generale</a>
-4. <a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#compartimente">Compartimente</a>
-5. <a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#circuit-electric">Circuit electric</a>
-6. <a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#dezvoltare">Dezvoltare</a>
-7. <a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#unități">Unități</a>
-8. <a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#rezultate">Rezultate</a>
+</a><br>
+3. <a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#caracteristici-generale">Caracteristici generale</a><br>
+4. <a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#compartimente">Compartimente</a><br>
+5. <a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#circuit-electric">Circuit electric</a><br>
+6. <a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#dezvoltare">Dezvoltare</a><br>
+7. <a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#unități">Unități</a><br>
+8. <a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#rezultate">Rezultate</a><br>
 
 
 ## Despre proiect
