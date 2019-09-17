@@ -3,18 +3,14 @@
 
 ## Cuprins
 
-1. <a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#despre-proiect">
-Despre proiect
-</a><br>
-2. <a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#principiu-de-construire">
-Principiu de construire
-</a><br>
-3. <a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#caracteristici-generale">Caracteristici generale</a><br>
-4. <a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#compartimente">Compartimente</a><br>
-5. <a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#circuit-electric">Circuit electric</a><br>
-6. <a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#dezvoltare">Dezvoltare</a><br>
-7. <a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#unități">Unități</a><br>
-8. <a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#rezultate">Rezultate</a><br>
+1. [Despre proiect](https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#despre-proiect)<br>
+2. [Principiu de construire](https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#principiu-de-construire)<br>
+3. [Caracteristici generale](https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#caracteristici-generale)<br>
+4. [Compartimente](https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#compartimente)<br>
+5. [Circuit electric](https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#circuit-electric)<br>
+6. [Dezvoltare](https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#dezvoltare)<br>
+7. [Unități](https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#unități)<br>
+8. [Rezultate](https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#rezultate)<br>
 
 
 ## Despre proiect
@@ -32,7 +28,7 @@ PET-ul este o masă plastică folosită de obicei la fabricarea diverselor ambal
 Submarinul a fost testat de câteva ori în lacul Tineretului din București. Click <a href = "https://www.youtube.com/watch?v=reCAACpi1qQ" >aici</a> pentru a vedea video-ul. 
 </p>
 
-<img src = "https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/onWater.jpg"/>
+![](https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/onWater.jpg)
 
 
 ## Principiu de construire
