@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="submarin-dronă---clasa-metere">Submarin dronă - Clasa Metere</h1>
+<h2 id="cuprins">Cuprins</h2>
+<ol type="1">
+<li><a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#despre-proiect"> Despre proiect </a></li>
+<li><a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#principiu-de-construire"> Principiu de construire </a></li>
+<li><a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#caracteristici-generale">Caracteristici generale</a></li>
+<li><a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#compartimente">Compartimente</a></li>
+<li><a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#circuit-electric">Circuit electric</a></li>
+<li><a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#dezvoltare">Dezvoltare</a></li>
+<li><a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#unități">Unități</a></li>
+<li><a href="https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#rezultate">Rezultate</a></li>
+</ol>
+<h2 id="despre-proiect">Despre proiect</h2>
+<p align="justify">
+Oceanele ocupă cel puțin 71% din suprafața planetei și cea mai mare parte a lor e neexplorată. Ideologia pe care se bazează această clasă de submarin este aceea de a respecta oceanele și de a le explora.
+</p>
+<p align="justify">
+O dronă, este un vehicul căruia îi lipsește pilotul uman, fiind ghidat fie de către un pilot automat digital aflat la bordul său, fie prin telecomandă de la un centru de control de la sol sau care este situat în alt vehicul.
+</p>
+<p align="justify">
+PET-ul este o masă plastică folosită de obicei la fabricarea diverselor ambalaje, care în cele din urmă ajung gunoi și contaminează apa cu microplastic. Totuși aceasta poate fi folosită pentru a proteja câteva circuite de apa rece a mării. Iar o structură metalică, poate oferi o rezistență deosebită.
+</p>
+<p align="justify">
+Submarinul a fost testat de câteva ori în lacul Tineretului din București. Click <a href = "https://www.youtube.com/watch?v=reCAACpi1qQ" >aici</a> pentru a vedea video-ul.
+</p>
+<p><img src = "https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/onWater.jpg"/></p>
+<h2 id="principiu-de-construire">Principiu de construire</h2>
+<p align="justify">
+Denumirea clasei vine de la metal și polietilenă tereftalată (PET). Principiul de construire constă în obținerea unei construcții din metal și plastic cu proprietăți similare a unei construcții complet făcută din metal. Oțelul e rezistent, dar greu și oxidabil. Polietilena tereftalată e ușor, flexibil, rezistent la apă, dar fragil. Carcasa submarinul este construită din 4 sticle de PET lipite între ele și este vopsită cu două straturi de lac de lemn. Structura interioară a submarinului se bazează pe un schelet metalic construit din plăcuțe de îmbinare, colțare și capace metalice. De asemenea fiecare compartiment a structurii are o carcasă proprie de PET.
+</p>
+<h2 id="caracteristici-generale">Caracteristici generale</h2>
+<table style="width:81%;">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 54%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Nume clasă</th>
+<th style="text-align: left;">Metere</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Cost unitate</td>
+<td style="text-align: left;">457.5 RON</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Deplasament</td>
+<td style="text-align: left;">2.5 kg</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Lungime</td>
+<td style="text-align: left;">95.0 cm</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lățime</td>
+<td style="text-align: left;">9.0 cm</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pescaj</td>
+<td style="text-align: left;">5.0 cm</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Propulsie</td>
+<td style="text-align: left;">1 motor HPCB 6 V <br> 1 elice cu 7 lame</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Viteză</td>
+<td style="text-align: left;">5.2 noduri (9.7 km / h)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Autonomie</td>
+<td style="text-align: left;">5:00 ore</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adâncime operațională</td>
+<td style="text-align: left;">5.0 metri</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sensori și sisteme de procesare</td>
+<td style="text-align: left;">1 placă de dezvoltare Arduino Nano <br> 1 receptor infra-roșu pentru telecomandă <br> 1 senzor de umiditate pentru detectarea scurgeriilor</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Alimentare</td>
+<td style="text-align: left;">4 acumulatori 1.2 V, 2100 mAh <br> 8 acumulatori 1.6 V, 1500 mAh</td>
+</tr>
+</tbody>
+</table>
+<h2 id="compartimente">Compartimente</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">#</th>
+<th style="text-align: left;">Compartiment</th>
+<th style="text-align: right;">#</th>
+<th style="text-align: left;">Compartiment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Camera propulsiei</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">Alimentare Arduino și sensori</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Control hidroplane spate</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">Arduino și sensori</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Alimentare Hidroplane</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">Corpul de navigare</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Alimentare cârme</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">Control hidroplane față</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Balast</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">Stabilizator</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/parts.png?raw=true" />
+</figure>
+<h2 id="circuit-electric">Circuit electric</h2>
+<p align="justify">
+Componentele electronice, motoarele și senzorii, sunt controlate cu o placă de dezvoltare Arduino Nano V3. Toate aceastea sunt alimentate cu acumulatori de tip AA, cu o tensiune de 1.2 V sau 1.6 V, grupate în serie câte patru. Placa arduino și fiecare motor au o sursă de alimentare proprie. Senzorii sunt alimentați la 3.3 V sau 5 V la placa Arduino.
+</p>
+<figure>
+<img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/schem.png" />
+</figure>
+<h2 id="dezvoltare">Dezvoltare</h2>
+<p align="justify">
+Momentan s-au adunat 120 de ore de lucru la construirea acestui prototip: curățarea sticlelor modelarea carcasei, cârmelor și hidroplanelor, construirea scheletului, asamblarea și conectarea componentelor electronice și de asemenea dezvoltarea software. Acesta este încă în dezvoltare, urmând să aibe implementări și îmbunătățiri ulterioare.
+</p>
+<p><strong>Viitoare implementări:</strong></p>
+<ol type="1">
+<li>Implementarea balastului,</li>
+<li>Implementarea unei device de orientare,</li>
+<li>Adăugarea unui generator din cupru și aluminiu care să încarce acumulatorii.</li>
+</ol>
+<figure>
+<img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/inside.jpg" />
+</figure>
+<h2 id="unități">Unități</h2>
+<p align="justify">
+Documentația unei clase de submarin conține și un tabel cu unitățiile construite. În momentul de față se urmărește doar dezvoltarea unei singure unități, proiectul având mai mult un scop educativ.
+</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">#</th>
+<th style="text-align: left;">Nume</th>
+<th style="text-align: left;">Dezvoltator</th>
+<th style="text-align: left;">Primul test</th>
+<th style="text-align: left;">Stare</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ME - 212</td>
+<td style="text-align: left;">Delfinul</td>
+<td style="text-align: left;">Bălescu Ovidiu-Gheorghe</td>
+<td style="text-align: left;">23 Aprilie 2019</td>
+<td style="text-align: left;">În dezvoltare</td>
+</tr>
+</tbody>
+</table>
+<h2 id="rezultate">Rezultate</h2>
+<h4 id="proiect-la-cursul-de-introducere-în-robotică-anul-universitar-2018---2019">Proiect la cursul de Introducere în Robotică, anul universitar 2018 - 2019</h4>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Universitatea București</th>
+<th style="text-align: left;">Facultatea de Matematică și Informatică</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Profesor coordonator</td>
+<td style="text-align: left;">Dumitriu Andrei</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Laborant</td>
+<td style="text-align: left;">Ivona Octavia</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Student</td>
+<td style="text-align: left;">Bălescu Ovidiu-Gheorghe</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Notă evaluare</td>
+<td style="text-align: left;">10 / 10</td>
+</tr>
+</tbody>
+</table>
+<h4 id="proiect-prezentat-la-sesiunea-de-comunicări-științifice-studențești---2019">Proiect prezentat la Sesiunea de comunicări Științifice Studențești - 2019</h4>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Universitatea București</th>
+<th style="text-align: left;">Facultatea de Matematică și Informatică</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Profesor coordonator</td>
+<td style="text-align: left;">Dumitriu Andrei</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Student</td>
+<td style="text-align: left;">Bălescu Ovidiu-Gheorghe</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Loc</td>
+<td style="text-align: left;">II</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
