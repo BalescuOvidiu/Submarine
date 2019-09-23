@@ -53,7 +53,7 @@ Carcasa submarinul este construită din 4 sticle de PET lipite între ele și es
 | Autonomie   | 4:00 h   |
 | Adâncime operațională   | 6.5 m (21.3 ft)   |
 | Rază acoperire comunicații | 17.0 m (55.7 ft) |
-| Sensori și  sisteme de procesare  | 1 placă de dezvoltare Arduino Nano <br> 1 receptor infra-roșu pentru telecomandă <br> 1 senzor de umiditate pentru detectarea scurgeriilor  |
+| Sensori și  sisteme de procesare  | 1 placă de dezvoltare Arduino Nano <br> 1 receptor infraroșu pentru telecomandă <br> 1 senzor de umiditate pentru detectarea scurgeriilor  |
 | Alimentare  | 8 acumulatori 1.2 V, 2100 mAh <br> 19 acumulatori 1.6 V, 1500 mAh  |
 
 
@@ -82,7 +82,7 @@ Componentele electronice, motoarele și senzorii, sunt controlate cu o placă de
 ## Dezvoltare
 
 <p align = "justify">
-Momentan s-au adunat 140 de ore de lucru la construirea acestui prototip: curățarea sticlelor modelarea carcasei, cârmelor și hidroplanelor, construirea scheletului, asamblarea și conectarea componentelor electronice și de asemenea dezvoltarea software. Acesta este încă în dezvoltare, urmând să aibe implementări și îmbunătățiri ulterioare.
+Momentan s-au adunat 140 de ore de lucru la construirea acestui prototip: curățarea sticlelor de PET, modelarea carcasei, cârmelor și hidroplanelor, construirea scheletului, asamblarea și conectarea componentelor electronice și de asemenea dezvoltarea software. Acesta este încă în dezvoltare, urmând să aibe implementări și îmbunătățiri ulterioare.
 </p>
 
 __Viitoare implementări:__
