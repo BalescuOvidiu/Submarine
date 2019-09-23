@@ -19,18 +19,19 @@
 #define PIN_RUDDER_TOP      3
 #define PIN_PLANE_LEFT      4
 #define PIN_PLANE_RIGHT     5
+#define PIN_PLANE_FRONT     6
 
 // Pins of motors
-#define PIN_PROPELLER_A     6
-#define PIN_PROPELLER_B     7
-#define PIN_BALLAST_A       8
-#define PIN_BALLAST_B       9
+#define PIN_PROPELLER_A     7
+#define PIN_PROPELLER_B     8
+#define PIN_BALLAST_A       9
+#define PIN_BALLAST_B       10
 
 // Pins of sensors
 #define PIN_SENSOR_HUMIDITY A1
 
 // Pin of infra-red communication
-#define PIN_IR_RECEIVER 10
+#define PIN_IR_RECEIVER 11
 
 // Codes used for propeller speed.
 #define C_FASTER 0xE0E0A25D
