@@ -73,7 +73,7 @@ Carcasa submarinul este construită din 4 sticle de PET lipite între ele și es
 ## Circuit electric
 
 <p align = "justify">
-Componentele electronice, motoarele și senzorii, sunt controlate cu o placă de dezvoltare Arduino Nano V3. Toate aceastea sunt alimentate cu acumulatori de tip AA, cu o tensiune de 1.2 V sau 1.6 V, grupate în serie câte patru. Placa arduino și fiecare motor au o sursă de alimentare proprie. Senzorii sunt alimentați la 3.3 V sau 5 V, la placa Arduino.
+Componentele electronice, motoarele și senzorii, sunt controlate cu o placă de dezvoltare Arduino Nano V3. Toate aceastea sunt alimentate cu acumulatori de tip AA, cu o tensiune de 1.2 V sau 1.6 V, grupate în serie, câte patru. Placa arduino și fiecare motor au o sursă de alimentare proprie. Senzorii sunt alimentați la 3.3 V sau 5 V, la placa Arduino.
 </p>
 
 ![](https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/schem.png)
