@@ -52,7 +52,7 @@ Carcasa submarinul este construită din 4 sticle de PET lipite între ele și es
 | Viteză  | 5.2 noduri (9.7 km / h)   |
 | Autonomie   | 4:00 h   |
 | Adâncime operațională   | 6.5 m (21.3 ft)   |
-| Rază acoperire comunicații | 18.0 m |
+| Rază acoperire comunicații | 17.0 m |
 | Sensori și  sisteme de procesare  | 1 placă de dezvoltare Arduino Nano <br> 1 receptor infra-roșu pentru telecomandă <br> 1 senzor de umiditate pentru detectarea scurgeriilor  |
 | Alimentare  | 8 acumulatori 1.2 V, 2100 mAh <br> 19 acumulatori 1.6 V, 1500 mAh  |
 
