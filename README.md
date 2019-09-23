@@ -3,14 +3,14 @@
 
 ## Cuprins
 
-1. [Despre proiect](https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#despre-proiect)<br>
-2. [Principiu de construire](https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#principiu-de-construire)<br>
-3. [Caracteristici generale](https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#caracteristici-generale)<br>
-4. [Compartimente](https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#compartimente)<br>
-5. [Circuit electric](https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#circuit-electric)<br>
-6. [Dezvoltare](https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#dezvoltare)<br>
-7. [Unități](https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#unități)<br>
-8. [Rezultate](https://github.com/BalescuOvidiu/Submarine/blob/master/README.md#rezultate)<br>
+1. [Despre proiect](https://github.com/BalescuOvidiu/Submarine#despre-proiect)<br>
+2. [Principiu de construire](https://github.com/BalescuOvidiu/Submarine#principiu-de-construire)<br>
+3. [Caracteristici generale](https://github.com/BalescuOvidiu/Submarine#caracteristici-generale)<br>
+4. [Compartimente](https://github.com/BalescuOvidiu/Submarine#compartimente)<br>
+5. [Circuit electric](https://github.com/BalescuOvidiu/Submarine#circuit-electric)<br>
+6. [Dezvoltare](https://github.com/BalescuOvidiu/Submarine#dezvoltare)<br>
+7. [Unități](https://github.com/BalescuOvidiu/Submarine#unități)<br>
+8. [Rezultate](https://github.com/BalescuOvidiu/Submarine#rezultate)<br>
 
 
 ## Despre proiect
@@ -50,10 +50,10 @@ Carcasa submarinul este construită din 4 sticle de PET lipite între ele și es
 | Pescaj  | 5.0 cm  |
 | Propulsie   | 1 motor HPCB 6 V <br> 1 elice cu 7 lame   |
 | Viteză  | 5.2 noduri (9.7 km / h)   |
-| Autonomie   | 5:00 ore   |
-| Adâncime operațională   | 5.0 metri   |
+| Autonomie   | 4:00 h   |
+| Adâncime operațională   | 6.5 metri   |
 | Sensori și  sisteme de procesare  | 1 placă de dezvoltare Arduino Nano <br> 1 receptor infra-roșu pentru telecomandă <br> 1 senzor de umiditate pentru detectarea scurgeriilor  |
-| Alimentare  | 4 acumulatori 1.2 V, 2100 mAh <br> 8 acumulatori 1.6 V, 1500 mAh  |
+| Alimentare  | 8 acumulatori 1.2 V, 2100 mAh <br> 19 acumulatori 1.6 V, 1500 mAh  |
 
 
 ## Compartimente
@@ -61,9 +61,9 @@ Carcasa submarinul este construită din 4 sticle de PET lipite între ele și es
 |#|Compartiment|#|Compartiment|
 |-------------:|:---------------------|---------------:|:---------------------|
 | 1 | Camera propulsiei | 6 | Alimentare Arduino și sensori |
-| 2 | Control hidroplane spate | 7 | Arduino și sensori |
-| 3 | Alimentare Hidroplane | 8 | Corpul de navigare |
-| 4 | Alimentare cârme | 9 | Control hidroplane față |
+| 2 | Transmisia către hidroplane și cârme | 7 | Arduino și sensori |
+| 3 | Compartimentul servomotoarelor | 8 | Corpul de navigare |
+| 4 | Alimentare servomotoare | 9 | Control hidroplane față |
 | 5 | Balast | 10 | Stabilizator |
 
 ![](https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/parts.png?raw=true)
@@ -81,14 +81,15 @@ Componentele electronice, motoarele și senzorii, sunt controlate cu o placă de
 ## Dezvoltare
 
 <p align = "justify">
-Momentan s-au adunat 120 de ore de lucru la construirea acestui prototip: curățarea sticlelor modelarea carcasei, cârmelor și hidroplanelor, construirea scheletului, asamblarea și conectarea componentelor electronice și de asemenea dezvoltarea software. Acesta este încă în dezvoltare, urmând să aibe implementări și îmbunătățiri ulterioare.
+Momentan s-au adunat 140 de ore de lucru la construirea acestui prototip: curățarea sticlelor modelarea carcasei, cârmelor și hidroplanelor, construirea scheletului, asamblarea și conectarea componentelor electronice și de asemenea dezvoltarea software. Acesta este încă în dezvoltare, urmând să aibe implementări și îmbunătățiri ulterioare.
 </p>
 
 __Viitoare implementări:__
 
-1. Implementarea balastului,
-2. Implementarea unei device de orientare,
-3. Adăugarea unui generator din cupru și aluminiu care să încarce acumulatorii.
+1. Instalarea rezervorului pentru balast,
+2. Implementarea unui radar,
+3. Implementarea unui sistem de orientare,
+4. Adăugarea unui generator din cupru și aluminiu care să încarce acumulatorii.
 
 ![](https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/inside.jpg)
 
@@ -99,9 +100,9 @@ __Viitoare implementări:__
 Documentația unei clase de submarin conține și un tabel cu unitățiile construite. În momentul de față proiectul e un experiment și se urmărește doar dezvoltarea unei singure unități.
 </p>
 
-| # | Nume | Dezvoltator | Primul test | Stare |
-|:-|:------|:-----------|:-------------------------------|:-------------------|
-| ME - 212 | Delfinul | Bălescu Ovidiu-Gheorghe | 23 Aprilie 2019 | În dezvoltare |
+| # | Nume | Dezvoltator | Primul test | Prima versiune | Stare |
+|:-|:------|:-----------|:-------------------------------|:---------|:-------------------|
+| ME - 212 | Delfinul | Bălescu Ovidiu-Gheorghe | 23 Aprilie 2019 | 8 Octombrie 2019 | În dezvoltare |
 
 
 ## Rezultate
