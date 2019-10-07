@@ -73,7 +73,7 @@ Carcasa submarinul este construită din 4 sticle de PET lipite între ele și es
 ## Circuit electric
 
 <p align = "justify">
-Componentele electronice, motoarele și senzorii, sunt controlate cu o placă de dezvoltare Arduino Nano V3. Toate aceastea sunt alimentate cu acumulatori de tip AA, cu o tensiune de 1.2 V sau 1.6 V, grupați în serie, câte patru. Placa arduino și fiecare motor au o sursă de alimentare proprie. Senzorii sunt alimentați la 3.3 V sau 5 V, la placa Arduino.
+Componentele electronice, motoarele și senzorii, sunt controlate cu o placă de dezvoltare Arduino Nano V3. Toate aceastea sunt alimentate cu acumulatori de tip AA, cu o tensiune de 1.2 V sau 1.6 V, grupați în serie, câte patru. Placa arduino și fiecare motor au o sursă de alimentare proprie. Senzorii sunt alimentați la o tensiune de 3.3 V sau 5 V, la placa Arduino.
 </p>
 
 ![](https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/blueprints/img/schematic.png)
@@ -85,12 +85,13 @@ Componentele electronice, motoarele și senzorii, sunt controlate cu o placă de
 Momentan s-au adunat 140 de ore de lucru la construirea acestui prototip: curățarea sticlelor de PET, modelarea carcasei, cârmelor și hidroplanelor, construirea scheletului, asamblarea și conectarea componentelor electronice și de asemenea dezvoltarea software. Acesta este încă în dezvoltare, urmând să aibe implementări și îmbunătățiri ulterioare.
 </p>
 
-__Viitoare implementări:__
+#### Viitoare implementări:
 
 1. Instalarea rezervorului pentru balast,
-2. Implementarea unui radar,
-3. Implementarea unui sistem de orientare,
-4. Adăugarea unui generator din cupru și aluminiu care să încarce acumulatorii.
+2. Instalarea comunicațiilor WiFi,
+3. Implementarea unui radar,
+4. Implementarea unui sistem de orientare,
+5. Adăugarea unui generator din cupru și aluminiu care să încarce acumulatorii.
 
 ![](https://raw.githubusercontent.com/BalescuOvidiu/Submarin/master/img/inside.jpg)
 
@@ -98,12 +99,12 @@ __Viitoare implementări:__
 ## Unități
 
 <p align = "justify">
-Documentația unei clase de submarin conține și un tabel cu unitățiile construite. În momentul de față proiectul e un experiment și se urmărește doar dezvoltarea unei singure unități.
+Documentația unei clase de submarin conține și un tabel cu unitățiile construite. În momentul de față proiectul e experimental și se urmărește doar dezvoltarea unei singure unități.
 </p>
 
 | # | Nume | Dezvoltator | Primul test | Prima versiune | Stare |
 |:----|:------|:-----------|:-------------------------------|:---------|:-------------------|
-| ME - 212 | Delfinul | Bălescu Ovidiu-Gheorghe | 23 Aprilie 2019 | 8 Octombrie 2019 | În dezvoltare |
+| ME - 212 | Delfinul | Bălescu Ovidiu-Gheorghe | 23 Aprilie 2019 | 8 Noiembrie 2019 | În dezvoltare |
 
 
 ## Rezultate
