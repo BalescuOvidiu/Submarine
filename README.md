@@ -102,9 +102,9 @@ Momentan s-au adunat 140 de ore de lucru la construirea acestui prototip: cură�
 Documentația unei clase de submarin conține și un tabel cu unitățiile construite. În momentul de față proiectul e experimental și se urmărește doar dezvoltarea unei singure unități.
 </p>
 
-| # | Nume | Dezvoltator | Primul test | Prima versiune | Stare |
-|:----|:------|:-----------|:-------------------------------|:---------|:-------------------|
-| ME - 212 | Delfinul | Bălescu Ovidiu-Gheorghe | 23 Aprilie 2019 | 8 Noiembrie 2019 | În dezvoltare |
+| # | Nume | Dezvoltator | Primul test | Stare |
+|:----|:------|:-----------|:-------------------------------|:-------------------|
+| ME - 212 | Delfinul | Bălescu Ovidiu-Gheorghe | 23 Aprilie 2019 | În dezvoltare |
 
 
 ## Rezultate
