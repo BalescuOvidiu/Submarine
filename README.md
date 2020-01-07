@@ -121,8 +121,8 @@ Documentația unei clase de submarin conține și un tabel cu unitățiile const
 
 #### Proiect prezentat la Sesiunea de comunicări Științifice Studențești - 2019
 
-| Universitatea București | Facultatea de Matematică și Informatică |
-|:------------------------|:----------------------------------------|
+| Universitatea București | Facultatea de Matematică și Informatică &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+|:------------------------+:----------------------------------------|
 | Profesor coordonator    | Dumitriu Andrei                         |  
 | Student                 | Bălescu Ovidiu-Gheorghe                 |
 | Loc                     | II                                      |
