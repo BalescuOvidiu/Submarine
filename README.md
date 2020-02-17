@@ -33,7 +33,7 @@ Click <a href = "https://www.youtube.com/watch?v=reCAACpi1qQ" >aici</a> pentru a
 
 ## Caracteristici generale
 
-| Nume clasă &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | Metere  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |                                           |
+| Nume clasă &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | Metere  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |                                           
 |:-----------------|:-------------------------------------|
 | Cost unitate | 2067.2 RON   |
 | Deplasament   | La suprafață: 6.1 kg  <br> În imersie: 9.1 kg |
@@ -123,7 +123,7 @@ Momentan s-au adunat 140 de ore la dezvoltarea acestui tip de dronă: curățare
 În momentul actual proiectul are scop experimental și se urmărește dezvoltarea doar unei singure unități.
 </p>
 
-| # &nbsp; &nbsp; | Nume &nbsp; &nbsp; &nbsp; &nbsp; | Versiune | Lansare | Începerea construcției &nbsp; &nbsp; &nbsp; | Dezvoltator &nbsp; &nbsp; | Status &nbsp; &nbsp; &nbsp; &nbsp; |  |
+| # &nbsp; &nbsp; | Nume &nbsp; &nbsp; &nbsp; &nbsp; | Versiune | Lansare | Începerea construcției &nbsp; &nbsp; &nbsp; | Dezvoltator &nbsp; &nbsp; | Status &nbsp; &nbsp; &nbsp; &nbsp; |
 |:----|:--------|:---------|:----------------------|:----------------|:----------------------------|:----------------------------------------------------|
 | ME-212 | Danubius | 0.2 | 3 Ianuarie 2019 | 30 Martie 2020 | Bălescu Ovidiu-Gheorghe | În construcție. Inițial a fost început pentru versiunea 0.1. Din cauza problemelor mecanice ale versiunii 0.1, construcția a fost reluată pentru versiunea 0.2. |
 
