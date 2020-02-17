@@ -111,7 +111,7 @@ Momentan s-au adunat 140 de ore la dezvoltarea acestui tip de dronă: curățare
 
 ## Versiuni
 
-| # | Data | Descriere &nbsp; &nbsp; &nbsp; &nbsp;                                 |
+| # | Data | Descriere                                |
 |--:|:-------|:--------------------------------------------------------------------|
 | 0.1 | 3 Ianuarie 2018 | Prima versiune.                                          |
 | 0.2 | 20 Octombrie 2019 | Compartimentele au fost restructurate și etanșate separat. Carcasa din PET a fost înlocuită cu una din PVC acoperită cu silicon. La fel și aripile. Propulsia cu elice a fost înlocuită cu propulsie pe jet de apă. <br> Receptorul infrarosu a fost înlocuit cu un modul <a href = "https://www.optimusdigital.ro/ro/ism-24-ghz/119-modul-nrf24l01-pentru-distante-mari.html" >transceiver nRF24L01</a>. Bateriile AA de 1.5V au fost înlocuite cu <a href = "https://www.emag.ro/acumulatori-reincarcabili-varta-aa-2100-mah-4-buc-hr6-1-2-v-781393/pd/D7B5HLBBM/">acumulatori AA de 1.2 V, 2100 mAh</a>, <a href = "https://www.soselectronic.ro/products/panasonic/hr-3u-2700-bp4-phr3u2700-4bp-1-56597">acumulatori AA de 1.2 V, 2700 mAh</a> și <a href = "https://www.soselectronic.ro/products/conrad-energy/4aa2500mwh1-6v-bp4-1-153207">acumulatori AA de 1.6 V, 1500 mAh</a>. <br> S-au adăugat: trei senzori de umiditate pentru detectatarea scurgeriilor, un sistem pe bază de tranzistori bipolari de putere pentru controlul surselor de alimentare al motoarelor, un <a href = "https://www.optimusdigital.ro/ro/senzori-senzori-inertiali/865-modul-senzor-cu-9-axe-mpu9250.html" >IMU MPU9250</a> și 3 senzori ultrasonici de distanță <a href = "https://www.optimusdigital.ro/ro/senzori-senzori-ultrasonici/2943-modul-senzor-ultrasonic-rezistent-la-apa-jsn-sr04t-cu-sonda-pt-masurare-la-distana.html" >JSN-SR04T</a>. |
@@ -123,7 +123,7 @@ Momentan s-au adunat 140 de ore la dezvoltarea acestui tip de dronă: curățare
 În momentul actual proiectul are scop experimental și se urmărește dezvoltarea doar unei singure unități.
 </p>
 
-| # &nbsp; &nbsp; | Nume &nbsp; &nbsp; &nbsp; &nbsp; | Versiune | Lansare | Începerea construcției &nbsp; &nbsp; &nbsp; | Dezvoltator &nbsp; &nbsp; | Status &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |
+| # | Nume | Versiune | Lansare | Începerea construcției | Dezvoltator | Status |
 |:----|:--------|:---------|:----------------------|:----------------|:----------------------------|:----------------------------------------------------|
 | ME-212 | Danubius | 0.2 | 3 Ianuarie 2019 | 30 Martie 2020 | Bălescu Ovidiu-Gheorghe | În construcție. Inițial a fost început pentru versiunea 0.1. Din cauza problemelor mecanice ale versiunii 0.1, construcția a fost reluată pentru versiunea 0.2. |
 
