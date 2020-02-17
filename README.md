@@ -46,7 +46,7 @@ Click <a href = "https://www.youtube.com/watch?v=reCAACpi1qQ" >aici</a> pentru a
 | Adâncime operațională   | 1.0 m (3.2 ft) limitată de comunicații  |
 | Adâncime maximă   | 20.0 m (65.6 ft)   |
 | Rază acoperire comunicații | 1000 m (3280.8 ft) la suprafață |
-| Sensori și sisteme de procesare  | 2 <a href = "https://www.optimusdigital.ro/ro/compatibile-cu-arduino-nano/1686-placa-de-dezvoltare-compatibila-cu-arduino-nano-atmega328p-i-ch340.html" >Plăci de dezvoltare Arduino Nano v3</a> <br> 1 <a href = "https://www.optimusdigital.ro/ro/ism-24-ghz/119-modul-nrf24l01-pentru-distante-mari.html" >transceiver nRF24L01</a> <br> 1 <a href = "https://www.optimusdigital.ro/ro/senzori-senzori-inertiali/865-modul-senzor-cu-9-axe-mpu9250.html" >IMU MPU9250</a> <br>3 <a href = "https://www.optimusdigital.ro/ro/senzori-senzori-ultrasonici/2943-modul-senzor-ultrasonic-rezistent-la-apa-jsn-sr04t-cu-sonda-pt-masurare-la-distana.html" >senzori de distanță JSN-SR04T</a> |
+| Sensori și sisteme de procesare  | 2 <a href = "https://www.optimusdigital.ro/ro/compatibile-cu-arduino-nano/1686-placa-de-dezvoltare-compatibila-cu-arduino-nano-atmega328p-i-ch340.html" >plăci de dezvoltare Arduino Nano v3</a> <br> 1 <a href = "https://www.optimusdigital.ro/ro/ism-24-ghz/119-modul-nrf24l01-pentru-distante-mari.html" >transceiver nRF24L01</a> <br> 1 <a href = "https://www.optimusdigital.ro/ro/senzori-senzori-inertiali/865-modul-senzor-cu-9-axe-mpu9250.html" >IMU MPU9250</a> <br>3 <a href = "https://www.optimusdigital.ro/ro/senzori-senzori-ultrasonici/2943-modul-senzor-ultrasonic-rezistent-la-apa-jsn-sr04t-cu-sonda-pt-masurare-la-distana.html" >senzori de distanță JSN-SR04T</a> |
 | Alimentare  | 2 <a href = "https://altex.ro/baterie-externa-promate-energi-10c-10000mah-1xusb-1xtype-c-negru/cpd/AISENERGI10CBK/">baterii externe 5.0 V, 10000 mAh</a> <br>5 <a href = "https://www.emag.ro/acumulatori-reincarcabili-varta-aa-2100-mah-4-buc-hr6-1-2-v-781393/pd/D7B5HLBBM/">acumulatori AA de 1.2 V, 2100 mAh</a> <br>11 <a href = "https://www.soselectronic.ro/products/panasonic/hr-3u-2700-bp4-phr3u2700-4bp-1-56597">acumulatori AA de 1.2 V, 2700 mAh</a><br>8 <a href = "https://www.soselectronic.ro/products/conrad-energy/4aa2500mwh1-6v-bp4-1-153207">acumulatori AA de 1.6 V, 1500 mAh</a>  |
 
 
@@ -123,7 +123,7 @@ Momentan s-au adunat 140 de ore la dezvoltarea acestui tip de dronă: curățare
 În momentul actual proiectul are scop experimental și se urmărește dezvoltarea doar unei singure unități.
 </p>
 
-| # &nbsp; &nbsp; | Nume &nbsp; &nbsp; &nbsp; &nbsp; | Versiune | Lansare | Începerea construcției &nbsp; &nbsp; &nbsp; | Dezvoltator &nbsp; &nbsp; | Status &nbsp; &nbsp; &nbsp; &nbsp; |
+| # &nbsp; &nbsp; | Nume &nbsp; &nbsp; &nbsp; &nbsp; | Versiune | Lansare | Începerea construcției &nbsp; &nbsp; &nbsp; | Dezvoltator &nbsp; &nbsp; | Status &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |
 |:----|:--------|:---------|:----------------------|:----------------|:----------------------------|:----------------------------------------------------|
 | ME-212 | Danubius | 0.2 | 3 Ianuarie 2019 | 30 Martie 2020 | Bălescu Ovidiu-Gheorghe | În construcție. Inițial a fost început pentru versiunea 0.1. Din cauza problemelor mecanice ale versiunii 0.1, construcția a fost reluată pentru versiunea 0.2. |
 
