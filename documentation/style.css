@@ -1,45 +1,128 @@
-body {
-	color: #111111;
-	font-family: Verdana;
-}
-
 a {
 	color: #111111;
 	text-decoration: none;
 }
 
-h1 {
-	color: #333333;
-	margin-bottom: 1.5em;
-}
-h2, h3, h4, h5 ,h6 {
-	color: #333333;
-	font-size: 1.2em;
-	margin-top: 1.5em;
+body {
+	color: #111111;
+	font-family: Arial;
+	padding: 0em 1em;
 }
 
-p {
-	font-size: 16px;
-	text-indent: 1em;
+figure {
+	margin-left: 0em;
+	margin-right: 0em;
+	padding: 0;
+	width: 100%;
+}
+
+h1 {
+	border-bottom: 1px solid #CDCDCD;
+	color: #333333;
+	display: block;
+  	font-size: 2em;
+  	font-weight: bold;
+	font-family: Arial;
+  	margin-top: 0.67em;
+  	margin-bottom: 0.67em;
+  	margin-left: 0;
+  	margin-right: 0;
+	margin-bottom: 1em;
+	padding-bottom: 0.2em;
+	width: 100%;
+}
+
+h2 {
+	border-bottom: 1px solid #CDCDCD;
+	color: #222222;
+	display: block;
+	font-family: Arial;
+	font-size: 1.5em;
+	font-weight: bold;
+	margin-top: 0.83em;
+	margin-bottom: 0.83em;
+	margin-left: 0;
+	margin-right: 0;
+	padding-bottom: 0.2em;
+	width: 100%;
+}
+
+h3 {
+	color: #222222;
+	display: block;
+	font-family: Arial;
+	font-size: 1.17em;
+	font-weight: bold;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+h4 {
+	color: #333333;
+	display: block;
+	font-family: Arial;
+	font-size: 1em;
+	font-weight: bold;
+	margin-top: 1.33em;
+	margin-bottom: 1.33em;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+h5 {
+	color: #333333;
+	display: block;
+	font-family: Arial;
+	font-size: .83em;
+	font-weight: bold;
+	margin-top: 1.67em;
+	margin-bottom: 1.67em;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+h6 {
+	color: #333333;
+	display: block;
+	font-family: Arial;
+	font-size: .67em;
+	font-weight: bold;
+	margin-top: 2.33em;
+	margin-bottom: 2.33em;
+	margin-left: 0;
+	margin-right: 0;
 }
 
 img {
-	margin-left: -1em;
 	min-width: 100%;
 	max-width: 100%;
+}
+
+li {
+	padding: 0.3em;
+}
+
+p {
+	font-family: Arial;
+	font-size: 1em;
 }
 
 table {
 	border-collapse: collapse;
 	font-family: Arial;
-	min-width: 100%;
 }
 table td, table th {
-	border: 1px solid #CCCCCC;
+	border: 1px solid #CDCDCD;
 	border-collapse: collapse;
-	padding: 0.25em;
+	padding: 0.5em;
 }
 
 table .odd td {
 	background-color: #F7F7F7;
+}
+
+#video {
+	visibility: hidden;
 }
