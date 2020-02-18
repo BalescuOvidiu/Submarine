@@ -1,7 +1,7 @@
 # Submarin dronă - Clasa Metere
 
 
-<a href = "https://www.youtube.com/watch?v=reCAACpi1qQ" > ![](https://i.imgur.com/9HU73ur.jpg) </a>
+<a href = "https://www.youtube.com/watch?v=reCAACpi1qQ" > ![](https://live.staticflickr.com/65535/49551945118_1d42044cd5_o.jpg) </a>
 
 ## Cuprins
 
@@ -77,7 +77,7 @@ Fiecare compartiment este alcătuit din două capace metalice acoperite pe margi
 | 5 | Balast                             | 11 | Control hidroplane față și sistem de orientare |
 | 6 | Corpul de navigare                 | 12 | Provă                                          |
 
-![](https://i.imgur.com/JQC6UwU.png)
+![](https://live.staticflickr.com/65535/49552442346_a382fc724f_o.png)
 
 
 ## Circuit electric
@@ -90,7 +90,7 @@ Fiecare motor, sau servomotor e alimentat la câte o sursă de 6.0 V. Fiecare su
 Fiecare dintre aceste surse primește semnal de pornire sau de oprire, de la plăcile Arduino prin intermediul unui tranzistor. Atunci când alimentarea celor două plăci sunt oprite, alimentarea motoarelor este oprită. La fel este și atunci când sunt pornite cele două plăci.
 </p>
 
-![](https://i.imgur.com/1PS2cFl.png)
+![](https://live.staticflickr.com/65535/49552442276_6dc306f028_o.png)
 
 
 ## Dezvoltare
@@ -106,7 +106,7 @@ Momentan s-au adunat 140 de ore la dezvoltarea acestui tip de dronă: curățare
 3. Instalarea rezervorului pentru balast,
 4. Adăugarea unui generator din cupru și aluminiu care să încarce acumulatorii.
 
-![](https://i.imgur.com/t15tBjh.jpg)
+![](https://live.staticflickr.com/65535/49552442606_5afa2b5c93_o.jpg)
 
 
 ## Versiuni
