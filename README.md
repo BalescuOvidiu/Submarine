@@ -90,7 +90,7 @@ Fiecare motor, sau servomotor e alimentat la câte o sursă de 6.0 V. Fiecare su
 Fiecare dintre aceste surse primește semnal de pornire sau de oprire, de la plăcile Arduino prin intermediul unui tranzistor. Atunci când alimentarea celor două plăci sunt oprite, alimentarea motoarelor este oprită. La fel este și atunci când sunt pornite cele două plăci.
 </p>
 
-![](https://drive.google.com/uc?export=view&id=1Jl5OWKq1AP5s1O7tXYyZGJxZ_k2B-L47)
+![](https://live.staticflickr.com/65535/49552741712_3d4e7f3393_b.jpg)
 
 
 ## Dezvoltare
