@@ -5,6 +5,9 @@ unsigned long baudRate = 115200;
 bool silentMode = false;
 bool sonarIsOn = false;
 
+
+
+
 /** IMU communications. */
 MPU9250 imuDevice (Wire, IMU_ADDRESS);
 TimeInterval imuClock (IMU_PERIOD);
@@ -19,15 +22,6 @@ double roll;
 double pitch;
 double yaw;
 double orientation;
-
-
-
-/** IMU data transfer. */
-#define IMU_ADDRESS  0x68
-#define IMU_ERROR    0x00
-
-/** IMU data accuracy. */
-#define IMU_G                   9.80665
 
 /**
 
