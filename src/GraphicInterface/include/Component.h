@@ -1,13 +1,28 @@
 /**
- * Programmer: Balescu Ovidiu-Gheorghe
- * Date:       15 May 2019
- * Library:    SFML 2.5.1
+ *  Component.h
+ * 
+ *  Created 15 May 2019
+ *  By Balescu Ovidiu-Gheorghe
+ *  Modified 25 February 2020
+ *  By Balescu Ovidiu-Gheorghe
  */
 
 #ifndef COMPONENT_H_
 #define COMPONENT_H_
 
-#include "config.h"
+#include "Config.h"
+#include "Grid.h"
+#include "Mathematics.h"
+#include "Writing.h"
+
+/** RGB codes of used colors in application. */
+#define COLOR_TRANSPARENT sf::Color (0, 0, 0, 0)
+#define COLOR_BACKGROUND  sf::Color (32, 32, 32)
+#define COLOR_GRID_MINOR  sf::Color (48, 48, 48)
+#define COLOR_GRID        sf::Color (64, 64, 64)
+#define COLOR_LINE        sf::Color (128, 128, 128)
+#define COLOR_TEXT        sf::Color (232, 232, 255) 
+#define COLOR_WARNING     sf::Color (216, 128, 32)   
 
 class Component {
 

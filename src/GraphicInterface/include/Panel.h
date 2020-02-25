@@ -1,13 +1,17 @@
 /**
- * Programmer: Balescu Ovidiu-Gheorghe
- * Date:       15 May 2019
- * Library:    SFML 2.5.1
+ *  Panel.h
+ * 
+ *  Created 15 May 2019
+ *  By Balescu Ovidiu-Gheorghe
+ *  Modified 25 February 2020
+ *  By Balescu Ovidiu-Gheorghe
  */
 
 #ifndef PANEL_H_
 #define PANEL_H_
 
-#include "component.h"
+#include "Log.h"
+#include "Component.h"
 
 struct Submarine {
 

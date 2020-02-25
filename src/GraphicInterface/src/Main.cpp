@@ -1,3 +1,12 @@
+/**
+ *  Main.h
+ * 
+ *  Created 15 May 2019
+ *  By Balescu Ovidiu-Gheorghe
+ *  Modified 25 February 2020
+ *  By Balescu Ovidiu-Gheorghe
+ */
+
 #include "main.h"
 
 using namespace std;

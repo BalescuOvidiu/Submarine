@@ -1,5 +1,5 @@
 NAME = Submarine
-OBJECTS = mathematics.o config.o component.o panel.o main.o
+OBJECTS = Grid.o Log.o Mathematics.o Writing.o Config.o Component.o Panel.o Main.o
 
 
 # DIRECTORIES

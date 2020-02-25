@@ -1,5 +1,5 @@
 /**
- *  TimeInterval
+ *  TimeInterval.h
  *
  *  Created 20 July 2019
  *	By Balescu Ovidiu-Gheorghe

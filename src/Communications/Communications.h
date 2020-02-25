@@ -1,5 +1,5 @@
 /**
- *  Communications
+ *  Communications.h
  *
  *  This is a module used to control motors and light on the
  *  submarine.
@@ -37,22 +37,22 @@
  */
 enum Pins : short {
 
-	sonarTrigger = ,
-	sonarTrigger = ,
-	sonarTrigger = ,
-	sonarEcho = ,
-	sonarEcho = ,
-	sonarEcho = ,
+	sonarTriggerLeft = 5,
+	sonarTriggerRight = 6,
+	sonarTriggerBack = 7,
+	sonarEchoLeft = A6,
+	sonarEchoRight = A7,
+	sonarEchoBack = A3,
 
-	sensorHumidity = ,
-	sensorHumidity = ,
-	sensorHumidity = ,
+	sensorHumidityFront = A2,
+	sensorHumidityBallast = A0,
+	sensorHumidityBack = A1,
 
-	antennaCe = ,
-	AntennaCs = ,
+	antennaCe = 9,
+	AntennaCs = 8,
+	wirelessCommunicationIntreruption = 2,
 
-	imuAddressInitial = 0x68
-	imuAddressError = 0x00
+	imuAddress = 0x68
 };
 
 #endif

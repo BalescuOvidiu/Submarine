@@ -1,4 +1,13 @@
-#include "servomotor.h"
+/**
+ *  Servomotor.cpp
+ *
+ *  Created 1s May 2019
+ *  By Balescu Ovidiu-Gheorghe
+ *  Modified 13 February 2020
+ *  By Balescu Ovidiu-Gheorghe
+ */
+
+#include "Servomotor.h"
 
 /**
  *  This is constructor of class without parameters.
@@ -22,7 +31,7 @@ Servomotor::Servomotor (short minAngle, short maxAngle, long dutyCycleTime) {
     this->minAngle = minAngle;
     this->maxAngle = maxAngle;
 
-    this->dutyCicleTime.restart (dutyCycleTime);
+    this->dutyCycleTime.restart (dutyCycleTime);
 
     this->rotateToMidAngle ();
 }
@@ -45,7 +54,7 @@ void Servomotor::setup (short minAngle, short maxAngle, long dutyCycleTime) {
     this->setMinAngle (minAngle);
     this->setMaxAngle (maxAngle);
 
-    this->dutyCicleTime.restart (dutyCycleTime);
+    this->dutyCycleTime.restart (dutyCycleTime);
 }
 
 /**
@@ -53,7 +62,7 @@ void Servomotor::setup (short minAngle, short maxAngle, long dutyCycleTime) {
  *  device, respecting the duty cycle time.
  */
 void Servomotor::loop () {
-    if (this->dutyCycleTime.elapsed ()) {
+    if (this->dutyCycleTime.elapse ()) {
         this->write (this->lastAngle);
     }
 }
@@ -188,7 +197,7 @@ short Servomotor::getError () {
  *
  *  @return: min angle rotation of servomotor..
  */
-short getMinAngle () {
+short Servomotor::getMinAngle () {
     return this->minAngle;
 }
 
@@ -197,7 +206,7 @@ short getMinAngle () {
  *
  *  @return: middle angle rotation of servomotor..
  */
-short getMidAngle () {
+short Servomotor::getMidAngle () {
     return 1 >> (this->minAngle + this->maxAngle);
 }
 
@@ -206,7 +215,7 @@ short getMidAngle () {
  *
  *  @return: max angle rotation of servomotor.
  */
-short getMaxAngle () {
+short Servomotor::getMaxAngle () {
     return this->maxAngle;
 }
 
@@ -215,6 +224,6 @@ short getMaxAngle () {
  *
  *  @return: duration of duty cycle time.
  */
-unsigned long getDutyCycle () {
+unsigned long Servomotor::getDutyCycle () {
     return this->dutyCycleTime.getDuration ();
 }

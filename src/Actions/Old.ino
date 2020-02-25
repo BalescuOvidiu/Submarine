@@ -1,3 +1,5 @@
+/*
+
 #include "controller.h"
 
 // Variables used for control.
@@ -18,10 +20,10 @@ Servomotor planeRight;
 // Objects used for communications.
 IrDevice irReceiver (PIN_IR_RECEIVER);
 
-/**
- * This function stops move of rudders and planes
- * and sets them on middle angle.
- */
+
+// This function stops move of rudders and planes
+// and sets them on middle angle.
+ 
 void stabilize () {
   rudderBottom.disableTest ();
   rudderTop.disableTest ();
@@ -34,39 +36,39 @@ void stabilize () {
   planeRight.middle ();
 }
 
-/**
- * This function stop motors and
- * stabilize the servomotors.
- */
+
+// This function stop motors and
+// stabilize the servomotors.
+ 
 void wait () {
   propeller.stop ();
   ballast.stop ();
   stabilize ();
 }
 
-/**
- * This function sets angle of rudders.
- * 
- * @param angle new orientation of servomotors.
- */
+
+// This function sets angle of rudders.
+// 
+// @param angle new orientation of servomotors.
+ 
 void setRudderAngle (int angle) {
   rudderBottom.write (ANGLE_MIDDLE - angle);
   rudderTop.write (ANGLE_MIDDLE + angle);
 }
 
-/**
- * This function sets angle of planes.
- * 
- * @param: angle new orientation of servomotors.
- */
+
+// This function sets angle of planes.
+// 
+// @param: angle new orientation of servomotors.
+ 
 void setPlaneAngle (int angle) {
   planeLeft.write (ANGLE_MIDDLE + angle);
   planeRight.write (ANGLE_MIDDLE - angle);
 }
 
-/**
- * This function maintain angle of rudders and planes.
- */
+
+// This function maintain angle of rudders and planes.
+ 
 void loopServo () {
   rudderBottom.loop ();
   rudderTop.loop ();
@@ -74,10 +76,10 @@ void loopServo () {
   planeRight.loop ();
 }
 
-/**
- * This function makes links between 
- * communication with hardware parts.
- */
+
+// This function makes links between 
+// communication with hardware parts.
+ 
 void command() {
   // Infra-red communication
   unsigned long value = irReceiver.check();
@@ -141,10 +143,10 @@ void command() {
   }
 }
 
-/**
- * This function is called at 
- * initialization of Arduino Board.
- */
+
+// This function is called at 
+// initialization of Arduino Board.
+ 
 void setup() {
   rudderBottom.attach (PIN_RUDDER_BOTTOM);
   rudderTop.attach (PIN_RUDDER_TOP);
@@ -180,12 +182,15 @@ void setup() {
   Serial.begin(9600);
 }
 
-/**
- * This function runs until Arduino Board is stopped.
- */
+
+// This function runs until Arduino Board is stopped.
+ 
 void loop() {
   propeller.loop();
   loopServo();
    
   command();
 }
+
+
+*/

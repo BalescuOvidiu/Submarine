@@ -1,5 +1,5 @@
 /**
- *  Servomotor
+ *  Servomotor.h
  *
  *  Created 1s May 2019
  *  By Balescu Ovidiu-Gheorghe
@@ -13,7 +13,7 @@
 #include <Arduino.h>
 #include <Servo.h>
 
-#include "timeInterval.h"
+#include "TimeInterval.h"
 
 /**
  *  @brief: This class allows programmer to control servomotor device

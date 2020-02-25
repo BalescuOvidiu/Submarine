@@ -10,6 +10,7 @@
 3. [Caracteristici generale](https://github.com/BalescuOvidiu/Submarine#caracteristici-generale)<br>
 4. [Compartimente](https://github.com/BalescuOvidiu/Submarine#compartimente)<br>
 5. [Circuit electric](https://github.com/BalescuOvidiu/Submarine#circuit-electric)<br>
+5. [Software](https://github.com/BalescuOvidiu/Submarine#software)<br>
 6. [Dezvoltare](https://github.com/BalescuOvidiu/Submarine#dezvoltare)<br>
 7. [Versiuni](https://github.com/BalescuOvidiu/Submarine#versiuni)<br>
 7. [Unități](https://github.com/BalescuOvidiu/Submarine#unități)<br>
@@ -91,6 +92,19 @@ Fiecare dintre aceste surse primește semnal de pornire sau de oprire, de la pl�
 </p>
 
 ![](https://raw.githubusercontent.com/BalescuOvidiu/Submarine/master/img/schematic.png)
+
+
+## Software
+<p align = "justify">
+Interfața grafică a fost scrisă în C++ 11 folosind framework-ul SFML 2.5.1.</p>
+<p align = "justify">
+Programele pentru cele două plăci Arduino au fost scrise în C++ pentru arhitectura ARV, microcontrolere.</p>
+
+#### Cerințe minime sistem pentru interfață
+1. Procesor DualCore 2.0 GHz,
+2. DDR2 RAM 2G,
+3. Placă video 256MB,
+4. Sistem de operare Linux. 
 
 
 ## Dezvoltare

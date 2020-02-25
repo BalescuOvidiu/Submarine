@@ -1,3 +1,12 @@
+/**
+ *  Writing.h
+ * 
+ *  Created 28 May 2018
+ *  By Balescu Ovidiu-Gheorghe
+ *  Modified 25 February 2020
+ *  By Balescu Ovidiu-Gheorghe
+ */
+
 #ifndef SYMBOL_UNIT_H_
 #define SYMBOL_UNIT_H_
 
@@ -10,18 +19,7 @@
 #include <fstream>
 #include <sstream>
 
-enum IndexUnit {
-	FIRST = 0,
-	
-	CENTIMETER = FIRST,
-	METER,
-	KILOMETER,
-	
-	LAST = 10,
-};
-
-
-class SymbolUnit {
+class Writing {
 
 private:
 	

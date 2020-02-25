@@ -1,4 +1,13 @@
-#include "timeInterval.h"
+/**
+ *  TimeInterval.cpp
+ *
+ *  Created 20 July 2019
+ * By Balescu Ovidiu-Gheorghe
+ * Modified 13 February 2020
+ * By Balescu Ovidiu-Gheorghe
+ */
+
+#include "TimeInterval.h"
 
 /**
  *  @brief: This is constructor with no parameters.
