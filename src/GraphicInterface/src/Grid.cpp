@@ -3,7 +3,7 @@
  * 
  *  Created 22 February 2020
  *  By Balescu Ovidiu-Gheorghe
- *  Modified 22 February 2020
+ *  Modified 26 February 2020
  *  By Balescu Ovidiu-Gheorghe
  */
 
@@ -17,42 +17,36 @@ using namespace std;
  *  @brief:
  */
 static void Grid::initialize (char directoryOfConfigFile[]) {
+	ifstream configFile (directoryOfConfigFile);
 
+	if (configFile.is_open ()) {
+		this->primary = ;
+		this->secondary = ;
+	}
+	else {
+		this->primary = ;
+		this->secondary = ;
+	}
+
+	configFile.close ();
 }
 
 /**
  *  @brief:
+ *
+ *  @return: .
  */
-static void Grid::update (char directoryOfConfigFile[]) {
-
+static double width () {
+	return (double)sf::VideoMode::getDesktopMode ().width;
 }
 
 /**
  *  @brief:
+ *
+ *  @return: .
  */
-static void Grid::setPrimaryGridOnWidth (double numbers) {
-	
-}
-
-/**
- *  @brief:
- */
-static void Grid::setPrimaryGridOnHeight (double numbers) {
-	
-}
-
-/**
- *  @brief:
- */
-static void Grid::setSecondaryGridOnWidth (double numbers) {
-	
-}
-
-/**
- *  @brief:
- */
-static void Grid::setSecondaryGridOnHeight (double numbers) {
-	
+static double height () {
+	return (double)sf::VideoMode::getDesktopMode ().height;
 }
 
 /**

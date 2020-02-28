@@ -62,17 +62,6 @@ namespace config {
 	void move (sf::Vector2f position);
 
 	/** Functions used to create text label. */
-	void text (
-		sf::Text &text, 
-		sf::Vector2f position, 
-		std::string string
-	);
-	void text (
-		sf::Text &text, 
-		sf::Vector2f position, 
-		sf::String string
-	);
-	void textCentered (sf::Text &text);
 
 	/** Functions used for mouse click. */
 	bool canClick (short time);
@@ -96,12 +85,6 @@ namespace config {
 	 */
 	sf::Vector2f toGrid (sf::Vector2f vector);
 	sf::Vector2f fromGrid (sf::Vector2f vector);
-
-	/** Functions who convert numbers to string. */
-	std::string format (double value);
-	std::string format (short value);
-	std::string format (int value);
-	std::string format (unsigned value);
 
 	/**
 	 * This function transform numbers and objects into a string,

@@ -3,7 +3,7 @@
  * 
  *  Created 22 February 2020
  *  By Balescu Ovidiu-Gheorghe
- *  Modified 22 February 2020
+ *  Modified 26 February 2020
  *  By Balescu Ovidiu-Gheorghe
  */
 
@@ -19,19 +19,18 @@ class Grid {
 
 public:
 	static void initialize (char directoryOfConfigFile[]);
-	static void update (char directoryOfConfigFile[]);
-
-	static void setPrimaryGridOnWidth (double numbers);
-	static void setPrimaryGridOnHeight (double numbers);
-
-	static void setSecondaryGridOnWidth (double numbers);
-	static void setSecondaryGridOnHeight (double numbers);
 
 	static double width ();
 	static double height ();
 
 	static double getPrimary ();
 	static double getSecondary ();
+
+	static double getPrimaryOnWidth ();
+	static double getSecondaryOnWidth ();
+
+	static double getPrimaryOnHeight ();
+	static double getSecondaryOnHeight ();
 
 	static sf::Vector2f convertTo (sf::Vector2f vector);
 	static double convertTo (double vector);

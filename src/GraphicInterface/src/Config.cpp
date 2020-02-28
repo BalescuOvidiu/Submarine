@@ -20,9 +20,6 @@ using namespace mathematics;
 
 /** Standard values for configuration. */
 #define CONFIG_NAME_OF_APPLICATION "SFML Application"
-#define CONFIG_TIME_FORMAT         "%Y-%m-%d, %I:%M%p - "
-
-#define CONFIG_DECIMALS_DELIMITER  ","
 
 #define CONFIG_FRAME_RATE       60
 #define CONFIG_GRID_RATE         0.01

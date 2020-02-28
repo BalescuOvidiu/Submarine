@@ -13,7 +13,7 @@
 </head>
 <body>
 <h1 id="submarin-dronă---clasa-metere">Submarin dronă - Clasa Metere</h1>
-<p><a href = "https://www.youtube.com/watch?v=reCAACpi1qQ" > <img src="https://drive.google.com/uc?id=1f6GGejv7dDeTzx3m8_hK1-BEByL0CJdB" /> </a></p>
+<p><a href = "https://www.youtube.com/watch?v=reCAACpi1qQ" > <img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarine/master/img/surface.jpg" /> </a></p>
 <h2 id="cuprins">Cuprins</h2>
 <ol type="1">
 <li><a href="https://github.com/BalescuOvidiu/Submarine#despre-proiect">Despre proiect</a><br></li>
@@ -21,6 +21,7 @@
 <li><a href="https://github.com/BalescuOvidiu/Submarine#caracteristici-generale">Caracteristici generale</a><br></li>
 <li><a href="https://github.com/BalescuOvidiu/Submarine#compartimente">Compartimente</a><br></li>
 <li><a href="https://github.com/BalescuOvidiu/Submarine#circuit-electric">Circuit electric</a><br></li>
+<li><a href="https://github.com/BalescuOvidiu/Submarine#software">Software</a><br></li>
 <li><a href="https://github.com/BalescuOvidiu/Submarine#dezvoltare">Dezvoltare</a><br></li>
 <li><a href="https://github.com/BalescuOvidiu/Submarine#versiuni">Versiuni</a><br></li>
 <li><a href="https://github.com/BalescuOvidiu/Submarine#unități">Unități</a><br></li>
@@ -98,7 +99,7 @@ Click <a href = "https://www.youtube.com/watch?v=reCAACpi1qQ" >aici</a> pentru a
 </tr>
 <tr class="even">
 <td style="text-align: left;">Sensori și sisteme de procesare</td>
-<td style="text-align: left;">2 <a href = "https://www.optimusdigital.ro/ro/compatibile-cu-arduino-nano/1686-placa-de-dezvoltare-compatibila-cu-arduino-nano-atmega328p-i-ch340.html" >Plăci de dezvoltare Arduino Nano v3</a> <br> 1 <a href = "https://www.optimusdigital.ro/ro/ism-24-ghz/119-modul-nrf24l01-pentru-distante-mari.html" >transceiver nRF24L01</a> <br> 1 <a href = "https://www.optimusdigital.ro/ro/senzori-senzori-inertiali/865-modul-senzor-cu-9-axe-mpu9250.html" >IMU MPU9250</a> <br>3 <a href = "https://www.optimusdigital.ro/ro/senzori-senzori-ultrasonici/2943-modul-senzor-ultrasonic-rezistent-la-apa-jsn-sr04t-cu-sonda-pt-masurare-la-distana.html" >senzori de distanță JSN-SR04T</a></td>
+<td style="text-align: left;">2 <a href = "https://www.optimusdigital.ro/ro/compatibile-cu-arduino-nano/1686-placa-de-dezvoltare-compatibila-cu-arduino-nano-atmega328p-i-ch340.html" >plăci de dezvoltare Arduino Nano v3</a> <br> 1 <a href = "https://www.optimusdigital.ro/ro/ism-24-ghz/119-modul-nrf24l01-pentru-distante-mari.html" >transceiver nRF24L01</a> <br> 1 <a href = "https://www.optimusdigital.ro/ro/senzori-senzori-inertiali/865-modul-senzor-cu-9-axe-mpu9250.html" >IMU MPU9250</a> <br>3 <a href = "https://www.optimusdigital.ro/ro/senzori-senzori-ultrasonici/2943-modul-senzor-ultrasonic-rezistent-la-apa-jsn-sr04t-cu-sonda-pt-masurare-la-distana.html" >senzori de distanță JSN-SR04T</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Alimentare</td>
@@ -175,7 +176,7 @@ Fiecare compartiment este alcătuit din două capace metalice acoperite pe margi
 </tbody>
 </table>
 <figure>
-<img src="https://drive.google.com/uc?id=1JbHmSkuWjLCkXFGnWKU5o2wz7HWv07y0" />
+<img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarine/master/img/compartments.png" />
 </figure>
 <h2 id="circuit-electric">Circuit electric</h2>
 <p align="justify">
@@ -185,8 +186,22 @@ Cele două plăci Arduino sunt conectate la cele două baterii externe. Senzorii
 Fiecare motor, sau servomotor e alimentat la câte o sursă de 6.0 V. Fiecare sursă pentru motor are în serie 4 acumulatori AA: 3 de 1.6 V, 1500 mAh și 1 de 1.2 V, 2100 mAh. Fiecare dintre aceste surse primește semnal de pornire sau de oprire, de la plăcile Arduino prin intermediul unui tranzistor. Atunci când alimentarea celor două plăci sunt oprite, alimentarea motoarelor este oprită. La fel este și atunci când sunt pornite cele două plăci.
 </p>
 <figure>
-<img src="https://drive.google.com/uc?id=1Jl5OWKq1AP5s1O7tXYyZGJxZ_k2B-L47" />
+<img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarine/master/img/schematic.png" />
 </figure>
+<h2 id="software">Software</h2>
+<p align="justify">
+Interfața grafică a fost scrisă în C++ 11 folosind framework-ul SFML 2.5.1.
+</p>
+<p align="justify">
+Programele pentru cele două plăci Arduino au fost scrise în C++ pentru arhitectura ARV, microcontrolere.
+</p>
+<h4 id="cerințe-minime-sistem-pentru-interfață">Cerințe minime sistem pentru interfață</h4>
+<ol type="1">
+<li>Procesor DualCore 2.0 GHz,</li>
+<li>DDR2 RAM 2G,</li>
+<li>Placă video 256MB,</li>
+<li>Sistem de operare Linux.</li>
+</ol>
 <h2 id="dezvoltare">Dezvoltare</h2>
 <p align="justify">
 Momentan s-au adunat 140 de ore la dezvoltarea acestui tip de dronă: curățarea și prelucrarea anumitor materiale, construirea diverselor componente, asamblarea corpului interior, asamblarea și conectarea componentelor electronice și de asemenea dezvoltarea software. Se vor aduce în continuarea îmbunătățiri și implementări ulterioare.
@@ -199,7 +214,7 @@ Momentan s-au adunat 140 de ore la dezvoltarea acestui tip de dronă: curățare
 <li>Adăugarea unui generator din cupru și aluminiu care să încarce acumulatorii.</li>
 </ol>
 <figure>
-<img src="https://drive.google.com/uc?id=1IlrUCgfjNd-Jst9Xmq1Iy0gW9VtlgXQJ" />
+<img src="https://raw.githubusercontent.com/BalescuOvidiu/Submarine/master/img/inside.jpg" />
 </figure>
 <h2 id="versiuni">Versiuni</h2>
 <table>
@@ -212,7 +227,7 @@ Momentan s-au adunat 140 de ore la dezvoltarea acestui tip de dronă: curățare
 <tr class="header">
 <th style="text-align: right;">#</th>
 <th style="text-align: left;">Data</th>
-<th style="text-align: left;">Descriere        </th>
+<th style="text-align: left;">Descriere</th>
 </tr>
 </thead>
 <tbody>
@@ -244,13 +259,13 @@ Momentan s-au adunat 140 de ore la dezvoltarea acestui tip de dronă: curățare
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">#    </th>
-<th style="text-align: left;">Nume        </th>
+<th style="text-align: left;">#</th>
+<th style="text-align: left;">Nume</th>
 <th style="text-align: left;">Versiune</th>
 <th style="text-align: left;">Lansare</th>
-<th style="text-align: left;">Începerea construcției      </th>
-<th style="text-align: left;">Dezvoltator    </th>
-<th style="text-align: left;">Status        </th>
+<th style="text-align: left;">Începerea construcției</th>
+<th style="text-align: left;">Dezvoltator</th>
+<th style="text-align: left;">Status</th>
 </tr>
 </thead>
 <tbody>
