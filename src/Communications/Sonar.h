@@ -3,7 +3,7 @@
  *
  *  Created 18 February 2020
  *  By Balescu Ovidiu-Gheorghe
- *  Modified 18 February 2020
+ *  Modified 21 February 2020
  *  By Balescu Ovidiu-Gheorghe
  */
 
@@ -12,8 +12,39 @@
 
 #include <Arduino.h>
 
+#include "TimeInterval.h"
+
+/**
+ *  @brief: 
+ */
 class Sonar {
 
+public:
+	Sonar (short pinEcho, short pinTrigger, double speedOfRipple);
+	~Sonar ();
+
+	void setup (short pinEcho, short pinTrigger, double speedOfRipple);
+	void loop ();
+
+	void setSpeedOfRipple (double value);
+
+	double getData ();
+	double readDistanceInCm ();
+	double readDistanceInMeters ();
+	double readDistanceInInches ();
+	double readDistanceInFeet ();
+
+private:
+	byte pinEcho;
+	byte pinTrigger;
+	byte numberOfSamples;
+	byte theSample;
+
+	double speedOfRipple;
+	double lastDataRead;
+	double unfiltredData;
+
+	TimeInterval clock;
 };
 
 

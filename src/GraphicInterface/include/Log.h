@@ -1,3 +1,12 @@
+/**
+ *  Log
+ * 
+ *  Created 22 February 2020
+ *  By Balescu Ovidiu-Gheorghe
+ *  Modified 22 February 2020
+ *  By Balescu Ovidiu-Gheorghe
+ */
+
 #ifndef LOG_H_
 #define LOG_H_
 
@@ -13,15 +22,15 @@ class Log {
 public:
 	static bool clear ();
 	static bool close ();
-	static bool initialize ();
+	static bool initialize (
+		std::string directoryOfConfigFile, 
+		std::string directoryOfOutputFile
+	);
 	static bool write (std::string line);
 
 	static std::string getLastLine ();
 	static std::string getLastMessage ();
 	static std::string getLastTime ();
-
-	static std::string getConfigFileDirectory ();
-	static std::string getOutputFileDirectory ();
 
 private:
 	static std::ofstream outputFile;
