@@ -1,3 +1,12 @@
+/**
+ *  MotorDc.cpp
+ *
+ *  Created 1s May 2019
+ *  By Balescu Ovidiu-Gheorghe
+ *  Modified 13 February 2020
+ *  By Balescu Ovidiu-Gheorghe
+ */
+
 #include "MotorDc.h"
 
 /**
@@ -57,7 +66,7 @@ MotorDc::MotorDc (
     byte pinB, 
     short speedSignalBackward,
     short speedSignalIdle,
-    short speedSignalForward
+    short speedSignalForward,
     short speed
 ) {
     pinMode(pinA, OUTPUT);
@@ -96,7 +105,7 @@ void MotorDc::setup (
 ) {
     this->speedSignalBackward = speedSignalBackward;
     this->speedSignalIdle = speedSignalIdle;
-    this->speedSignalForward = this->speedSignalForward;
+    this->speedSignalForward = speedSignalForward;
 }
 
 /**
@@ -104,12 +113,12 @@ void MotorDc::setup (
  */
 void MotorDc::loop () {
     if (this->speed >= this->speedSignalIdle) {
-        this->setSpeed(pinA, this->speedSignalIdle);
-        this->setSpeed(pinB, this->speed);
+        analogWrite (pinA, this->speedSignalIdle);
+        analogWrite (pinB, this->speed);
     }
     else {
-        this->setSpeed(pinA, -this->speed);
-        this->setSpeed(pinB, this->speedSignalIdle);      
+        analogWrite (pinA, -this->speed);
+        analogWrite (pinB, this->speedSignalIdle);      
     }
 }
 
@@ -140,7 +149,7 @@ void MotorDc::backward () {
  *  direction with full speed.
  */
 void MotorDc::forward () {
-    his->setSpeed (this->speedSignalForward);
+    this->setSpeed (this->speedSignalForward);
 }
 
 /**

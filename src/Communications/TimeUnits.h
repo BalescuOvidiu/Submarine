@@ -1,5 +1,9 @@
 /**
+<<<<<<< HEAD
  *  TimeUnits
+=======
+ *  TimeUnits.h
+>>>>>>> 634d4fed421c6f6c78d502a595731b23bf906e21
  *
  *  Created 13 February 2020
  *	By Balescu Ovidiu-Gheorghe

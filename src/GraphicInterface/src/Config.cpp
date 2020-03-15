@@ -1,3 +1,12 @@
+/**
+ *  Config.cpp
+ * 
+ *  Created 28 May 2018
+ *  By Balescu Ovidiu-Gheorghe
+ *  Modified 25 February 2020
+ *  By Balescu Ovidiu-Gheorghe
+ */
+
 #include "config.h"
 
 using namespace std;
@@ -11,9 +20,6 @@ using namespace mathematics;
 
 /** Standard values for configuration. */
 #define CONFIG_NAME_OF_APPLICATION "SFML Application"
-#define CONFIG_TIME_FORMAT         "%Y-%m-%d, %I:%M%p - "
-
-#define CONFIG_DECIMALS_DELIMITER  ","
 
 #define CONFIG_FRAME_RATE       60
 #define CONFIG_GRID_RATE         0.01
@@ -270,33 +276,6 @@ namespace config {
 			);
 		}
 
-	}
-
-	/**
-	 * 
-	 */
-	void logMessage (string message) {
-		/** Time. */
-		currentTime = time(0);
-		tm* timeinfo = localtime (&currentTime);
-  		char buffer [BUFFER_TIME_FORMAT_SIZE];
-
-		strftime (
-			buffer, 
-			BUFFER_TIME_FORMAT_SIZE, 
-			timeFormat.c_str (), 
-			timeinfo
-		);
-
-		/** Message on file. */
-		if (log.is_open ()) {
-			log << buffer;
-			log << message << "\n"; 
-		}
-
-		/** Message on console. */
-		cout << buffer;
-		cout << message << "\n"; 
 	}
 
 	/**

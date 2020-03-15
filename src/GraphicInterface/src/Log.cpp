@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+=======
+/**
+ *  Log.cpp
+ * 
+ *  Created 22 February 2020
+ *  By Balescu Ovidiu-Gheorghe
+ *  Modified 22 February 2020
+ *  By Balescu Ovidiu-Gheorghe
+ */
+
+>>>>>>> 634d4fed421c6f6c78d502a595731b23bf906e21
 #include "Log.h"
 
 #define DEFAULT_TIME_FORMAT_STRING "%Y-%m-%d, %I:%M%p"

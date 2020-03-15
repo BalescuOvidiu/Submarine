@@ -1,9 +1,16 @@
-#include "panel.h"
+/**
+ *  Panel.cpp
+ * 
+ *  Created 15 May 2019
+ *  By Balescu Ovidiu-Gheorghe
+ *  Modified 25 February 2020
+ *  By Balescu Ovidiu-Gheorghe
+ */
+
+#include "Panel.h"
 
 using namespace std;
 using namespace sf;
-using namespace config;
-using namespace mathematics;
 
 /** Files. */
 #define FILE_SUBMARINE "data/submarine.txt"

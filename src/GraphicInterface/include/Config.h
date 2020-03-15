@@ -1,7 +1,10 @@
 /**
- * Programmer: Balescu Ovidiu-Gheorghe
- * Date:       15 May 2019
- * Library:    SFML 2.5.1
+ *  Config.h
+ * 
+ *  Created 28 May 2018
+ *  By Balescu Ovidiu-Gheorghe
+ *  Modified 25 February 2020
+ *  By Balescu Ovidiu-Gheorghe
  */
 
 #ifndef CONFIG_H_
@@ -23,16 +26,7 @@
 #include <SFML/OpenGL.hpp>
 
 /** Mathematical constants and functions. */
-#include "mathematics.h"
-
-/** Colors codes. */
-#define COLOR_TRANSPARENT sf::Color (0, 0, 0, 0)
-#define COLOR_BACKGROUND  sf::Color (32, 32, 32)
-#define COLOR_GRID_MINOR  sf::Color (48, 48, 48)
-#define COLOR_GRID        sf::Color (64, 64, 64)
-#define COLOR_LINE        sf::Color (128, 128, 128)
-#define COLOR_TEXT        sf::Color (232, 232, 255) 
-#define COLOR_WARNING     sf::Color (216, 128, 32)                      
+#include "mathematics.h"                   
 
 #define MOUSE_TIMEOUT 320
 #define KEY_TIMEOUT    20
@@ -63,33 +57,11 @@ namespace config {
 	bool writeConfigFile ();
 	std::string getNameOfApplication ();
 
-	double getGrid ();
-	unsigned getWidth ();
-	unsigned getWidth (short percent);
-	unsigned getWidthGrid ();
-	unsigned getWidthGrid (short percent);
-	unsigned getHeight ();
-	unsigned getHeight (short percent);
-	unsigned getHeightGrid ();
-	unsigned getHeightGrid (short percent);
-	unsigned getFrameRate ();
-
 	void initialize ();
 	void logMessage (std::string message);
 	void move (sf::Vector2f position);
 
 	/** Functions used to create text label. */
-	void text (
-		sf::Text &text, 
-		sf::Vector2f position, 
-		std::string string
-	);
-	void text (
-		sf::Text &text, 
-		sf::Vector2f position, 
-		sf::String string
-	);
-	void textCentered (sf::Text &text);
 
 	/** Functions used for mouse click. */
 	bool canClick (short time);
@@ -113,12 +85,6 @@ namespace config {
 	 */
 	sf::Vector2f toGrid (sf::Vector2f vector);
 	sf::Vector2f fromGrid (sf::Vector2f vector);
-
-	/** Functions who convert numbers to string. */
-	std::string format (double value);
-	std::string format (short value);
-	std::string format (int value);
-	std::string format (unsigned value);
 
 	/**
 	 * This function transform numbers and objects into a string,

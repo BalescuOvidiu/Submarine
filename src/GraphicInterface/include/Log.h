@@ -1,5 +1,9 @@
 /**
+<<<<<<< HEAD:src/GraphicInterface/include/Log.h
  *  Log
+=======
+ *  Log.h
+>>>>>>> 634d4fed421c6f6c78d502a595731b23bf906e21:src/GraphicInterface/include/Log.h
  * 
  *  Created 22 February 2020
  *  By Balescu Ovidiu-Gheorghe

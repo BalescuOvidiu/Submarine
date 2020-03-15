@@ -1,5 +1,5 @@
 /**
- *  MotorDc
+ *  MotorDc.h
  *
  *  Created 1s May 2019
  *  By Balescu Ovidiu-Gheorghe
@@ -21,7 +21,7 @@
 class MotorDc {
 
 public:
-    MotorDc (const Motor& source);
+    MotorDc (const MotorDc& source);
     MotorDc (
         byte pinA,
         byte pinB, 
@@ -45,10 +45,10 @@ public:
      *  
      *  @params: source - is a motor object.
      */
-    Motor& operator = (const Motor& source){
+    MotorDc& operator = (const MotorDc& source){
         this->pinA = source.pinA;
         this->pinB = source.pinB;
-        this->write (this->speedSignalIdle);
+        this->setSpeed (this->speedSignalIdle);
         return *this;
     }
 
@@ -71,8 +71,6 @@ public:
     void setSpeedSignalBackward (short value);
     void setSpeedSignalIdle (short value);
     void setSpeedSignalForward (short value);
-
-    short get
 
 private:
     byte pinA;

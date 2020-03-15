@@ -1,5 +1,5 @@
 /**
- *	Actions
+ *	Actions.h
  *
  *	This is a module used to control motors and light on the
  *	submarine.
