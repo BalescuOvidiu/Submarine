@@ -1,7 +1,7 @@
 # Submarin dronă - Clasa Metere
 
 
-![](https://raw.githubusercontent.com/BalescuOvidiu/Submarine/master/img/surface.jpg)
+![](https://raw.githubusercontent.com/BalescuOvidiu/Submarine/master/img/Surface.jpg)
 
 ## Cuprins
 
@@ -31,18 +31,18 @@ O dronă, este un vehicul căruia îi lipsește pilotul uman, fiind ghidat fie d
 | Nume clasă &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | Metere  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |                                           
 |:-----------------|:-------------------------------------|
 | Cost unitate | 1630.10 RON   |
-| Deplasament  | La suprafață: 6.8 kg  <br> În imersie: 9.1 kg |
+| Deplasament  | La suprafață: 5.8 kg  <br> În imersie: 9.1 kg |
 | Lungime      | 120.0 cm   |
 | Lățime       | 10.0 cm  |
 | Pescaj       | 7.0 cm  |
 | Propulsie    | <a href = "https://www.pololu.com/category/60/micro-metal-gearmotors">1 motor DC cu reductor 50:1 HPCB 6 V </a><br> <a href = "https://en.wikipedia.org/wiki/Pump-jet">1 elice cu 7 lame pompă-jet</a>   |
 | Viteză  | 5.2 noduri (9.7 km / h)   |
-| Autonomie    | 3:10 h   |
+| Autonomie    | 3 ore  |
 | Adâncime operațională   | 1.0 m (3.2 ft) fără cablu  |
 | Adâncime maximă   | 10.0 m (65.6 ft)   |
 | Rază acoperire comunicații | 1000 m (3280.8 ft) la suprafață |
 | Sensori și sisteme de procesare  | 2 <a href = "https://www.optimusdigital.ro/ro/compatibile-cu-arduino-nano/1686-placa-de-dezvoltare-compatibila-cu-arduino-nano-atmega328p-i-ch340.html" >plăci de dezvoltare Arduino Nano v3</a> <br> 1 <a href = "https://www.optimusdigital.ro/ro/ism-24-ghz/119-modul-nrf24l01-pentru-distante-mari.html" >transceiver nRF24L01</a> <br> 1 <a href = "https://www.optimusdigital.ro/ro/senzori-senzori-inertiali/865-modul-senzor-cu-9-axe-mpu9250.html" >IMU MPU9250</a> <br>3 <a href = "https://www.optimusdigital.ro/ro/senzori-senzori-ultrasonici/2943-modul-senzor-ultrasonic-rezistent-la-apa-jsn-sr04t-cu-sonda-pt-masurare-la-distana.html" >senzori de distanță JSN-SR04T</a> |
-| Alimentare  | 18 <a href = "https://www.soselectronic.ro/products/panasonic/hr-3u-2700-bp4-phr3u2700-4bp-1-56597">acumulatori AA de 1.2 V, 2700 mAh</a><br>6 <a href = "https://www.soselectronic.ro/products/conrad-energy/4aa2500mwh1-6v-bp4-1-153207">acumulatori AA de 1.6 V, 1500 mAh</a>  |
+| Alimentare  | 6 <a href = "https://www.soselectronic.ro/products/panasonic/hr-3u-2700-bp4-phr3u2700-4bp-1-56597">acumulatori AA de 1.2 V, 2700 mAh</a><br>18 <a href = "https://www.soselectronic.ro/products/conrad-energy/4aa2500mwh1-6v-bp4-1-153207">acumulatori AA de 1.6 V, 1500 mAh</a>  |
 
 
 ## Structură
@@ -61,7 +61,7 @@ Structura este modulară pentru a fi ușor de reparat. Fiecare compartiment este
 </p>
 
 
-![](https://raw.githubusercontent.com/BalescuOvidiu/Submarine/master/img/inside.jpg)
+![](https://raw.githubusercontent.com/BalescuOvidiu/Submarine/master/img/Inside.jpg)
 
 
 #### Compartimente
@@ -75,7 +75,7 @@ Structura este modulară pentru a fi ușor de reparat. Fiecare compartiment este
 | 5 | Compartiment utilitar              | 11 | Control hidroplane față și sistem de orientare |
 | 6 | Corpul de navigare                 | 12 | Provă                                          |
 
-![](https://raw.githubusercontent.com/BalescuOvidiu/Submarine/master/img/compartments.png)
+![](https://raw.githubusercontent.com/BalescuOvidiu/Submarine/master/img/Compartments.png)
 
 
 ## Circuit electric
@@ -88,7 +88,7 @@ Fiecare motor, sau servomotor e alimentat la câte o sursă de 6.0 V. Fiecare su
 Fiecare dintre aceste surse primește semnal de pornire sau de oprire, de la plăcile Arduino prin intermediul unui tranzistor. Atunci când alimentarea celor două plăci sunt oprite, alimentarea motoarelor este oprită. La fel este și atunci când sunt pornite cele două plăci.
 </p>
 
-![](https://raw.githubusercontent.com/BalescuOvidiu/Submarine/master/img/schematic.png)
+![](https://raw.githubusercontent.com/BalescuOvidiu/Submarine/master/img/Schematic.png)
 
 
 ## Software
@@ -97,7 +97,7 @@ Programele pentru plăcile <a href = "https://www.arduino.cc/">Arduino</a> de pe
 <p align = "justify">
 Interfața grafică a fost scrisă în limbajul <a href = "http://www.cplusplus.com/">C++ 11</a> folosind framework-ul <a href = "https://www.sfml-dev.org/">SFML 2.5.1</a>. Aceasta are scopul de a vizualiza datele de la senzorii submarinului și de controla componentele de pe acesta.</p>
 
-![](https://raw.githubusercontent.com/BalescuOvidiu/Submarine/master/img/screenshotGraphicInterface.png)
+![](https://raw.githubusercontent.com/BalescuOvidiu/Submarine/master/img/ScreenshotGraphicInterface.png)
 
 #### Cerințe minime sistem pentru interfață
 1. Procesor DualCore 2.0 GHz,
