@@ -124,7 +124,7 @@ Interfața grafică a fost scrisă în limbajul <a href = "http://www.cplusplus.
 ## Unități
 
 <p align = "justify">
-În momentul actual proiectul este în faza experimental și se urmărește dezvoltarea doar unei singure unități.
+În momentul actual proiectul este în faza experimentală și se urmărește dezvoltarea doar unei singure unități.
 </p>
 
 | # | Nume | Versiune | Lansare | Începerea construcției | Dezvoltator | Status |
@@ -136,7 +136,7 @@ Interfața grafică a fost scrisă în limbajul <a href = "http://www.cplusplus.
 
 #### Testare versiunea 0.1 - 16 Aprilie 2019 
 <p align = "justify">
-S-a desfășurat pe lacul din Parcul Tineretului, București. S-a deplasat fără probleme pe suprafață, dar nu a reușit să execute o submersie. 
+S-a desfășurat pe lacul din Parcul Tineretului, București. S-a deplasat fără probleme la suprafața apei, dar nu a reușit să execute o submersie. 
 Problema era cauzată de planele de scufundare din față, fiind fixate(nu erau conectate la un motor, ci doar lipite). asta nu a permis să încline submarinul cu botul în jos și să execute o submersie dinamică. Carcasa din PET acoperită cu lac de lemn nu a permis apei să intre, dar în urma unor șocuri mecanice s-a observat că, lacul întărit se desprinde de pe plastic.
 Click <a href = "https://drive.google.com/file/d/1TcdASmKPXG35pqwhGr6TglmWBqajAN5j/view?usp=share_link" >aici</a> pentru a vedea video-ul. 
 </p>
