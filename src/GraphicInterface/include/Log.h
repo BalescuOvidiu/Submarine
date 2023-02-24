@@ -1,13 +1,9 @@
 /**
-<<<<<<< HEAD:src/GraphicInterface/include/Log.h
- *  Log
-=======
  *  Log.h
->>>>>>> 634d4fed421c6f6c78d502a595731b23bf906e21:src/GraphicInterface/include/Log.h
  * 
  *  Created 22 February 2020
  *  By Balescu Ovidiu-Gheorghe
- *  Modified 22 February 2020
+ *  Modified 21 February 2023
  *  By Balescu Ovidiu-Gheorghe
  */
 
@@ -15,35 +11,50 @@
 #define LOG_H_
 
 #include <fstream>
-#include <iostream>
 #include <string>
 
 /**
- *
+ *  @brief:
  */
 class Log {
 
 public:
-	static bool clear ();
-	static bool close ();
-	static bool initialize (
-		std::string directoryOfConfigFile, 
-		std::string directoryOfOutputFile
+	static void initialize (
+		std::string outputFileDirectory = "data/logs/",
+		std::string timeFormat = "%Y-%m-%d, %X",
+		std::string separator = " - "
 	);
-	static bool write (std::string line);
+	static void update (
+		std::string outputFileDirectory,
+		std::string timeFormat,
+		std::string separator
+	);
+	static void clear ();
+	static void close ();
 
+	static void reloadTime ();
+	static void write (std::string line);
+
+	static void setOutputFileDirectory (std::string outputFileDirectory);
+	static void setTimeFormat (std::string timeFormat);
+	static void setSeparator (std::string separator);
+
+	static std::string getOutputFileDirectory();
+	static std::string getTimeFormat();
+	static std::string getSeparator();
 	static std::string getLastLine ();
 	static std::string getLastMessage ();
 	static std::string getLastTime ();
 
+	static bool isOpen ();
+
 private:
-	static std::ofstream outputFile;
+	static std::string outputFileDirectory;
+	static std::string timeFormat;
+	static std::string separator;
 
 	static std::string lastMessage;
 	static std::string lastTime;
-
-	static std::string separator;
-	static std::string timeFormat;
 };
 
 #endif

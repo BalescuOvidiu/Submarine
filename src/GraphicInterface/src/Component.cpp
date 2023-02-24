@@ -3,46 +3,50 @@
  * 
  *  Created 15 May 2019
  *  By Balescu Ovidiu-Gheorghe
- *  Modified 25 February 2020
+ *  Modified 22 February 2023
  *  By Balescu Ovidiu-Gheorghe
  */
 
 #include "Component.h"
-
-#define CLICK_TIME_WAIT_MS 320
+#include "Ruller.h"
 
 using namespace std;
 using namespace sf;
 
+double Component::circlePrecision;
+int Component::clickWaitTime;
+
 /**
- * 
+ *  @brief:
  */
 Component::Component (const Component& source) {
 	this->position = source.position;
-	this->min = source.min;
-	this->max = source.max;
+	this->minim = source.minim;
+	this->maxim = source.maxim;
 
 	this->angle = source.angle;
 
-	this->label = source.label;
 	this->point = source.point;
 	this->buffer = source.buffer;
 	this->visible = source.visible;
+
+	this->clickedLeft = source.clickedLeft;
+	this->clickedRight = source.clickedRight;
+	this->clock = source.clock;
 }
 
 /**
- * 
+ *  @brief:
  */
 Component::Component (
-	Vector2f position,
-	PrimitiveType type,
-	string text,
+	sf::PrimitiveType type,
+	sf::Vector2f position,
 	bool visible,
 	double angle
 ) {
-	this->position = toGrid (position);
-	this->min = position;
-	this->max = position;
+	this->position = Ruller::gridToPixel (position);
+	this->minim = position;
+	this->maxim = position;
 
 	this->visible = visible;
 
@@ -50,101 +54,88 @@ Component::Component (
 
 	this->buffer = VertexBuffer (type);
 
-	this->label = new Text ();
-
-	config::text (*this->label, this->position, text);
+	this->clickedLeft = false;
+	this->clickedRight = false;
+	this->clock = sf::Clock();
 }
 
 /**
- * 
- */
-Component::Component (
-	PrimitiveType type,
-	Vector2f position,
-	bool visible,
-	double angle
-) {
-	this->position = toGrid (position);
-	this->min = position;
-	this->max = position;
-
-	this->visible = visible;
-
-	this->setRotation (angle);
-
-	this->buffer = VertexBuffer (type);
-
-	this->label = NULL;
-}
-
-/**
- * 
+ *  @brief:
  */
 Component::~Component () {
 	this->buffer.create (0);
 	this->point.clear ();
 }
 
+
+
 /**
- * 
+ *  @brief:
+ */
+void Component::initialize (
+	double circlePrecision, 
+	int clickWaitTime
+) {
+	Component::circlePrecision = circlePrecision;
+	Component::clickWaitTime = clickWaitTime;
+}
+
+/**
+ *  @brief:
  */
 void Component::render (RenderWindow *window) {
 	if (this->visible) {
-		if (NULL != this->label) {
-			window->draw (*this->label);
-		}
 		window->draw (this->buffer);
 	}
 }
 
 void Component::movePoints (double x, double y) {
-	toGrid (x, y);
+	x = Ruller::gridToPixel (x);
+	y = Ruller::gridToPixel (y);
 
-	if (NULL != this->label) {
-		this->label->move (x, y);
-	}
 	for (unsigned i = 0; i < this->point.size (); i++) {
 		this->point[i].position.x += x;
 		this->point[i].position.y += y;
-	}	
+	}
 }
 
 /**
- * 
+ *  @brief:
  */
 void Component::move (double x, double y) {
-	toGrid (x, y);
+	x = Ruller::gridToPixel (x);
+	y = Ruller::gridToPixel (y);
+
+	
 
 	this->position.x += x;
 	this->position.y += y;
 
-	if (NULL != this->label) {
-		this->label->move (x, y);
-	}
 	for (unsigned i = 0; i < this->point.size (); i++) {
 		this->point[i].position.x += x;
 		this->point[i].position.y += y;
 	}
+	this->update ();
 }
 
-/*
- *
+/**
+ *  @brief:
  */
 void Component::update () {
 
 	/** Update bounds. */
-	this->min = this->position;
-	this->max = this->position;
+	this->minim = this->position;
+	this->maxim = this->position;
 
 	for (unsigned i = 0; i < this->point.size (); i++) {
 		
 		/** Get min y and min x of points. */
-		this->min.x = mathematics::min (min.x, point[i].position.x);
-		this->min.y = mathematics::min (min.y, point[i].position.y);
+		this->minim.x = min (this->minim.x, point[i].position.x);
+		this->minim.y = min (this->minim.y, point[i].position.y);
 
 		/** Get max y and min x of points. */
-		this->max.x = mathematics::max (max.x, point[i].position.x);
-		this->max.y = mathematics::max (max.y, point[i].position.y);
+		this->maxim.x = max (this->maxim.x, point[i].position.x);
+		this->maxim.y = max (this->maxim.y, point[i].position.y);
 	}
 
 	/** Update buffer. */
@@ -157,7 +148,7 @@ void Component::update () {
 }
 
 /**
- * 
+ *  @brief:
  */
 void Component::clear () {
 	this->buffer.create (0);
@@ -165,144 +156,92 @@ void Component::clear () {
 }
 
 /**
- * 
+ *  @brief:
  */
 void Component::show () {
 	this->visible = true;
 }
 
 /**
- * 
+ *  @brief:
  */
 void Component::hide () {
 	this->visible = false;
 }
 
 /**
- * 
+ *  @brief:
  */
 void Component::toggleVisibility () {
 	this->visible = !visible;
 }
 
 /**
- * 
+ *  @brief:
+ */
+bool Component::isHidden () {
+	return !this->visible;
+}
+
+/**
+ *  @brief:
  */
 bool Component::isVisible () {
 	return this->visible;
 }
 
 /**
- * 
+ *  @brief:
  */
 void Component::setPosition (double x, double y) {
-	toGrid (x, y);
-	this->position = Vector2f (x, y);
-
-	if (NULL != this->label) {
-		this->label->setPosition (this->position);
-	}
+	this->position = Ruller::gridToPixel (x, y);
 }
 
 /**
- * 
+ *  @brief:
  */
 void Component::setPosition (sf::Vector2f point) {
-	this->position = toGrid (point);
+	this->position = Ruller::gridToPixel (point);
+}
 
-	if (NULL != this->label) {
-		this->label->setPosition (this->position);
+/**
+ *  @brief:
+ */
+unsigned long Component::size () {
+	return this->point.size ();
+}
+
+/**
+ *  @brief:
+ */
+void Component::erasePoint (unsigned long index) {
+	if (index < this->point.size ()) {
+		this->point.erase (this->point.begin () + index);
 	}
 }
 
-
-void Component::setLabel (sf::Color color) {
-	if (NULL == this->label) {
-		this->label = new Text ();
-
-		config::text (*this->label, this->position, string (""));
+/**
+ *  @brief:
+ */
+void Component::erasePoint (unsigned long first, unsigned long last) {
+	if (first < this->point.size () && last < this->point.size ()) {
+		this->point.erase (
+			this->point.begin () + first,
+			this->point.begin () + last
+		);
 	}
-
-	this->label->setFillColor (color);
 }
 
 /**
- * 
- */
-void Component::setLabel (
-	string text, 
-	Color color
-) {
-	if (NULL == this->label) {
-		this->label = new Text ();
-
-		config::text (*this->label, this->position, text);
-	}
-	this->label->setString (text);
-	this->label->setFillColor (color);	
-}
-
-/**
- * 
- */
-void Component::setLabel (
-	String text, 
-	Color color
-) {
-	if (NULL == this->label) {
-		this->label = new Text ();
-
-		config::text (*this->label, this->position, text);
-	}
-
-	this->label->setString (text);
-	this->label->setFillColor (color);
-}
-
-/**
- * 
- */
-void Component::removeLabel () {
-	delete this->label;
-	this->label = NULL;
-}
-
-/**
- * 
- */
-void Component::setPoint (
-	unsigned long i, 
-	Vector2f position, 
-	sf::Color color
-) {
-	this->point[i].position = toGrid (position);
-	this->point[i].color = color;
-}
-
-/**
- * 
- */
-void Component::setPoint (unsigned long i, Vector2f position) {
-	this->point[i].position = toGrid (position);
-}
-
-/**
- * 
- */
-void Component::setPoint (unsigned long i, Color color) {
-	this->point[i].color = color;
-}
-
-/**
- * 
+ *  @brief:
  */
 void Component::addPoint (
 	double x, 
 	double y, 
 	Color color
 ) {
-
-	toGrid (x, y);
+	x = Ruller::gridToPixel (x);
+	y = Ruller::gridToPixel (y);
 	this->point.push_back (Vertex (
 		Vector2f (
 			this->position.x + x, 
@@ -313,13 +252,13 @@ void Component::addPoint (
 }
 
 /**
- * 
+ *  @brief:
  */
 void Component::addPoint (
 	Vector2f position, 
 	Color color
 ) {
-	position = toGrid (position);
+	position = Ruller::gridToPixel (position);
 	this->point.push_back (Vertex (
 		Vector2f (this->position + position), 
 		color
@@ -327,7 +266,7 @@ void Component::addPoint (
 }
 
 /**
- * 
+ *  @brief:
  */
 void Component::addJoint (
 	double x, 
@@ -339,7 +278,7 @@ void Component::addJoint (
 }
 
 /**
- * 
+ *  @brief:
  */
 void Component::addJoint (
 	Vector2f position, 
@@ -350,7 +289,7 @@ void Component::addJoint (
 }
 
 /**
- * 
+ *  @brief:
  */
 void Component::addLine (
 	double a, 
@@ -364,7 +303,7 @@ void Component::addLine (
 }
 
 /**
- * 
+ *  @brief:
  */
 void Component::addLine (
 	Vector2f begin, 
@@ -376,18 +315,20 @@ void Component::addLine (
 }
 
 /**
- * 
+ *  @brief:
  */
 void Component::addRectangle ( 
-	Color colorGrid,
-	Color colorMargin,
+	Color colorGrid, 
+	Color colorMargin, 
 	double width, 
 	double height, 
 	double widthDivision, 
-	double heightDivision,
-	bool margin,
+	double heightDivision, 
+	bool margin, 
 	Vector2f origin
 ) {
+	widthDivision = width / widthDivision;
+	heightDivision = height / heightDivision;
 
 	/** Horizontal lines. */
 	for (double y = 0; y <= height; y += heightDivision) {
@@ -445,7 +386,7 @@ void Component::addRectangle (
 }
 
 /**
- *
+ *  @brief:
  */
 void Component::addSquare (
 	Color colorGrid,
@@ -468,12 +409,11 @@ void Component::addSquare (
 }
 
 /**
- * 
+ *  @brief:
  */
 void Component::addEllipse (
 	Color colorGrid,
 	Color colorMargin,
-	double ellipseCount,
 	double radiusDivision, 
 	double radiusX, 
 	double radiusY,
@@ -495,8 +435,8 @@ void Component::addEllipse (
 		this->addLine (
 		    origin.x,
 		    origin.y,
-		    origin.x + radiusX * COS (angle),
-		    origin.y + radiusY * SIN (angle),
+		    origin.x + radiusX * cos (angle * radians),
+		    origin.y + radiusY * sin (angle * radians),
 		    colorGrid
 		);
 	}
@@ -506,27 +446,27 @@ void Component::addEllipse (
 
 		/** Begin of circle. */
 		this->addPoint (
-		    origin.x + stepX * div * COS (angleBegin),
-		    origin.y + stepY * div * SIN (angleBegin),
+		    origin.x + stepX * div * cos (angleBegin * radians),
+		    origin.y + stepY * div * sin (angleBegin * radians),
 		    colorGrid
 		);
 
 		for (
 			double angle = angleBegin; 
 			angle <= angleEnd; 
-			angle += angleDivison / ellipseCount
+			angle += angleDivison / Component::circlePrecision
 		)  {
 			this->addJoint (
-			    origin.x + stepX * div * COS (angle),
-			    origin.y + stepY * div * SIN (angle),
+			    origin.x + stepX * div * cos (angle * radians),
+			    origin.y + stepY * div * sin (angle * radians),
 		    	colorGrid
 			);
 		}
 
 		/** End of circle. */
 		this->addPoint (
-		    origin.x + stepX * div * COS (angleEnd),
-		    origin.y + stepY * div * SIN (angleEnd),
+		    origin.x + stepX * div * cos (angleEnd * radians),
+		    origin.y + stepY * div * sin (angleEnd * radians),
 		    colorGrid
 		);
 	}
@@ -536,39 +476,38 @@ void Component::addEllipse (
 
 		/** Begin of circle. */
 		this->addPoint (
-		    origin.x + radiusX * COS (angleBegin),
-		    origin.y + radiusY * SIN (angleBegin),
+		    origin.x + radiusX * cos (angleBegin * radians),
+		    origin.y + radiusY * sin (angleBegin * radians),
 		    colorMargin
 		);
 
 		for (
 			double angle = angleBegin; 
 			angle <= angleEnd; 
-			angle += angleDivison / ellipseCount
+			angle += angleDivison / Component::circlePrecision
 		)  {
 			this->addJoint (
-			    origin.x + radiusX * COS (angle),
-			    origin.y + radiusY * SIN (angle),
+			    origin.x + radiusX * cos (angle * radians),
+			    origin.y + radiusY * sin (angle * radians),
 		    	colorMargin
 			);
 		}
 
 		/** End of circle. */
 		this->addPoint (
-		    origin.x + radiusX * COS (angleEnd),
-		    origin.y + radiusY * SIN (angleEnd),
+		    origin.x + radiusX * cos (angleEnd * radians),
+		    origin.y + radiusY * sin (angleEnd * radians),
 		    colorMargin
 		);
 	}
 }
 
 /**
- * 
+ *  @brief:
  */
 void Component::addCircle (
 	Color colorGrid,
 	Color colorMargin,
-	double circleCount, 
 	double radiusDivision, 
 	double radius, 
 	double angleDivison,
@@ -580,7 +519,6 @@ void Component::addCircle (
 	this->addEllipse (
 		colorGrid,
 		colorMargin,
-		circleCount,
 		radiusDivision,
 		radius,
 		radius,
@@ -593,12 +531,11 @@ void Component::addCircle (
 }
 
 /**
- * 
+ *  @brief:
  */
 void Component::addEllipseWithHole (
 	sf::Color colorGrid,
 	sf::Color colorMargin,
-	double ellipseCount,
 	double radiusDivision,
 	double radiusX,
 	double radiusY,
@@ -620,10 +557,10 @@ void Component::addEllipseWithHole (
 		angle += angleDivison
 	) {
 		this->addLine (
-		    origin.x + radiusHoleX * COS (angle),
-		    origin.y + radiusHoleY * SIN (angle),
-		    origin.x + radiusX * COS (angle),
-		    origin.y + radiusY * SIN (angle),
+		    origin.x + radiusHoleX * cos (angle * radians),
+		    origin.y + radiusHoleY * sin (angle * radians),
+		    origin.x + radiusX * cos (angle * radians),
+		    origin.y + radiusY * sin (angle * radians),
 		    colorGrid
 		);
 	}
@@ -633,27 +570,27 @@ void Component::addEllipseWithHole (
 
 		/** Begin of circle. */
 		this->addPoint (
-		    origin.x + stepX * div * COS (angleBegin),
-		    origin.y + stepY * div * SIN (angleBegin),
+		    origin.x + stepX * div * cos (angleBegin * radians),
+		    origin.y + stepY * div * sin (angleBegin * radians),
 		    colorGrid
 		);
 
 		for (
 			double angle = angleBegin; 
 			angle <= angleEnd; 
-			angle += angleDivison / ellipseCount
+			angle += angleDivison / Component::circlePrecision
 		)  {
 			this->addJoint (
-			    origin.x + stepX * div * COS (angle),
-			    origin.y + stepY * div * SIN (angle),
+			    origin.x + stepX * div * cos (angle * radians),
+			    origin.y + stepY * div * sin (angle * radians),
 		    	colorGrid
 			);
 		}
 
 		/** End of circle. */
 		this->addPoint (
-		    origin.x + stepX * div * COS (angleEnd),
-		    origin.y + stepY * div * SIN (angleEnd),
+		    origin.x + stepX * div * cos (angleEnd * radians),
+		    origin.y + stepY * div * sin (angleEnd * radians),
 		    colorGrid
 		);
 	}
@@ -663,27 +600,27 @@ void Component::addEllipseWithHole (
 
 		/** Begin of circle. */
 		this->addPoint (
-		    origin.x + radiusX * COS (angleBegin),
-		    origin.y + radiusY * SIN (angleBegin),
+		    origin.x + radiusX * cos (angleBegin * radians),
+		    origin.y + radiusY * sin (angleBegin * radians),
 		    colorMargin
 		);
 
 		for (
 			double angle = angleBegin; 
 			angle <= angleEnd; 
-			angle += angleDivison / ellipseCount
+			angle += angleDivison / Component::circlePrecision
 		)  {
 			this->addJoint (
-			    origin.x + radiusX * COS (angle),
-			    origin.y + radiusY * SIN (angle),
+			    origin.x + radiusX * cos (angle * radians),
+			    origin.y + radiusY * sin (angle * radians),
 		    	colorMargin
 			);
 		}
 
 		/** End of circle. */
 		this->addPoint (
-		    origin.x + radiusX * COS (angleEnd),
-		    origin.y + radiusY * SIN (angleEnd),
+		    origin.x + radiusX * cos (angleEnd * radians),
+		    origin.y + radiusY * sin (angleEnd * radians),
 		    colorMargin
 		);
 	}
@@ -691,12 +628,11 @@ void Component::addEllipseWithHole (
 }
 
 /**
- * 
+ *  @brief:
  */
 void Component::addCircleWithHole (
 	sf::Color colorGrid,
 	sf::Color colorMargin,
-	double circleCount,
 	double radiusDivision,
 	double radius,
 	double radiusHole,
@@ -709,7 +645,6 @@ void Component::addCircleWithHole (
 	this->addEllipseWithHole (
 		colorGrid,
 		colorMargin,
-		circleCount,
 		radiusDivision,
 		radius,
 		radius,
@@ -724,35 +659,49 @@ void Component::addCircleWithHole (
 }
 
 /**
- * 
+ *  @brief:
  */
 Vector2f Component::getPosition () {
-	return fromGrid (this->position);
+	return Ruller::pixelToGrid (this->position);
 }
 
 /**
- * 
+ *  @brief:
+ */
+Vector2f Component::getPosition (double x, double y) {
+	return Ruller::pixelToGrid (this->position) + Vector2f(x, y);
+}
+
+/**
+ *  @brief:
+ */
+Vector2f Component::getPosition (Vector2f point) {
+	return Ruller::pixelToGrid (this->position) + point;
+}
+
+/**
+ *  @brief:
  */
 Vector2f Component::getPoint (unsigned long i) {
 	if (i < this->point.size ()) {
-		return fromGrid (this->point[i].position);
+		return Ruller::pixelToGrid (this->point[i].position);
 	}
 	return Vector2f (-1, -1);
 }
 
 /**
- * 
+ *  @brief:
  */
 Vector2f Component::getFirstPoint () {
-	return fromGrid (this->point[0].position);
+	return Ruller::pixelToGrid (this->point[0].position);
 }
 
 /**
- * 
+ *  @brief:
  */
 Vector2f Component::getLastPoint () {
 	if (this->point.size ()) {
-		return fromGrid (
+		return Ruller::pixelToGrid (
 			this->point[this->point.size () - 1].position
 		);
 	}
@@ -760,38 +709,38 @@ Vector2f Component::getLastPoint () {
 }
 
 /**
- * 
+ *  @brief:
  */
 bool Component::isInRectangle (Vector2f point) {
-
-	bool check = isInTriangle (
-		Vector2f (this->min.x, this->min.y),
-		Vector2f (this->max.x, this->min.y),
-		Vector2f (this->max.x, this->max.y),
+	return ::isInRectangle (
+		this->minim,
+		Vector2f (this->minim.x, this->maxim.y),
+		Vector2f (this->maxim.x, this->minim.y),
+		this->maxim,
 		point
 	);
-
-	if (check) {
-		return true;
-	}
-
-	check = isInTriangle (
-		Vector2f (this->min.x, this->min.y),
-		Vector2f (this->min.x, this->max.y),
-		Vector2f (this->max.x, this->max.y),
-		point
-	);
-
-	return check;
 }
 
 /**
- * 
+ *  @brief:
+ */
+bool Component::isInParalelogram (Vector2f point) {
+	return ::isInParalelogram (
+		this->minim,
+		Vector2f (this->minim.x, this->maxim.y),
+		Vector2f (this->maxim.x, this->minim.y),
+		this->maxim,
+		point
+	);
+}
+
+/**
+ *  @brief:
  */
 bool Component::isInCircle (Vector2f point) {
-	double radius = 0.5 * mathematics::min (
-		this->max.x - this->min.x, 
-		this->max.y - this->min.y
+	double radius = 0.5 * min (
+		this->maxim.x - this->minim.x, 
+		this->maxim.y - this->minim.y
 	);
 
 	return ::isInCircle (
@@ -802,26 +751,16 @@ bool Component::isInCircle (Vector2f point) {
 }
 
 /**
- * 
+ *  @brief:
  */
-bool Component::click (bool conditionMouseOver) {
-
-	if (left (conditionMouseOver)) {
-		return true;
-	}
-
-	return right (conditionMouseOver);
-}
-
-/**
- * 
- */
-bool Component::left (bool conditionMouseOver) {
-
+bool Component::clickLeft (bool conditionMouseOver) {
 	if (conditionMouseOver) {
-		if (canLeft (CLICK_TIME_WAIT_MS)) {
-			restartClick ();
-			return true;
+		this->clickedLeft = sf::Mouse::isButtonPressed (sf::Mouse::Left);
+		if (this->clickedLeft) {
+			if (clickWaitTime < this->clock.getElapsedTime ().asMilliseconds ()) {
+				this->clock.restart ();
+				return true;
+			}
 		}
 	}
 
@@ -829,14 +768,16 @@ bool Component::left (bool conditionMouseOver) {
 }
 
 /**
- * 
+ *  @brief:
  */
-bool Component::right (bool conditionMouseOver) {
-
+bool Component::clickRight (bool conditionMouseOver) {
 	if (conditionMouseOver) {
-		if (canRight (CLICK_TIME_WAIT_MS)) {
-			restartClick ();
-			return true;
+		this->clickedRight = sf::Mouse::isButtonPressed (sf::Mouse::Right);
+		if (this->clickedRight) {
+			if (clickWaitTime < this->clock.getElapsedTime ().asMilliseconds ()) {
+				this->clock.restart ();
+				return true;
+			}
 		}
 	}
 
@@ -844,20 +785,20 @@ bool Component::right (bool conditionMouseOver) {
 }
 
 /**
- * 
+ *  @brief:
  */
 void Component::setRotation (double newAngle) {
 	this->rotate (newAngle - this->angle);
 }
 
 /**
- * 
+ *  @brief:
  */
 void Component::rotate (double newAngle) {
 	double oldX;
 	double oldY;
-	double newCos = COS (newAngle);
-	double newSin = SIN (newAngle);
+	double newCos = cos (newAngle * radians);
+	double newSin = sin (newAngle * radians);
 
 	newAngle = mapAngleInDegrees (newAngle);
 
@@ -883,8 +824,15 @@ void Component::rotate (double newAngle) {
 }
 
 /**
- * 
+ *  @brief:
  */
 double Component::getRotation () {
 	return this->angle;
+}
+
+/**
+ *  @brief:
+ */
+double Component::getCirclePrecision () {
+	return Component::circlePrecision;
 }

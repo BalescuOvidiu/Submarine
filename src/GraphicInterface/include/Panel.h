@@ -1,99 +1,85 @@
 /**
  *  Panel.h
  * 
- *  Created 15 May 2019
+ *  Created 22 February 2023
  *  By Balescu Ovidiu-Gheorghe
- *  Modified 25 February 2020
+ *  Modified 22 February 2023
  *  By Balescu Ovidiu-Gheorghe
  */
 
 #ifndef PANEL_H_
 #define PANEL_H_
 
-#include "Log.h"
-#include "Component.h"
+#include "Ruller.h"
 
-struct Submarine {
-
-	double lengthHull;
-	double radiusHull;
-
-	double radiusPlane;
-
-	double radiusBack;
-
-	double positionBodyNavigation;
-	double radiusXBodyNavigation;
-	double radiusYBodyNavigation;
-
-	double distanceSensorMin;
-	double distanceSensorMax;
-
-	double positionInertialDevice;
-
-	double totalLength;
-
-	double speed;
-	double orientation;
-
-	Component body;
-};
-
+/**
+ *  @brief:
+ */
 class Panel {
-
 	public:
-		Panel (double speedMove);
-
+		Panel (
+			double minX = -5000,
+			double minY = -5000,
+			double maxX = 5000,
+			double maxY = 5000,
+			double marginSize = 2.0,
+			double zoomInLimit = 0.1,
+			double zoomOutLimit = 10.0,
+			unsigned int characterSize = 14,
+			int keysWaitTime = 20
+		);
 		~Panel ();
 
-		void render (sf::RenderWindow *window);
-
-		/** Update functions */
-		void move (
-			sf::RenderWindow *window, 
-			sf::View *view, 
-			double x, 
-			double y
+		void setSizes (
+			double minX = -5000,
+			double minY = -5000,
+			double maxX = 5000,
+			double maxY = 5000,
+			double marginSize = 2.0,
+			double zoomInLimit = 0.1,
+			double zoomOutLimit = 10.0,
+			unsigned int characterSize = 14,
+			int keysWaitTime = 20
 		);
-		void update (
-			sf::RenderWindow *window, 
-			sf::View *view
-		);
-		void clear ();
-		void setRadarRadius (double radius);
 
-		/** Load functions. */
-		void load ();
-		void loadPanelTrack ();
-		void loadRadar ();
-		void loadShip ();
-		void loadTextRadar ();
+		void open ();
+		void open (sf::View *view);
+		void close ();
 
-		/** Radar functions. */
-		double scaleToRadar (double value);
-		double scaleFromRadar (double value);
+		double getWidth ();
+		double getWidthGrid ();
+		double getWidthMeter ();
+		double getHeight ();
+		double getHeightGrid ();
+		double getHeightMeter ();
 
-		/** Ship functions. */
-		void setOrientationOfShip (double angle);
+		bool canMove (double x, double y);
+		bool canZoom (double factor);
+		bool canPressKeys ();
+
+		bool isPointValid (double x, double y);
+		bool isPointValid (sf::Vector2f point);
+		bool isOpen ();
+		bool isClosed ();
+
+	protected:
+		double marginSize;
+
+		double zoomInLimit; 
+		double zoomOutLimit;
+
+		unsigned int characterSize;
+
+		sf::Clock keysClock;
+		bool on;
 
 	private:
-		/** Background. */
-		sf::RectangleShape background;
+		double minX;
+		double minY;
+		double maxX;
+		double maxY;
 
-		/** Components. */
-		Component panelTrack;
-		Component radar;
-
-		/** Text. */
-		sf::Text radarGuide;
-		std::vector<sf::Text> radarText;
-
-		/** View variables. */
-		double speedMoveView;
-		double radarRadius;
-
-		/** Submarine data. */
-		Submarine ship;
+		int keysWaitTime;
 };
 
 #endif

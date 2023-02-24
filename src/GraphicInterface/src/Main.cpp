@@ -3,39 +3,22 @@
  * 
  *  Created 15 May 2019
  *  By Balescu Ovidiu-Gheorghe
- *  Modified 25 February 2020
+ *  Modified 22 February 2023
  *  By Balescu Ovidiu-Gheorghe
  */
 
-#include "main.h"
+#include "Log.h"
+#include "Ruller.h"
+#include "Writer.h"
 
-using namespace std;
+#include "ControlPanel.h"
 
-/**
- * This function check if conditions of exit from
- * applications are true.
- */
-bool checkForExit () {
-	if (config::canExit ()) {
-		return true;
-	}
+#define DEFAULT_WINDOW_TITLE "Controller Software - Metere Submarine Class"
+#define DEFAULT_FONT_FILE    "data/fonts/Verdana.ttf"
+#define DEFAULT_SHIP_FILE    "data/ships/ME-212.txt"
 
-	/** Standard exit. */
-	if (sf::Keyboard::isKeyPressed (sf::Keyboard::Escape)) {
-		config::exit ();
-		return true;
-	}
-
-	/** Linux stop process style. */
-	if (sf::Keyboard::isKeyPressed (sf::Keyboard::LControl)) {
-		if (sf::Keyboard::isKeyPressed (sf::Keyboard::C)) {
-			config::exit ();
-			return true;
-		}
-	}
-
-	return false;
-}
+#define DEFAULT_FRAMERATE_LIMIT       60
+#define DEFAULT_VERTICAL_SYNC_ENABLED true
 
 /**
  * This function run the program. It initializes GUI 
@@ -43,44 +26,35 @@ bool checkForExit () {
  * execution.
  */
 int main () {
-	config::initialize ();
+	Log::initialize ();
+	Ruller::initialize ();
+	Writer::initialize (DEFAULT_FONT_FILE);
+	Component::initialize ();
 
+	Log::write ("Screen size: " + Writer::toString (Ruller::width ()) + " x " + Writer::toString (Ruller::height ()));
+	
 	sf::RenderWindow window (
 		sf::VideoMode ().getDesktopMode (), 
-		config::getNameOfApplication (), 
+		DEFAULT_WINDOW_TITLE, 
 		sf::Style::Fullscreen
 	);
+	window.setFramerateLimit(DEFAULT_FRAMERATE_LIMIT);
+	window.setVerticalSyncEnabled(DEFAULT_VERTICAL_SYNC_ENABLED);
 	sf::View view (
-		sf::FloatRect (
-			0, 
-			0, 
-			config::getWidth (), 
-			config::getHeight ()
-		)
+		sf::FloatRect (0, 0, Ruller::width (), Ruller::height ())
 	);
 
-	Panel panel (config::getMoveViewSpeed ());
-
-	sf::Event event;
-
-
-	window.setFramerateLimit (config::getFrameRate ());
-	window.setView (view);
-
-	panel.load ();
+	ControlPanel panel (&window, &view);
+	panel.loadShip (DEFAULT_SHIP_FILE);
 
 	while (window.isOpen ()) {
 
 		/** Event */
+		sf::Event event;
 		while (window.pollEvent (event)) {
 			if (event.type == sf::Event::Closed) {
-				config::exit ();
+				window.close();
 			}
-		}
-
-		/** Exit. */
-		if (checkForExit ()) {
-			window.close ();
 		}
 
 		/** Draw. */
@@ -90,6 +64,16 @@ int main () {
 		panel.update (&window, &view);
 
 		window.display ();
+
+		/** Check for the close */
+		if (panel.isClosed ()) {
+			window.close ();
+		}
 	}
+
+	/** Closing */
+	Log::write ("Close!");
+	Log::close();
+
 	return EXIT_SUCCESS;
 }

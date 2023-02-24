@@ -3,17 +3,11 @@
  * 
  *  Created 28 May 2018
  *  By Balescu Ovidiu-Gheorghe
- *  Modified 25 February 2020
+ *  Modified 22 February 2023
  *  By Balescu Ovidiu-Gheorghe
  */
 
-#include "mathematics.h"
-
-using namespace std;
-using namespace sf;
-
-const double degreesToRadiansRatio = PI / ANGLE_STRAIGHT;
-const double radiansToDegreesRatio = ANGLE_STRAIGHT / PI;
+#include "Mathematics.h"
 
 /**
  *  @brief:
@@ -21,12 +15,12 @@ const double radiansToDegreesRatio = ANGLE_STRAIGHT / PI;
  *  @return: .
  */
 bool isInCircle (
-	Vector2f center, 
-	double radius, 
-	Vector2f point
+	sf::Vector2f center, 
+	double radius,
+	sf::Vector2f point
 ) {
 	return distanceIsLessThan (radius, center, point);
-}	
+}
 
 /**
  *  @brief:
@@ -34,10 +28,10 @@ bool isInCircle (
  *  @return: .
  */
 bool isInRectangle (
-	Vector2f origin, 
+	sf::Vector2f origin, 
+	sf::Vector2f point, 
 	double width, 
-	double height, 
-	Vector2f point
+	double height
 ) {
 	if (point.x > origin.x + width || point.x < origin.x) {
 		return false;
@@ -54,7 +48,34 @@ bool isInRectangle (
  *
  *  @return: .
  */
-bool isInTriangle (Vector2f a, Vector2f b, Vector2f c, Vector2f point) {
+bool isInRectangle (
+	sf::Vector2f a, 
+	sf::Vector2f b, 
+	sf::Vector2f c, 
+	sf::Vector2f d,
+	sf::Vector2f point
+) {
+	if (point.x > d.x || point.x < a.x) {
+		return false;
+	}
+	if (point.y > d.y || point.y < a.y) {
+		return false;
+	}
+
+	return  true;
+}
+
+/**
+ *  @brief:
+ *
+ *  @return: .
+ */
+bool isInTriangle (
+	sf::Vector2f a, 
+	sf::Vector2f b, 
+	sf::Vector2f c,
+	sf::Vector2f point
+) {
 	bool condition1 = det (a, point, b) < 0;
 	bool condition2 = det (a, c, point) < 0;
 
@@ -71,20 +92,17 @@ bool isInTriangle (Vector2f a, Vector2f b, Vector2f c, Vector2f point) {
  *  @return: .
  */
 bool isInParalelogram (
-	Vector2f a,
-	Vector2f b,
-	Vector2f c,
-	Vector2f d,
-	Vector2f point
-
+	sf::Vector2f a, 
+	sf::Vector2f b, 
+	sf::Vector2f c, 
+	sf::Vector2f d, 
+	sf::Vector2f point
 ) {
-	bool condition1 = isInTriangle (a, b, c, point);
-
-	if (condition1) {
+	if (isInTriangle (a, b, c, point)) {
 		return true;
 	}
 
-	return isInTriangle (b, c, d, point)
+	return isInTriangle (b, c, d, point);
 }
 
 /**
@@ -92,7 +110,7 @@ bool isInParalelogram (
  *
  *  @return: .
  */
-double area (Vector2f a, Vector2f b, Vector2f c) {
+double area (sf::Vector2f a, sf::Vector2f b, sf::Vector2f c) {
 	return abs (0.5 * det (a, b, c));
 }
 
@@ -101,7 +119,7 @@ double area (Vector2f a, Vector2f b, Vector2f c) {
  *
  *  @return: .
  */
-double det (Vector2f a, Vector2f b, Vector2f c) {
+double det (sf::Vector2f a, sf::Vector2f b, sf::Vector2f c) {
 	return a.x * b.y + a.y * c.x + b.x * c.y - b.y*c.x - a.x * c.y - a.y * b.x;
 }
 
@@ -135,8 +153,8 @@ double scaleIntervalToInterval (double value, double a, double b, double c, doub
  *
  *  @return: .
  */
-double getCos (Vector2f start, Vector2f end) {
-	return  (end.x - start.x) / DISTANCE (start, end);
+double cos (sf::Vector2f start, sf::Vector2f end) {
+	return  (end.x - start.x) / distance (start, end);
 }
 
 /**
@@ -144,8 +162,8 @@ double getCos (Vector2f start, Vector2f end) {
  *
  *  @return: .
  */
-double getSin (Vector2f start, Vector2f end) {
-	return  (end.y - start.y) / DISTANCE (start, end);
+double sin (sf::Vector2f start, sf::Vector2f end) {
+	return  (end.y - start.y) / distance (start, end);
 }
 
 /**
@@ -153,7 +171,7 @@ double getSin (Vector2f start, Vector2f end) {
  *
  *  @return: .
  */
-double getTan (Vector2f start, Vector2f end) {
+double tan (sf::Vector2f start, sf::Vector2f end) {
 	return (end.y - start.y) / (end.x - start.x);
 }
 
@@ -162,7 +180,7 @@ double getTan (Vector2f start, Vector2f end) {
  *
  *  @return: .
  */
-double getCtan (Vector2f start, Vector2f end) {
+double ctan (sf::Vector2f start, sf::Vector2f end) {
 	return (end.x - start.x) / (end.y - start.y);
 }
 
@@ -171,8 +189,8 @@ double getCtan (Vector2f start, Vector2f end) {
  *
  *  @return: .
  */
-double getAngleInDegrees (Vector2f start, Vector2f end) {
-	double angle=DEGREES ( atan ( (end.y - start.y) / (end.x - start.x)));
+double getAngleInDegrees (sf::Vector2f start, sf::Vector2f end) {
+	double angle =  atan ( (end.y - start.y) / (end.x - start.x)) * degrees;
 	
 	if (end.x < start.x){
 		angle += ANGLE_STRAIGHT;
@@ -189,8 +207,8 @@ double getAngleInDegrees (Vector2f start, Vector2f end) {
  *
  *  @return: .
  */
-double getAngleInRadians (Vector2f start, Vector2f end) {
-	double angle=DEGREES ( atan ( (end.y - start.y) / (end.x - start.x)));
+double getAngleInRadians (sf::Vector2f start, sf::Vector2f end) {
+	double angle = atan ( (end.y - start.y) / (end.x - start.x)) * radians;
 	
 	if (end.x < start.x){
 		angle += ANGLE_STRAIGHT;
@@ -199,7 +217,7 @@ double getAngleInRadians (Vector2f start, Vector2f end) {
 		angle += ANGLE_FULL;
 	}
 
-	return degreesToRadiansRatio * angle;
+	return angle * radians;
 }
 
 /**
@@ -224,17 +242,8 @@ double mapAngleInDegrees (double angle) {
  *
  *  @return: .
  */
-double toRadians (double degrees) {
-	return degrees * degreesToRadiansRatio;
-}
-
-/**
- *  @brief:
- *
- *  @return: .
- */
-double toDegrees (double radians) {
-	return radians * radiansToDegreesRatio;
+double geographic (double angle) {
+	return mapAngleInDegrees (ANGLE_RIGHT - degreesToScreen (angle));
 }
 
 /**
@@ -252,7 +261,7 @@ double degreesToScreen (double angle) {
  *  @return: .
  */
 double radiansToScreen (double angle) {
-	return ANGLE_FULL - toDegrees (angle);
+	return ANGLE_FULL - angle * degrees;
 }
 
 /**
@@ -260,7 +269,7 @@ double radiansToScreen (double angle) {
  *
  *  @return: .
  */
-double distance (Vector2f pointA, Vector2f pointB) {
+double distance (sf::Vector2f pointA, sf::Vector2f pointB) {
 	return sqrt ((pointA.x - pointB.x) * (pointA.x - pointB.x) + (pointA.y - pointB.y) * (pointA.y - pointB.y));
 }
 
@@ -269,8 +278,8 @@ double distance (Vector2f pointA, Vector2f pointB) {
  *
  *  @return: .
  */
-double distanceSquare (Vector2f pointA, Vector2f pointB) {
-	return (pointA.x - pointB.x) * (pointA.x - pointB.x) + (pointA.y - pointB.y) * (pointA.y - pointB.y);
+double distanceSquare (sf::Vector2f pointA, sf::Vector2f pointB) {
+	return ((pointA.x - pointB.x) * (pointA.x - pointB.x) + (pointA.y - pointB.y) * (pointA.y - pointB.y));
 }
 
 /**
@@ -278,8 +287,8 @@ double distanceSquare (Vector2f pointA, Vector2f pointB) {
  *
  *  @return: .
  */
-bool distanceIsLessThan (D distance, Vector2f pointA, Vector2f pointB) {
-	if (distance * distance > squareDistance (pointA, pointB)) {
+bool distanceIsLessThan (double distance, sf::Vector2f pointA, sf::Vector2f pointB) {
+	if (distance * distance < distanceSquare (pointA, pointB)) {
 		return false;
 	}
 
@@ -291,8 +300,8 @@ bool distanceIsLessThan (D distance, Vector2f pointA, Vector2f pointB) {
  *
  *  @return: .
  */
-bool distanceIsBigThan (D distance, Vector2f pointA, Vector2f pointB) {
-	if (distance * distance > squareDistance (pointA, pointB)) {
+bool distanceIsBigThan (double distance, sf::Vector2f pointA, sf::Vector2f pointB) {
+	if (distance * distance > distanceSquare (pointA, pointB)) {
 		return false;
 	}
 
@@ -304,8 +313,8 @@ bool distanceIsBigThan (D distance, Vector2f pointA, Vector2f pointB) {
  *
  *  @return: .
  */
-bool distanceIsEqual (D distance, Vector2f pointA, Vector2f pointB) {
-	if (distance * distance != squareDistance (pointA, pointB)) {
+bool distanceIsEqual (double distance, sf::Vector2f pointA, sf::Vector2f pointB) {
+	if (distance * distance != distanceSquare (pointA, pointB)) {
 		return false;
 	}
 
