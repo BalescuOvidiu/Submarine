@@ -137,7 +137,7 @@ Interfața grafică a fost scrisă în limbajul <a href = "http://www.cplusplus.
 #### Testare versiunea 0.1 - 16 Aprilie 2019 
 <p align = "justify">
 S-a desfășurat pe lacul din Parcul Tineretului, București. S-a deplasat fără probleme la suprafața apei, dar nu a reușit să execute o submersie. 
-Problema era cauzată de planele de scufundare din față, fiind fixate(nu erau conectate la un motor, ci doar lipite). asta nu a permis să încline submarinul cu botul în jos și să execute o submersie dinamică. Carcasa din PET acoperită cu lac de lemn nu a permis apei să intre, dar în urma unor șocuri mecanice s-a observat că, lacul întărit se desprinde de pe plastic.
+Problema era cauzată de planele de scufundare din față, fiind fixate(nu erau conectate la un motor, ci doar lipite). Asta nu a permis să încline submarinul cu botul în jos și să execute o submersie dinamică. Carcasa din PET acoperită cu lac de lemn nu a permis apei să intre, dar în urma unor șocuri mecanice s-a observat că lacul întărit se desprinde de pe plastic.
 Click <a href = "https://drive.google.com/file/d/1TcdASmKPXG35pqwhGr6TglmWBqajAN5j/view?usp=share_link" >aici</a> pentru a vedea video-ul. 
 </p>
 
