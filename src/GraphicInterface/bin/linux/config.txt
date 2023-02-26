@@ -1,3 +1,0 @@
-framerate=60
-vertical_sync_enabled=true
-selectedShip=ME-212

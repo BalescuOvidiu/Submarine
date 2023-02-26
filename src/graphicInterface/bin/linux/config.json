@@ -1,0 +1,7 @@
+{
+	"fontFile": "data/fonts/Verdana.ttf",
+	"framerate": 30,
+	"selectedShipFile": "data/ships/ME-212.json",
+	"verticalSyncEnabled": false,
+	"windowTitle": "Controller Software - Metere Submarine Class"
+}

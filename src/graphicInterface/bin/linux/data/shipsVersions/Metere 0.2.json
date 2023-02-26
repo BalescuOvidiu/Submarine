@@ -1,0 +1,56 @@
+{
+	"hull": {
+		"width": 0.985,
+		"breadth": 0.1,
+		"breadthDivision": 4.0,
+		"radiusFront": 0.075,
+		"radiusBack": 0.12,
+		"angleDivision": 30.0
+	},
+	"navigationBody": {
+		"position": 0.275,
+		"width": 0.20,
+		"breadth": 0.05
+	},
+	"planesFront": {
+		"position": 0.15,
+		"width": 0.06,
+		"breadth": 0.03
+	},
+	"planesBack": {
+		"position": 0.81,
+		"width": 0.06,
+		"breadth": 0.03		
+	},
+	"rudders": {
+		"position": 0.81,
+		"width": 0.06,
+		"breadth": 0.03,
+		"thickness": 0.01
+	},
+	"propulsion": {
+		"width": 0.07,
+		"breadth": 0.07
+	},
+	"imuDevice": {
+		"position": 0.20
+	},
+	"sensors": [
+		{
+			"x": -0.15,
+			"y": -0.05,
+			"direction": 45.0
+		},
+		{
+			"x": -0.20,
+			"y":  0.00,
+			"direction": 0.0
+		},
+		{
+			"x": -0.15,
+			"y": 0.05,
+			"direction": -45.0
+		}
+	],
+	"autonomy": 3.0
+}
