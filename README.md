@@ -41,10 +41,7 @@ O dronă, este un vehicul căruia îi lipsește pilotul uman, fiind ghidat fie d
 | Adâncime operațională           | 0.5 m (1.6 ft) fără cablu <br> 3.0 m (9.6 ft) cu cablu |
 | Adâncime maximă                 | 10.0 m (65.6 ft)                                       |
 | Rază acoperire comunicații      | 1000 m (3280.8 ft) la suprafață                        |
-| Sensori și sisteme de procesare | 
-2 <a href = "https://www.optimusdigital.ro/ro/compatibile-cu-arduino-nano/1686-placa-de-dezvoltare-compatibila-cu-arduino-nano-atmega328p-i-ch340.html" >plăci de dezvoltare Arduino Nano v3</a> <br> 1 <a href = "https://www.optimusdigital.ro/ro/ism-24-ghz/119-modul-nrf24l01-pentru-distante-mari.html" >transceiver nRF24L01</a> <br>
-1 <a href = "https://www.optimusdigital.ro/ro/senzori-senzori-inertiali/865-modul-senzor-cu-9-axe-mpu9250.html" >IMU MPU9250</a> <br>
-3 <a href = "https://www.optimusdigital.ro/ro/senzori-senzori-ultrasonici/2943-modul-senzor-ultrasonic-rezistent-la-apa-jsn-sr04t-cu-sonda-pt-masurare-la-distana.html" >senzori de distanță JSN-SR04T</a> |
+| Sensori și sisteme de procesare | 2 <a href = "https://www.optimusdigital.ro/ro/compatibile-cu-arduino-nano/1686-placa-de-dezvoltare-compatibila-cu-arduino-nano-atmega328p-i-ch340.html" >plăci de dezvoltare Arduino Nano v3</a> <br> 1 <a href = "https://www.optimusdigital.ro/ro/ism-24-ghz/119-modul-nrf24l01-pentru-distante-mari.html" >transceiver nRF24L01</a> <br>1 <a href = "https://www.optimusdigital.ro/ro/senzori-senzori-inertiali/865-modul-senzor-cu-9-axe-mpu9250.html" >IMU MPU9250</a> <br>3 <a href = "https://www.optimusdigital.ro/ro/senzori-senzori-ultrasonici/2943-modul-senzor-ultrasonic-rezistent-la-apa-jsn-sr04t-cu-sonda-pt-masurare-la-distana.html" >senzori de distanță JSN-SR04T</a> |
 | Alimentare  | 32 <a href = "https://www.soselectronic.ro/products/conrad-energy/4aa2500mwh1-6v-bp4-1-153207">acumulatori AA de 1.6 V, 1500 mAh</a>  |
 
 
