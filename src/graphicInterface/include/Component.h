@@ -29,6 +29,7 @@
 #define COLOR_RED         sf::Color (216, 32, 32)
 #define COLOR_TRANSPARENT sf::Color (0, 0, 0, 0)
 
+#define COLOR_LABEL       sf::Color (48, 48, 48, 128)
 #define COLOR_BACKGROUND  COLOR_BLACK
 #define COLOR_GRID_SMALL  COLOR_GRAY_DARK
 #define COLOR_GRID_BIG    COLOR_GRAY

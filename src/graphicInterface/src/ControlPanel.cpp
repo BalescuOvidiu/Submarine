@@ -23,22 +23,29 @@ ControlPanel::ControlPanel (
 	sf::RenderWindow *window, 
 	sf::View *view
 ) {
-	this->setSizes ();
+	double scale = this->zoomOutLimit;
+
+	this->setSizes (
+		-0.5 * Ruller::width () * scale,
+		-0.5 * Ruller::height () * scale,
+		0.5 * Ruller::width () * scale,
+		0.5 * Ruller::height () * scale
+	);
 	this->open (view);
+
+	/** Ship data */
+	this->selectedShip = 0;
 
 	Log::write ("The GUI is initialized.");
 
 	/** Background */
 	this->loadBackground (window, view);
 
-	/** Text. */
-	Writer::setFont (this->radarGuide);
-	this->radarGuide.setFillColor (COLOR_TEXT);
-	this->radarGuide.setCharacterSize (this->characterSize);
+	/** Radar guide. */
+	Writer::setFont (this->radarGuideText);
+	this->radarGuideText.setCharacterSize (this->characterSize);
 
-	/** Ship data */
-	this->selectedShip = 0;
-
+	/** View. */
 	this->move (window, view, 0.0, 0.0);
 }
 
@@ -64,14 +71,18 @@ void ControlPanel::render (RenderWindow *window) {
 		s->render (window);
 	}
 
-	/** GUI. */
-	window->draw (this->radarGuide);
+	/** Radar guide. */
+	window->draw (this->radarGuideFill);
+	window->draw (this->radarGuideText);
 }
 
 /**
  *  @brief:
  */
 void ControlPanel::move (RenderWindow *window, sf::View *view, double x, double y) {
+	double distanceX;
+	double distanceY;
+
 	x *= Ruller::getFactor ();
 	y *= Ruller::getFactor ();
 
@@ -80,7 +91,26 @@ void ControlPanel::move (RenderWindow *window, sf::View *view, double x, double 
 		view->move (x, y);
 
 		this->backgroundFill.setPosition (view->getCenter ());
-		this->backgroundGrids.setPosition (view->getCenter ());
+
+		distanceX = fabs (Ruller::pixelToGrid (view->getCenter ().x) - this->backgroundGrids.getPosition ().x);
+		if (distanceX >= Ruller::getMeterGrid ()) {
+			if (Ruller::pixelToGrid (view->getCenter ().x) < this->backgroundGrids.getPosition ().x) {
+				distanceX *= -1.0;
+			}
+
+			this->backgroundGrids.move (distanceX, 0.0);
+			this->backgroundGridsWide.move (distanceX, 0.0);
+		}
+
+		distanceY = fabs (Ruller::pixelToGrid (view->getCenter ().y) - this->backgroundGrids.getPosition ().y);
+		if (distanceY >= Ruller::getMeterGrid ()) {
+			if (Ruller::pixelToGrid (view->getCenter ().y) < this->backgroundGrids.getPosition ().y) {
+				distanceY *= -1.0;
+			}
+
+			this->backgroundGrids.move (0.0, distanceY);
+			this->backgroundGridsWide.move (0.0, distanceY);
+		}
 
 		window->setView (*view);
 	}
@@ -96,7 +126,8 @@ void ControlPanel::zoom (RenderWindow *window, sf::View *view, float factor) {
 		window->setView (*view);
 		this->backgroundFill.scale (factor, factor);
 		this->backgroundFill.setPosition (view->getCenter ());
-		this->radarGuide.scale (factor, factor);
+		this->radarGuideFill.scale (factor, factor);
+		this->radarGuideText.scale (factor, factor);
 	}
 }
 
@@ -104,6 +135,15 @@ void ControlPanel::zoom (RenderWindow *window, sf::View *view, float factor) {
  *  @brief:
  */
 void ControlPanel::update (RenderWindow *window, View *view) {
+	bool mouseOverGui = this->overGui (Ruller::mousePosition ());
+	bool mouseOverBackground = !mouseOverGui;
+
+	sf::FloatRect rectangleRadarGuide = radarGuideFill.getLocalBounds ();
+	sf::Vector2f positionRadarGuide;
+	sf::Vector2f margin = sf::Vector2f (
+		this->getMargin () * Ruller::getFactor (),
+		- this->getMargin () * Ruller::getFactor ()
+	);
 
 	/** Keys events. */
 	if (this->canPressKeys ()) {
@@ -168,6 +208,15 @@ void ControlPanel::update (RenderWindow *window, View *view) {
 		}
 	}
 
+	if (this->selectedShip < this->ship.size ()) {
+		if (this->backgroundGrids.clickLeft (true)) {
+			this->ship[this->selectedShip].setRotation (getAngleInDegrees (
+				this->ship[this->selectedShip].getPosition (),
+				Ruller::mousePositionGrid ()
+			));
+		}
+	}
+
 	/** Background. */
 	if (Ruller::getFactor () < this->zoomOutLimit * 0.5) {
 		if (this->backgroundGrids.isHidden ()) {
@@ -189,22 +238,41 @@ void ControlPanel::update (RenderWindow *window, View *view) {
 	/** Ships. */
 	for (unsigned i = 0; i < this->ship.size(); i++) {
 		this->ship[i].update ();
+
+		if (mouseOverBackground) {
+			if (this->ship[i].mouseOver ()) {
+				this->radarGuideText.setString (this->ship[i].getGuideText ());
+				mouseOverBackground = false;
+			}
+		}
 	}
-	if (this->selectedShip < this->ship.size ()) {
-		this->radarGuide.setPosition (Ruller::mousePosition ());
-		Writer::alignLeftBottom (this->radarGuide);
-		if (this->ship[this->selectedShip].mouseOver ()) {
-			this->radarGuide.setString (this->ship[this->selectedShip].getGuideText ());
-		}
-		else if (!this->overGui (Ruller::mousePosition ())) {
-			this->radarGuide.setString (Writer::toString (Ruller::mousePositionMeter () - Ruller::centerMeter ()));
-		}
-		if (this->backgroundGrids.clickLeft (true)) {
-			this->ship[this->selectedShip].setRotation (getAngleInDegrees (
-				this->ship[this->selectedShip].getPosition (),
-				Ruller::mousePositionGrid ()
-			));
-		}
+
+	if (mouseOverBackground) {
+		this->radarGuideText.setString (Writer::toString (Ruller::mousePositionMeter () - Ruller::centerMeter ()));
+	}
+
+	/** Radar guide */
+	positionRadarGuide = Ruller::mousePosition ();
+	this->radarGuideFill.setSize (sf::Vector2f (
+		this->radarGuideText.getLocalBounds ().width + 2.0 * this->getMargin (),
+		this->radarGuideText.getLocalBounds ().height + 2.0 * this->getMargin ()
+	));
+	this->radarGuideFill.setPosition (positionRadarGuide);
+	this->radarGuideFill.setOrigin (
+		rectangleRadarGuide.left,
+   		rectangleRadarGuide.top + rectangleRadarGuide.height
+   	);
+	this->radarGuideText.setPosition (positionRadarGuide + margin);
+	Writer::alignLeftBottom (this->radarGuideText);
+
+	if (!mouseOverGui) {
+
+		this->radarGuideFill.setFillColor (COLOR_LABEL);
+		this->radarGuideText.setFillColor (COLOR_TEXT);
+	}
+	else {
+		this->radarGuideText.setFillColor (COLOR_TRANSPARENT);
+		this->radarGuideFill.setFillColor (COLOR_TRANSPARENT);
 	}
 }
 
@@ -257,6 +325,7 @@ void ControlPanel::loadBackground (sf::RenderWindow *window, sf::View *view) {
  */
 void ControlPanel::loadShip (std::string directory) {
 	this->ship.push_back (Ship (directory));
+
 	if(this->ship.back ().isOpen ()) {
 		Log::write ("The data for the ship " + this->ship.back ().getName () + " is loaded.");
 	}

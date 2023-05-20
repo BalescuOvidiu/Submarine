@@ -29,20 +29,23 @@ O dronă, este un vehicul căruia îi lipsește pilotul uman, fiind ghidat fie d
 ## Caracteristici generale
 
 | Nume clasă &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | Metere  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |                                           
-|:-----------------|:-------------------------------------|
-| Cost unitate | 1630.10 RON   |
-| Deplasament  | La suprafață: 6.7 kg  <br> În imersie: 9.5 kg |
-| Lungime      | 105.5 cm   |
-| Lățime       | 10.0 cm  |
-| Pescaj       | 7.0 cm  |
-| Propulsie    | 1 <a href = "https://www.pololu.com/category/60/micro-metal-gearmotors"> motor DC cu reductor 50:1 HPCB 6 V </a><br>1 <a href = "https://en.wikipedia.org/wiki/Pump-jet"> elice cu 7 lame pompă-jet</a>   |
-| Viteză  | 5.2 noduri (9.7 km / h)   |
-| Autonomie    | 3 ore  |
-| Adâncime operațională   | 0.5 m (1.6 ft) fără cablu <br> 3.0 m (9.6 ft) cu cablu |
-| Adâncime maximă   | 10.0 m (65.6 ft)   |
-| Rază acoperire comunicații | 1000 m (3280.8 ft) la suprafață |
-| Sensori și sisteme de procesare  | 2 <a href = "https://www.optimusdigital.ro/ro/compatibile-cu-arduino-nano/1686-placa-de-dezvoltare-compatibila-cu-arduino-nano-atmega328p-i-ch340.html" >plăci de dezvoltare Arduino Nano v3</a> <br> 1 <a href = "https://www.optimusdigital.ro/ro/ism-24-ghz/119-modul-nrf24l01-pentru-distante-mari.html" >transceiver nRF24L01</a> <br> 1 <a href = "https://www.optimusdigital.ro/ro/senzori-senzori-inertiali/865-modul-senzor-cu-9-axe-mpu9250.html" >IMU MPU9250</a> <br>3 <a href = "https://www.optimusdigital.ro/ro/senzori-senzori-ultrasonici/2943-modul-senzor-ultrasonic-rezistent-la-apa-jsn-sr04t-cu-sonda-pt-masurare-la-distana.html" >senzori de distanță JSN-SR04T</a> |
-| Alimentare  | 6 <a href = "https://www.soselectronic.ro/products/panasonic/hr-3u-2700-bp4-phr3u2700-4bp-1-56597">acumulatori AA de 1.2 V, 2700 mAh</a><br>18 <a href = "https://www.soselectronic.ro/products/conrad-energy/4aa2500mwh1-6v-bp4-1-153207">acumulatori AA de 1.6 V, 1500 mAh</a>  |
+|:-------------|:-------------------------------------|
+| Cost unitate                    | 1807.84 RON                                            |
+| Deplasament                     | La suprafață: 7.2 kg  <br> În imersie: 7.8 kg          |
+| Lungime                         | 102.5 cm                                               |
+| Lățime                          | 10.0 cm                                                |
+| Pescaj                          | 9.1 cm                                                 |
+| Propulsie                       | 1 <a href = "https://www.pololu.com/category/60/micro-metal-gearmotors"> motor DC cu reductor 50:1 HPCB 6 V </a><br>1 <a href = "https://en.wikipedia.org/wiki/Pump-jet"> elice cu 7 lame pompă-jet</a>           |
+| Viteză                          | 5.2 noduri (9.7 km / h)                                |
+| Autonomie                       | 3.5 ore                                                |
+| Adâncime operațională           | 0.5 m (1.6 ft) fără cablu <br> 3.0 m (9.6 ft) cu cablu |
+| Adâncime maximă                 | 10.0 m (65.6 ft)                                       |
+| Rază acoperire comunicații      | 1000 m (3280.8 ft) la suprafață                        |
+| Sensori și sisteme de procesare | 
+2 <a href = "https://www.optimusdigital.ro/ro/compatibile-cu-arduino-nano/1686-placa-de-dezvoltare-compatibila-cu-arduino-nano-atmega328p-i-ch340.html" >plăci de dezvoltare Arduino Nano v3</a> <br> 1 <a href = "https://www.optimusdigital.ro/ro/ism-24-ghz/119-modul-nrf24l01-pentru-distante-mari.html" >transceiver nRF24L01</a> <br>
+1 <a href = "https://www.optimusdigital.ro/ro/senzori-senzori-inertiali/865-modul-senzor-cu-9-axe-mpu9250.html" >IMU MPU9250</a> <br>
+3 <a href = "https://www.optimusdigital.ro/ro/senzori-senzori-ultrasonici/2943-modul-senzor-ultrasonic-rezistent-la-apa-jsn-sr04t-cu-sonda-pt-masurare-la-distana.html" >senzori de distanță JSN-SR04T</a> |
+| Alimentare  | 32 <a href = "https://www.soselectronic.ro/products/conrad-energy/4aa2500mwh1-6v-bp4-1-153207">acumulatori AA de 1.6 V, 1500 mAh</a>  |
 
 
 ## Structură
@@ -68,12 +71,11 @@ Structura este modulară pentru a fi ușor de reparat. Fiecare compartiment este
 
 | &nbsp; &nbsp; # | Compartiment &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; # | Compartiment &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |
 |----:|:---------------------------------------------------|----:|:---------------------------------------------------|
-| 1 | Elicea-jet                             | 7  | Corpul de nevigare                             |
-| 2 | Pupa                                   | 8  | Alimentare Arduino și senzori                  |
-| 3 | Compartimentul motoare și servomotoare | 9  | Camera circuitului central                     |
-| 4 | Alimentare motoare și servomotoare     | 10 | Control hidroplane față și sistem de orientare |
-| 5 | Control motoare și servomotoare        | 11 | Provă                                          |
-| 6 | Compartiment utilitar                  | 12 | Cârme                                          |
+| 1 | Elicea-jet                                 | 6  | Alimentare și circuit central                  |
+| 2 | Pupa                                       | 7  | Control hidroplane față și sistem de orientare |
+| 3 | Compartimentul propulsiei                  | 8  | Provă                                          |
+| 4 | Alimentare circuit motoare și servomotoare | 9  | Corpul de navigare                             |
+| 5 | Compartiment utilitar                      | 10 | Cârme                                          |
 
 ![](https://raw.githubusercontent.com/BalescuOvidiu/Submarine/master/img/Compartments.png)
 
@@ -115,7 +117,7 @@ Interfața grafică a fost scrisă în limbajul <a href = "http://www.cplusplus.
 
 | # | Data | Descriere                                |
 |--:|:-------|:--------------------------------------------------------------------|
-| 0.2 | 20 Octombrie 2019 | Compartimentele au fost restructurate și etanșate separat. Carcasa din PET a fost reconstruită și acoperită cu silicon. La fel și aripile. Propulsia cu elice 7 lame a fost înlocuită cu elice cu 7 lame pompă-jet.<br> Servomotoarele <a href="https://www.optimusdigital.ro/ro/motoare-servomotoare/271-servomotor-mg90s.html">MG90S</a> montate anterior au fost înlocuite cu <a href="https://www.optimusdigital.ro/ro/motoare-servomotoare/1160-servomotor-metalic-digital-mg996.html">MG996</a> și s-a adăugat unul pentru planele de scufundare din față. <br> Receptorul infrarosu a fost înlocuit cu un modul <a href = "https://www.optimusdigital.ro/ro/ism-24-ghz/119-modul-nrf24l01-pentru-distante-mari.html" >transceiver nRF24L01</a>. Bateriile AA de 1.5V au fost înlocuite cu <a href = "https://www.soselectronic.ro/products/panasonic/hr-3u-2700-bp4-phr3u2700-4bp-1-56597">acumulatori AA de 1.2 V, 2700 mAh</a> și <a href = "https://www.soselectronic.ro/products/conrad-energy/4aa2500mwh1-6v-bp4-1-153207">acumulatori AA de 1.6 V, 1500 mAh</a>. <br> S-au adăugat: trei senzori de umiditate pentru detectatarea scurgeriilor, un sistem pe bază de tranzistori bipolari de putere pentru controlul surselor de alimentare al motoarelor, un <a href = "https://www.optimusdigital.ro/ro/senzori-senzori-inertiali/865-modul-senzor-cu-9-axe-mpu9250.html" >IMU MPU9250</a> și 3 senzori ultrasonici de distanță <a href = "https://www.optimusdigital.ro/ro/senzori-senzori-ultrasonici/2943-modul-senzor-ultrasonic-rezistent-la-apa-jsn-sr04t-cu-sonda-pt-masurare-la-distana.html" >JSN-SR04T</a>. |
+| 0.2 | 20 Octombrie 2019 | Compartimentele au fost restructurate și etanșate separat. Carcasa din PET a fost reconstruită și acoperită cu silicon. La fel și aripile. Propulsia cu elice 7 lame a fost înlocuită cu elice cu 7 lame pompă-jet.<br> Servomotoarele <a href="https://www.optimusdigital.ro/ro/motoare-servomotoare/271-servomotor-mg90s.html">MG90S</a> montate anterior au fost înlocuite cu <a href="https://www.optimusdigital.ro/ro/motoare-servomotoare/1160-servomotor-metalic-digital-mg996.html">MG996</a> și s-a adăugat unul pentru planele de scufundare din față. <br> Receptorul infrarosu a fost înlocuit cu un modul <a href = "https://www.optimusdigital.ro/ro/ism-24-ghz/119-modul-nrf24l01-pentru-distante-mari.html" >transceiver nRF24L01</a>. Bateriile AA de 1.5V au fost înlocuite cu <a href = "https://www.soselectronic.ro/products/conrad-energy/4aa2500mwh1-6v-bp4-1-153207">acumulatori AA de 1.6 V, 1500 mAh</a>. <br> S-au adăugat: trei senzori de umiditate pentru detectatarea scurgeriilor, un sistem pe bază de tranzistori bipolari de putere pentru controlul surselor de alimentare al motoarelor, un <a href = "https://www.optimusdigital.ro/ro/senzori-senzori-inertiali/865-modul-senzor-cu-9-axe-mpu9250.html" >IMU MPU9250</a> și 3 senzori ultrasonici de distanță <a href = "https://www.optimusdigital.ro/ro/senzori-senzori-ultrasonici/2943-modul-senzor-ultrasonic-rezistent-la-apa-jsn-sr04t-cu-sonda-pt-masurare-la-distana.html" >JSN-SR04T</a>. |
 | 0.1 | 1 Ianuarie 2019 | Prima versiune.                                          |
 
 

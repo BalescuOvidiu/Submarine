@@ -69,10 +69,13 @@ private:
 	Component backgroundGrids;
 	Component backgroundGridsWide;
 
-	/** GUI. */
-	sf::RectangleShape leftPanelfill;
+	/** Radar guide. */
+	sf::RectangleShape radarGuideFill;
+	sf::Text radarGuideText;
+
+	/** Left menu */
+	sf::RectangleShape leftPanelFill;
 	sf::Text leftPanelText;
-	sf::Text radarGuide;
 
 	/** Ships data. */
 	unsigned selectedShip;
