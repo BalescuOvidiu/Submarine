@@ -30,11 +30,11 @@ O dronă, este un vehicul căruia îi lipsește pilotul uman, fiind ghidat fie d
 
 | Nume clasă &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | Metere  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |                                           
 |:-------------|:-------------------------------------|
-| Cost unitate                    | 1807.84 RON                                            |
-| Deplasament                     | La suprafață: 7.2 kg  <br> În imersie: 7.8 kg          |
+| Cost unitate                    | 2017.72 RON                                            |
+| Deplasament                     | La suprafață: 6.2 kg  <br> În imersie: 7.8 kg          |
 | Lungime                         | 102.5 cm                                               |
 | Lățime                          | 10.0 cm                                                |
-| Pescaj                          | 9.1 cm                                                 |
+| Pescaj                          | 7.9 cm                                                 |
 | Propulsie                       | 1 <a href = "https://www.pololu.com/category/60/micro-metal-gearmotors"> motor DC cu reductor 50:1 HPCB 6 V </a><br>1 <a href = "https://en.wikipedia.org/wiki/Pump-jet"> elice cu 7 lame pompă-jet</a>           |
 | Viteză                          | 5.2 noduri (9.7 km / h)                                |
 | Autonomie                       | 3.5 ore                                                |
@@ -82,7 +82,7 @@ Structura este modulară pentru a fi ușor de reparat. Fiecare compartiment este
 Sunt două surse de alimentare: spate și față. Ambele au un voltaj de 6.0 V. Fiecare sursă este formată din 3 pachete conectate în paralel. Fiecare pachet are 4 acumulatori AA conectați în serie: 3 de 1.6 V, 1500 mAh și 1 de 1.2 V, 2700 mAh.
 </p>
 <p align = "justify">
-Cele două plăci Arduino sunt alimentate de sursa din față. Alimentarea pentru plăci fi oprită sau pornită dintr-un comutator. Senzorii și modulele auxiliare sunt conectate la sursele de alimentarea al celor două plăci Arduino, la 3.3 V sau 5.0 V în funcție de nevoi. Motoarele sunt conectate la sursa din spate, mai puțin servomotorul din față care e alimentat de sursa din față. Alimentarea motoarelor este controlată printr-un tranzistor pentru fiecare. Tranzistorul primește semnal de la placa Arduino dacă să oprească sau să pornească alimentarea.
+Cele două plăci Arduino sunt alimentate de sursa din față. Alimentarea pentru plăci poate fi oprită sau pornită dintr-un comutator. Senzorii și modulele auxiliare sunt conectate la sursele de alimentarea al celor două plăci Arduino, la 3.3 V sau 5.0 V în funcție de nevoi. Motoarele sunt conectate la sursa din spate, mai puțin servomotorul din față care e alimentat de sursa din față. Alimentarea motoarelor este controlată printr-un tranzistor pentru fiecare. Tranzistorul primește semnal de la placa Arduino dacă să oprească sau să pornească alimentarea.
 </p>
 
 ![](https://raw.githubusercontent.com/BalescuOvidiu/Submarine/master/img/Schematic.png)
