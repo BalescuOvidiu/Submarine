@@ -30,11 +30,11 @@ O dronă, este un vehicul căruia îi lipsește pilotul uman, fiind ghidat fie d
 
 | Nume clasă &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | Metere  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |                                           
 |:-------------|:-------------------------------------|
-| Cost unitate                    | 2017.72 RON                                            |
-| Deplasament                     | La suprafață: 6.2 kg  <br> În imersie: 7.8 kg          |
+| Cost unitate                    | 2422.34 RON                                            |
+| Deplasament                     | La suprafață: 5.9 kg  <br> În imersie: 7.8 kg          |
 | Lungime                         | 102.5 cm                                               |
 | Lățime                          | 10.0 cm                                                |
-| Pescaj                          | 7.9 cm                                                 |
+| Pescaj                          | 7.5 cm                                                 |
 | Propulsie                       | 1 <a href = "https://www.pololu.com/category/60/micro-metal-gearmotors"> motor DC cu reductor 50:1 HPCB 6 V </a><br>1 <a href = "https://en.wikipedia.org/wiki/Pump-jet"> elice cu 7 lame pompă-jet</a>           |
 | Viteză                          | 5.2 noduri (9.7 km / h)                                |
 | Autonomie                       | 3.5 ore                                                |
@@ -57,7 +57,7 @@ PET-ul este o masă plastică folosită de obicei la fabricarea diverselor ambal
 Carcasa submarinul este construită din PET și este acoperită cu silicon. Același principiu este aplicat, elicei, cârmelor și hidroplanelor. Siliconul e mult mai rezistent față de cauciuc sau de vopsea și este mult mai ecologic în sensul că nu interacționează cu apa și nu lasă în urmă particule.
 </p>
 <p align = "justify">
-Structura este modulară pentru a fi ușor de reparat. Fiecare compartiment este alcătuit din două capace metalice conectate cu 4 colțare așezate în formă de cruce. Fiecare colțar este conectat cu cel de pe celălalt capac cu o placă de oțel zincat de îmbinare. Toată structura compartimentului este acoperită cu o folie de PET îmbinată de structura metalică cu șuruburi, formând un cilindru. Fiecare compartiment se poate deschide în partea de sus. Cele două capace metalice ale compartimentului au 8 găuri pentru îmbinarea cu alte compartimente și încă 2 găuri pentru fire. Compartimentele sunt conectate cu 4 plăci de îmbinare zincate.
+Structura este modulară pentru a fi ușor de reparat. Fiecare compartiment este alcătuit din două capace metalice conectate cu 4 colțare așezate în formă de cruce. Fiecare colțar este conectat cu cel de pe celălalt capac cu o placă de oțel zincat de îmbinare. Toată structura compartimentului este acoperită cu o folie de PET îmbinată de structura metalică cu șuruburi, formând un cilindru sau o semi-sferă. Fiecare compartiment se poate deschide în partea de sus. Cele două capace metalice ale compartimentului au 8 găuri pentru îmbinarea cu alte compartimente și încă 2 găuri pentru fire. Compartimentele sunt conectate cu 4 plăci de îmbinare zincate. Ca si sigilant s-a folosit silicon. Acesta e biodegradabil și rezistent la apă.
 </p>
 
 
@@ -68,18 +68,17 @@ Structura este modulară pentru a fi ușor de reparat. Fiecare compartiment este
 
 | &nbsp; &nbsp; # | Compartiment &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; # | Compartiment &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |
 |----:|:---------------------------------------------------|----:|:---------------------------------------------------|
-| 1 | Elicea-jet                                 | 6  | Alimentare și circuit central                  |
-| 2 | Pupa                                       | 7  | Control hidroplane față și sistem de orientare |
-| 3 | Compartimentul propulsiei                  | 8  | Provă                                          |
-| 4 | Alimentare circuit motoare și servomotoare | 9  | Corpul de navigare                             |
-| 5 | Compartiment utilitar                      | 10 | Cârme                                          |
+| 1 | Pupa                                       | 5  | Alimentare și circuit central                  |
+| 2 | Compartiment servomotoare                  | 6  | Control hidroplane față și sistem de orientare |
+| 3 | Alimentare circuit motoare și servomotoare | 7  | Provă                                          |
+| 4 | Compartiment utilitar                      | 8  | Corpul de navigare                             |                 
 
 ![](https://raw.githubusercontent.com/BalescuOvidiu/Submarine/master/img/Compartments.png)
 
 
 ## Circuit electric
 <p align = "justify">
-Sunt două surse de alimentare: spate și față. Ambele au un voltaj de 6.0 V. Fiecare sursă este formată din 3 pachete conectate în paralel. Fiecare pachet are 4 acumulatori AA conectați în serie: 3 de 1.6 V, 1500 mAh și 1 de 1.2 V, 2700 mAh.
+Sunt două surse de alimentare: spate și față. Ambele au un voltaj de 6.0 V. Fiecare sursă este formată din 4 socluri conectate în paralel. Fiecare soclu are 4 acumulatori AA conectați în serie de 1.6 V, 1500 mAh.
 </p>
 <p align = "justify">
 Cele două plăci Arduino sunt alimentate de sursa din față. Alimentarea pentru plăci poate fi oprită sau pornită dintr-un comutator. Senzorii și modulele auxiliare sunt conectate la sursele de alimentarea al celor două plăci Arduino, la 3.3 V sau 5.0 V în funcție de nevoi. Motoarele sunt conectate la sursa din spate, mai puțin servomotorul din față care e alimentat de sursa din față. Alimentarea motoarelor este controlată printr-un tranzistor pentru fiecare. Tranzistorul primește semnal de la placa Arduino dacă să oprească sau să pornească alimentarea.
